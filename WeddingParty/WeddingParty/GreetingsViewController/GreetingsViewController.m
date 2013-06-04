@@ -10,6 +10,10 @@
 #import "UIBubbleTableView.h"
 #import "UIBubbleTableViewDataSource.h"
 #import "NSBubbleData.h"
+#import "JSONModelLib.h"
+#import "HUD.h"
+#import "MessageModel.h"
+
 
 @interface GreetingsViewController ()
 {
@@ -19,6 +23,8 @@
     
     NSMutableArray *bubbleData;
 }
+
+@property (strong, nonatomic) MessageModel *messageModel;
 
 @end
 
@@ -43,10 +49,63 @@
     [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    //show loader view
+    [HUD showUIBlockingIndicatorWithText:@"Fetching JSON"];
+    
+    MessageModel *mm = [[MessageModel alloc] init];
+    mm.Data = @"hello this is jason";
+    mm.MessageId = 4;
+    mm.UserId = 3;
+    mm.Action = 1;
+    
+    NSString *jsonString = [mm toJSONString];
+    
+    
+
+    NSError *theError = nil;
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://54.242.242.228:4296/"]];
+    [request setValue:jsonString forHTTPHeaderField:@"json"];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:jsonData];
+    NSURLResponse *theResponse =[[NSURLResponse alloc]init];
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&theResponse error:&theError];
+    NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    self.messageModel = [[MessageModel alloc] initWithString:string error:nil];
+    
+    NSLog(@"messageId: %d", [self.messageModel MessageId]);
+    NSLog(@"userId: %d", [self.messageModel UserId]);
+    NSLog(@"data: %@", [self.messageModel Data]);
+    NSLog(@"action: %d", [self.messageModel Action]);
+
+    
+    
+    
+    //fetch the feed
+//    self.messageModel = [[MessageModel alloc] initFromURLWithString:@"http://54.242.242.228:4296/" 
+//                                         completion:^(JSONModel *model, JSONModelError *err) {
+//                                             
+//                                             //hide the loader view
+////                                             [HUD hideUIBlockingIndicator];
+//                                             
+//                                             //json fetched
+//                                             NSLog(@"messageId: %d", self.messageModel.MessageId);
+//                                             NSLog(@"userId: %d", self.messageModel.UserId);
+//                                             NSLog(@"data: %@", self.messageModel.Data);
+//                                             NSLog(@"action: %d", self.messageModel.Action);
+//                                             
+//                                         }];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    
     
     NSBubbleData *heyBubble = [NSBubbleData dataWithText:@"Hey, halloween is soon" date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse];
     heyBubble.avatar = [UIImage imageNamed:@"avatar1.png"];

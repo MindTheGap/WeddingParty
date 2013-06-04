@@ -9,7 +9,6 @@
 #import "WeddingPartyAppDelegate.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import "MainPicturePageViewController.h"
-#import "LoginPageViewController.h"
 
 NSString *const FBSessionStateChangedNotification =
 @"com.wedding.party:FBSessionStateChangedNotification";
