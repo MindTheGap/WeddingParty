@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="WZs-SX-dvo">
+    <dependencies>
+        <deployment version="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="YeI-Ez-eUZ">
+            <objects>
+                <viewController storyboardIdentifier="MainPicturePageStoryboard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WZs-SX-dvo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lPK-pa-6Go">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2vO-Q6-2fD"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2vO-Q6-2fD" firstAttribute="top" secondItem="lPK-pa-6Go" secondAttribute="top" type="default" id="2nJ-TN-IPc"/>
+                            <constraint firstItem="2vO-Q6-2fD" firstAttribute="leading" secondItem="lPK-pa-6Go" secondAttribute="leading" type="default" id="FtQ-MI-Ohi"/>
+                            <constraint firstItem="2vO-Q6-2fD" firstAttribute="bottom" secondItem="lPK-pa-6Go" secondAttribute="bottom" type="default" id="Og9-93-ymQ"/>
+                            <constraint firstItem="2vO-Q6-2fD" firstAttribute="trailing" secondItem="lPK-pa-6Go" secondAttribute="trailing" type="default" id="kfQ-9B-Fvu"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qxV-cn-T9o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-195" y="-65"/>
+        </scene>
+    </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
