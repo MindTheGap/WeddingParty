@@ -64,23 +64,51 @@
     
     
 
-    NSError *theError = nil;
     NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://54.242.242.228:4296/"]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.103:4296/"]];
     [request setValue:jsonString forHTTPHeaderField:@"json"];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:jsonData];
-    NSURLResponse *theResponse =[[NSURLResponse alloc]init];
-    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&theResponse error:&theError];
-    NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
-    self.messageModel = [[MessageModel alloc] initWithString:string error:nil];
-    
-    NSLog(@"messageId: %d", [self.messageModel MessageId]);
-    NSLog(@"userId: %d", [self.messageModel UserId]);
-    NSLog(@"data: %@", [self.messageModel Data]);
-    NSLog(@"action: %d", [self.messageModel Action]);
 
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+    {
+        if ([data length] > 0 && error == nil)
+        {
+            NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            
+            self.messageModel = [[MessageModel alloc] initWithString:string error:nil];
+            
+            NSLog(@"messageId: %d", [self.messageModel MessageId]);
+            NSLog(@"userId: %d", [self.messageModel UserId]);
+            NSLog(@"data: %@", [self.messageModel Data]);
+            NSLog(@"action: %d", [self.messageModel Action]);
+        }
+        else if ([data length] == 0 && error == nil)
+        {
+            NSLog(@"data length is zero and no error");
+        }
+        else if (error != nil && error.code == NSURLErrorTimedOut)
+        {
+            NSLog(@"error code is timed out");
+        }
+        else if (error != nil)
+        {
+            NSLog(@"error is: %@" , [error localizedDescription]);
+        }
+    }];
+    
+//    NSData *data = [NSURLConnection sendAsynchronousRequest:<#(NSURLRequest *)#> queue:<#(NSOperationQueue *)#> completionHandler:<#^(NSURLResponse *, NSData *, NSError *)handler#>SynchronousRequest:request returningResponse:&theResponse error:&theError];
+//    NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//    
+//    self.messageModel = [[MessageModel alloc] initWithString:string error:nil];
+//    
+//    NSLog(@"messageId: %d", [self.messageModel MessageId]);
+//    NSLog(@"userId: %d", [self.messageModel UserId]);
+//    NSLog(@"data: %@", [self.messageModel Data]);
+//    NSLog(@"action: %d", [self.messageModel Action]);
+//
     
     
     
