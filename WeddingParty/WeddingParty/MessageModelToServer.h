@@ -1,5 +1,5 @@
 //
-//  MessageModel.h
+//  MessageModelToServer
 //  WeddingParty
 //
 //  Created by MTG on 6/4/13.
@@ -8,7 +8,7 @@
 
 #import "JSONModel.h"
 
-@interface MessageModel : JSONModel
+@interface MessageModelToServer : JSONModel
 
 enum ActionType {
     RetreiveLastMessages,
@@ -16,12 +16,12 @@ enum ActionType {
     PublishMessage
 };
 
-@property (assign, nonatomic) int MessageId;
-
-@property (assign, nonatomic) int UserId;
-
 @property (strong, nonatomic) NSString* Data;
-
 @property (assign, nonatomic) int Action;
+@property (assign, nonatomic) int UserId;
+@property (strong, nonatomic) NSString* UserFullName;
+
+
+
 
 @end

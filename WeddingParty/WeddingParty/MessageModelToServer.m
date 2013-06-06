@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 MTG. All rights reserved.
 //
 
-#import "MessageModel.h"
+#import "MessageModelToServer.h"
 
-@implementation MessageModel
+@implementation MessageModelToServer
 
 @end

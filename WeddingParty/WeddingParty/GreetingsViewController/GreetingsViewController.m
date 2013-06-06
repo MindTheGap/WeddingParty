@@ -12,7 +12,8 @@
 #import "NSBubbleData.h"
 #import "JSONModelLib.h"
 #import "HUD.h"
-#import "MessageModel.h"
+#import "MessageModelToServer.h"
+#import "MessageModelFromServer.h"
 
 
 @interface GreetingsViewController ()
@@ -24,11 +25,13 @@
     NSMutableArray *bubbleData;
 }
 
-@property (strong, nonatomic) MessageModel *messageModel;
+@property (strong, nonatomic) MessageModelFromServer *messageModelFromServer;
 
 @end
 
 @implementation GreetingsViewController
+- (IBAction)blessButtonClicked:(id)sender {
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,91 +44,163 @@
 
 - (IBAction)BlessButtonClick:(UIButton *)sender
 {
+    MessageModelToServer *mm = [[MessageModelToServer alloc] init];
+    mm.Action = 2;
+    mm.Data = [textField text];
+    mm.UserFullName = @"Chen Avnery";
     
+    NSBubbleData *bubbleMessage = [NSBubbleData dataWithText:[textField text] date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse];
+    bubbleMessage.avatar = nil;
+    [bubbleData addObject:bubbleMessage];
+
+    [bubbleTable reloadData];
+    
+    NSString *jsonString = [mm toJSONString];
+    
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://54.242.242.228:4296/"]];
+    [request setValue:jsonString forHTTPHeaderField:@"json"];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:jsonData];
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+     {
+         if ([data length] > 0 && error == nil)
+         {
+             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+             
+             self.messageModelFromServer = [[MessageModelFromServer alloc] initWithString:string error:nil];
+             
+             NSLog(@"Got action: %d",[self.messageModelFromServer Action]);
+             NSLog(@"%@",[self.messageModelFromServer MessagesList]);
+             
+             if ([self.messageModelFromServer Action] == 2)
+                 return; // put V near the message
+             
+         }
+         else if ([data length] == 0 && error == nil)
+         {
+             NSLog(@"publish: data length is zero and no error");
+             
+             [HUD showAlertWithTitle:@"Error" text:@"Error receiving information"];
+         }
+         else if (error != nil && error.code == NSURLErrorTimedOut)
+         {
+             NSLog(@"publish: error code is timed out");
+             
+             [HUD showAlertWithTitle:@"Error" text:@"Timed out, server is down?"];
+         }
+         else if (error != nil)
+         {
+             NSLog(@"publish: error is: %@" , [error localizedDescription]);
+             
+             [HUD showAlertWithTitle:@"Error" text:[error localizedDescription]];
+         }
+     }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:NO animated:NO];
+    
+    UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:@"Reload.png"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"Reload-inv.png"] forState:UIControlStateHighlighted];
+    [button addTarget:self action:@selector(reload:) forControlEvents:UIControlEventTouchUpInside];
+    [button setFrame:CGRectMake(0, 0, 32, 32)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg1.jpg"]];
+    [backgroundImageView setFrame:bubbleTable.frame];
+    
+    bubbleTable.backgroundView = backgroundImageView;
+}
+
+- (void)reload:(id)sender
+{
+    [self loadLastMessages];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [self loadLastMessages];
+}
+
+- (void)loadLastMessages
+{
     //show loader view
-    [HUD showUIBlockingIndicatorWithText:@"Fetching JSON"];
+    [HUD showUIBlockingIndicatorWithText:@"Loading"];
     
-    MessageModel *mm = [[MessageModel alloc] init];
-    mm.Data = @"hello this is jason";
-    mm.MessageId = 4;
-    mm.UserId = 3;
-    mm.Action = 1;
+    MessageModelToServer *mm = [[MessageModelToServer alloc] init];
+    mm.Action = 0;
+    mm.UserFullName = @"Chen Avnery";
     
     NSString *jsonString = [mm toJSONString];
     
-    
-
     NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.103:4296/"]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://54.242.242.228:4296/"]];
     [request setValue:jsonString forHTTPHeaderField:@"json"];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:jsonData];
-
+    
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-    {
-        if ([data length] > 0 && error == nil)
-        {
-            NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            
-            self.messageModel = [[MessageModel alloc] initWithString:string error:nil];
-            
-            NSLog(@"messageId: %d", [self.messageModel MessageId]);
-            NSLog(@"userId: %d", [self.messageModel UserId]);
-            NSLog(@"data: %@", [self.messageModel Data]);
-            NSLog(@"action: %d", [self.messageModel Action]);
-        }
-        else if ([data length] == 0 && error == nil)
-        {
-            NSLog(@"data length is zero and no error");
-        }
-        else if (error != nil && error.code == NSURLErrorTimedOut)
-        {
-            NSLog(@"error code is timed out");
-        }
-        else if (error != nil)
-        {
-            NSLog(@"error is: %@" , [error localizedDescription]);
-        }
-    }];
-    
-//    NSData *data = [NSURLConnection sendAsynchronousRequest:<#(NSURLRequest *)#> queue:<#(NSOperationQueue *)#> completionHandler:<#^(NSURLResponse *, NSData *, NSError *)handler#>SynchronousRequest:request returningResponse:&theResponse error:&theError];
-//    NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//    
-//    self.messageModel = [[MessageModel alloc] initWithString:string error:nil];
-//    
-//    NSLog(@"messageId: %d", [self.messageModel MessageId]);
-//    NSLog(@"userId: %d", [self.messageModel UserId]);
-//    NSLog(@"data: %@", [self.messageModel Data]);
-//    NSLog(@"action: %d", [self.messageModel Action]);
-//
-    
-    
-    
-    //fetch the feed
-//    self.messageModel = [[MessageModel alloc] initFromURLWithString:@"http://54.242.242.228:4296/" 
-//                                         completion:^(JSONModel *model, JSONModelError *err) {
-//                                             
-//                                             //hide the loader view
-////                                             [HUD hideUIBlockingIndicator];
-//                                             
-//                                             //json fetched
-//                                             NSLog(@"messageId: %d", self.messageModel.MessageId);
-//                                             NSLog(@"userId: %d", self.messageModel.UserId);
-//                                             NSLog(@"data: %@", self.messageModel.Data);
-//                                             NSLog(@"action: %d", self.messageModel.Action);
-//                                             
-//                                         }];
+     {
+         [HUD hideUIBlockingIndicator];
+         
+         if ([data length] > 0 && error == nil)
+         {
+             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+             
+             self.messageModelFromServer = [[MessageModelFromServer alloc] initWithString:string error:nil];
+             
+             NSLog(@"Got action: %d",[self.messageModelFromServer Action]);
+             NSLog(@"%@",[self.messageModelFromServer MessagesList]);
+             
+             bubbleData = [[NSMutableArray alloc] init];
+             
+             for (int i = 0; i < [[self.messageModelFromServer MessagesList] count]; i++)
+             {
+                 NSDictionary *messageDictionary = (NSDictionary*)[[self.messageModelFromServer MessagesList] objectAtIndex:i];
+                 
+                 NSError *errorParsing;
+                 MessageModelToServer *message = [[MessageModelToServer alloc] initWithDictionary:messageDictionary error:&errorParsing];
+                 if (errorParsing)
+                 {
+                     NSLog(@"init with dictionary has an error: %@", [errorParsing localizedDescription]);
+                     return;
+                 }
+                 
+                 NSBubbleData *bubbleForMessage = [NSBubbleData dataWithText:[message Data] date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse];
+                 bubbleForMessage.avatar = nil;
+                 [bubbleData addObject:bubbleForMessage];
+             }
+             
+             [bubbleTable reloadData];
+             
+         }
+         else if ([data length] == 0 && error == nil)
+         {
+             NSLog(@"data length is zero and no error");
+             
+             [HUD showAlertWithTitle:@"Error" text:@"Error receiving information"];
+         }
+         else if (error != nil && error.code == NSURLErrorTimedOut)
+         {
+             NSLog(@"error code is timed out");
+             
+             [HUD showAlertWithTitle:@"Error" text:@"Timed out, server is down?"];
+         }
+         else if (error != nil)
+         {
+             NSLog(@"error is: %@" , [error localizedDescription]);
+             
+             [HUD showAlertWithTitle:@"Error" text:[error localizedDescription]];
+         }
+     }];
 }
 
 - (void)viewDidLoad
@@ -133,18 +208,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    
-    
-    NSBubbleData *heyBubble = [NSBubbleData dataWithText:@"Hey, halloween is soon" date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse];
-    heyBubble.avatar = [UIImage imageNamed:@"avatar1.png"];
-    
-    NSBubbleData *photoBubble = [NSBubbleData dataWithImage:[UIImage imageNamed:@"halloween.jpg"] date:[NSDate dateWithTimeIntervalSinceNow:-290] type:BubbleTypeSomeoneElse];
-    photoBubble.avatar = [UIImage imageNamed:@"avatar1.png"];
-    
-    NSBubbleData *replyBubble = [NSBubbleData dataWithText:@"Wow.. Really cool picture out there. iPhone 5 has really nice camera, yeah?" date:[NSDate dateWithTimeIntervalSinceNow:-5] type:BubbleTypeMine];
-    replyBubble.avatar = nil;
-    
-    bubbleData = [[NSMutableArray alloc] initWithObjects:heyBubble, photoBubble, replyBubble, nil];
     bubbleTable.bubbleDataSource = self;
     
     // The line below sets the snap interval in seconds. This defines how the bubbles will be grouped in time.
@@ -164,11 +227,10 @@
     //    - NSBubbleTypingTypeMe - shows "now typing" bubble on the right
     //    - NSBubbleTypingTypeNone - no "now typing" bubble
     
-    bubbleTable.typingBubble = NSBubbleTypingTypeSomebody;
+    bubbleTable.typingBubble = NSBubbleTypingTypeNobody;
+        // Keyboard events
     
     [bubbleTable reloadData];
-    
-    // Keyboard events
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];

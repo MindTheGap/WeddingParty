@@ -206,7 +206,6 @@
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A18-MX-I1q">
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="86" type="user" id="BGt-Mx-gB1"/>
-                                                    <constraint firstAttribute="height" constant="29" id="DrA-1A-jEv"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="Bless">
@@ -218,18 +217,19 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="BlessButtonClick:" destination="mcS-7m-m4u" eventType="touchUpInside" id="1fb-6C-nY4"/>
+                                                    <action selector="blessButtonClicked:" destination="mcS-7m-m4u" eventType="touchUpInside" id="ENX-hU-Bfz"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="A18-MX-I1q" firstAttribute="leading" secondItem="2LZ-8H-pI6" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="0gX-Vd-w8f"/>
                                             <constraint firstAttribute="width" constant="320" type="user" id="JUk-SC-EEM"/>
                                             <constraint firstAttribute="height" constant="44" type="user" id="JWe-8C-Q7N"/>
-                                            <constraint firstItem="A18-MX-I1q" firstAttribute="leading" secondItem="2LZ-8H-pI6" secondAttribute="trailing" constant="7" type="user" id="LDB-kw-36X"/>
+                                            <constraint firstItem="2LZ-8H-pI6" firstAttribute="leading" secondItem="s4V-BU-bf3" secondAttribute="leading" constant="5" id="WZX-jt-XhI"/>
                                             <constraint firstItem="A18-MX-I1q" firstAttribute="centerY" secondItem="2LZ-8H-pI6" secondAttribute="centerY" type="user" id="YpU-qO-RdD"/>
-                                            <constraint firstAttribute="trailing" secondItem="A18-MX-I1q" secondAttribute="trailing" constant="6" type="user" id="ZsV-sJ-VDJ"/>
-                                            <constraint firstItem="2LZ-8H-pI6" firstAttribute="leading" secondItem="s4V-BU-bf3" secondAttribute="leading" constant="6" type="user" id="bcu-he-6qI"/>
                                             <constraint firstItem="2LZ-8H-pI6" firstAttribute="centerY" secondItem="s4V-BU-bf3" secondAttribute="centerY" type="user" id="dPj-rM-lRq"/>
+                                            <constraint firstItem="2LZ-8H-pI6" firstAttribute="top" secondItem="A18-MX-I1q" secondAttribute="top" type="default" id="rp7-89-222"/>
                                             <constraint firstItem="2LZ-8H-pI6" firstAttribute="top" secondItem="s4V-BU-bf3" secondAttribute="top" constant="7" type="user" id="rsJ-1u-l3Z"/>
                                         </constraints>
                                     </view>

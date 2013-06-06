@@ -164,12 +164,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WeddingParty/GreetingsViewController/GreetingsViewController.m"
-         timestampString = "392154266.933751"
+         timestampString = "392247849.976724"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "69"
-         endingLineNumber = "69"
-         landmarkName = "-viewDidAppear:"
+         startingLineNumber = "284"
+         endingLineNumber = "284"
+         landmarkName = "-keyboardWillBeHidden:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -177,12 +177,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WeddingParty/GreetingsViewController/GreetingsViewController.m"
-         timestampString = "392154275.704738"
+         timestampString = "392247864.35608"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "77"
-         endingLineNumber = "77"
-         landmarkName = "-viewDidAppear:"
+         startingLineNumber = "285"
+         endingLineNumber = "285"
+         landmarkName = "-keyboardWillBeHidden:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
