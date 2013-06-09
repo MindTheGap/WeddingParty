@@ -8,7 +8,7 @@
 
 #import "JSONModel.h"
 
-@interface MessageModelFromServer : JSONModel
+@interface MessageModelFromServer : JSONModel <NSCoding>
 
 @property (strong, nonatomic) NSMutableArray *MessagesList;
 

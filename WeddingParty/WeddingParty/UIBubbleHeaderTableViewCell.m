@@ -26,6 +26,7 @@
 
 - (void)setDate:(NSDate *)value
 {
+//    NSLog(@"UIBubbleHeaderTableViewCell setDate");
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
     [dateFormatter setTimeStyle:NSDateFormatterShortStyle];

@@ -8,7 +8,7 @@
 
 #import "JSONModel.h"
 
-@interface MessageModelToServer : JSONModel
+@interface MessageModelToServer : JSONModel <NSCoding>
 
 enum ActionType {
     RetreiveLastMessages,

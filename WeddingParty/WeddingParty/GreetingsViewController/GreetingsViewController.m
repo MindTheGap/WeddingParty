@@ -15,6 +15,8 @@
 #import "MessageModelToServer.h"
 #import "MessageModelFromServer.h"
 
+#define kMessageModelKey @"MessageModel"
+#define kBubbleDataKey @"BubbleData"
 
 @interface GreetingsViewController ()
 {
@@ -22,15 +24,65 @@
     IBOutlet UIView *textInputView;
     IBOutlet UITextField *textField;
     
-    NSMutableArray *bubbleData;
+    BOOL bLoadedFile;
+    
+   
 }
 
 @property (strong, nonatomic) MessageModelFromServer *messageModelFromServer;
 
+@property (strong, nonatomic) NSMutableArray *bubbleData;
+
 @end
 
 @implementation GreetingsViewController
-- (IBAction)blessButtonClicked:(id)sender {
+
+@synthesize bubbleData = _bubbleData;
+@synthesize  messageModelFromServer = _messageModelFromServer;
+
+- (NSMutableArray *)bubbleData
+{
+    if (_bubbleData) return _bubbleData;
+    
+    NSLog(@"entered getter for bubbleData");
+    NSString *bubbleDataPath = [self saveFilePath];
+    NSData *codedData = [[NSData alloc] initWithContentsOfFile:bubbleDataPath];
+    if (codedData == nil)
+    {
+        NSLog(@"bubbleData couldn't encode, returning nil");
+        return nil;
+    }
+    
+    bLoadedFile = YES;
+    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:codedData];
+    _bubbleData = [unarchiver decodeObjectForKey:kBubbleDataKey];
+    [unarchiver finishDecoding];
+
+    return _bubbleData;
+}
+
+- (MessageModelFromServer *)messageModelFromServer
+{
+    if (_messageModelFromServer) return _messageModelFromServer;
+    
+    NSLog(@"entered getter for messageModelFromServer");
+    NSString *bubbleDataPath = [self saveFilePath];
+    NSData *codedData = [[NSData alloc] initWithContentsOfFile:bubbleDataPath];
+    if (codedData == nil)
+    {
+        NSLog(@"messageModelFromServer couldn't encode, returning nil");
+        return nil;
+    }
+    
+    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:codedData];
+    _messageModelFromServer = [unarchiver decodeObjectForKey:kMessageModelKey];
+    [unarchiver finishDecoding];
+    
+    return _messageModelFromServer;
+}
+
+- (IBAction)blessButtonClicked:(id)sender
+{
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -51,7 +103,7 @@
     
     NSBubbleData *bubbleMessage = [NSBubbleData dataWithText:[textField text] date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse];
     bubbleMessage.avatar = nil;
-    [bubbleData addObject:bubbleMessage];
+    [self.bubbleData addObject:bubbleMessage];
 
     [bubbleTable reloadData];
     
@@ -125,13 +177,14 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self loadLastMessages];
+    if (bLoadedFile == NO)
+        [self loadLastMessages];
 }
 
 - (void)loadLastMessages
 {
     //show loader view
-    [HUD showUIBlockingIndicatorWithText:@"Loading"];
+//    [HUD showUIBlockingIndicatorWithText:@"Loading"];
     
     MessageModelToServer *mm = [[MessageModelToServer alloc] init];
     mm.Action = 0;
@@ -149,7 +202,7 @@
     
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
      {
-         [HUD hideUIBlockingIndicator];
+//         [HUD hideUIBlockingIndicator];
          
          if ([data length] > 0 && error == nil)
          {
@@ -160,7 +213,7 @@
              NSLog(@"Got action: %d",[self.messageModelFromServer Action]);
              NSLog(@"%@",[self.messageModelFromServer MessagesList]);
              
-             bubbleData = [[NSMutableArray alloc] init];
+             self.bubbleData = [[NSMutableArray alloc] init];
              
              for (int i = 0; i < [[self.messageModelFromServer MessagesList] count]; i++)
              {
@@ -174,12 +227,16 @@
                      return;
                  }
                  
+                 NSLog(@"initting bubble with text: %@", [message Data]);
                  NSBubbleData *bubbleForMessage = [NSBubbleData dataWithText:[message Data] date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse];
                  bubbleForMessage.avatar = nil;
-                 [bubbleData addObject:bubbleForMessage];
+                 [self.bubbleData addObject:bubbleForMessage];
              }
              
-             [bubbleTable reloadData];
+             NSLog(@"Entering reloadData");
+             [bubbleTable performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
+
+             NSLog(@"After reloadData");
              
          }
          else if ([data length] == 0 && error == nil)
@@ -208,6 +265,23 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    //handle save and load
+    NSString *myPath = [self saveFilePath];
+	BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:myPath];
+	if (fileExists)
+	{
+		NSArray *values = [[NSArray alloc] initWithContentsOfFile:myPath];
+		self.messageModelFromServer = [values objectAtIndex:0];
+        self.bubbleData = [values objectAtIndex:1];
+	}
+    
+	UIApplication *myApp = [UIApplication sharedApplication];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidEnterBackground:)
+                                                 name:UIApplicationDidEnterBackgroundNotification
+                                               object:myApp];
+
+    
     bubbleTable.bubbleDataSource = self;
     
     // The line below sets the snap interval in seconds. This defines how the bubbles will be grouped in time.
@@ -230,11 +304,35 @@
     bubbleTable.typingBubble = NSBubbleTypingTypeNobody;
         // Keyboard events
     
-    [bubbleTable reloadData];
+    [bubbleTable performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
+    
+    
+}
 
+- (NSString *) saveFilePath
+{
+	NSArray *path =
+	NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+	return [[path objectAtIndex:0] stringByAppendingPathComponent:@"weddingparty.plist"];
+    
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    NSLog(@"applicationDidEnterBackground, about to save");
+    NSString *dataPath = [self saveFilePath];
+    NSMutableData *data = [[NSMutableData alloc] init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    [archiver encodeObject:self.messageModelFromServer forKey:kMessageModelKey];
+    [archiver encodeObject:self.bubbleData forKey:kBubbleDataKey];
+    [archiver finishEncoding];
+    [data writeToFile:dataPath atomically:YES];
+    
+    NSLog(@"saved!");
 }
 
 - (void)didReceiveMemoryWarning
@@ -252,12 +350,14 @@
 
 - (NSInteger)rowsForBubbleTable:(UIBubbleTableView *)tableView
 {
-    return [bubbleData count];
+    NSLog(@"Entered rowsForBubbleTable with count %d", [self.bubbleData count]);
+    return [self.bubbleData count];
 }
 
 - (NSBubbleData *)bubbleTableView:(UIBubbleTableView *)tableView dataForRow:(NSInteger)row
 {
-    return [bubbleData objectAtIndex:row];
+    NSLog(@"Entered bubbleTableView:dataForRow with row %d", row);
+    return [self.bubbleData objectAtIndex:row];
 }
 
 #pragma mark - Keyboard events
@@ -273,9 +373,9 @@
         frame.origin.y -= kbSize.height;
         textInputView.frame = frame;
         
-        frame = bubbleTable.frame;
+        frame = [self view].frame;
         frame.size.height -= kbSize.height;
-        bubbleTable.frame = frame;
+        [self view].frame = frame;
     }];
 }
 
@@ -303,7 +403,7 @@
     bubbleTable.typingBubble = NSBubbleTypingTypeNobody;
     
     NSBubbleData *sayBubble = [NSBubbleData dataWithText:textField.text date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeMine];
-    [bubbleData addObject:sayBubble];
+    [self.bubbleData addObject:sayBubble];
     [bubbleTable reloadData];
     
     textField.text = @"";

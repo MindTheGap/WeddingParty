@@ -88,6 +88,7 @@
 
 - (void)reloadData
 {
+    NSLog(@"UIBubbleTableView reloadData");
     self.showsVerticalScrollIndicator = NO;
     self.showsHorizontalScrollIndicator = NO;
     
@@ -156,6 +157,8 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+//    NSLog(@"numberOfSectionsInTableView");
+
     int result = [self.bubbleSection count];
     if (self.typingBubble != NSBubbleTypingTypeNobody) result++;
     return result;
@@ -163,6 +166,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+//    NSLog(@"tableView: numberOfRowsInSection with section %d", section);
     // This is for now typing bubble
 	if (section >= [self.bubbleSection count]) return 1;
     
@@ -171,6 +175,7 @@
 
 - (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    NSLog(@"tableView: heightForRowAtIndexPath");
     // Now typing
 	if (indexPath.section >= [self.bubbleSection count])
     {
@@ -189,6 +194,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    NSLog(@"tableView: cellForRowAtIndexPath");
     // Now typing
 	if (indexPath.section >= [self.bubbleSection count])
     {

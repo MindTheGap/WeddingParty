@@ -11,6 +11,12 @@
 #import "NSBubbleData.h"
 #import <QuartzCore/QuartzCore.h>
 
+#define kDateKey            @"Date"
+#define kBubbleTypeKey      @"BubbleType"
+#define kViewKey            @"View"
+#define kInsetsKey          @"Insets"
+#define kImageKey           @"Image"
+
 @implementation NSBubbleData
 
 #pragma mark - Properties
@@ -44,6 +50,8 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
 
 + (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type
 {
+//    NSLog(@"NSBubbleData initWithText:date:type+");
+
 #if !__has_feature(objc_arc)
     return [[[NSBubbleData alloc] initWithText:text date:date type:type] autorelease];
 #else
@@ -53,6 +61,7 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
 
 - (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type
 {
+//    NSLog(@"NSBubbleData initWithText:date:type-");
     UIFont *font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
     CGSize size = [(text ? text : @"") sizeWithFont:font constrainedToSize:CGSizeMake(220, 9999) lineBreakMode:NSLineBreakByWordWrapping];
     
@@ -108,10 +117,53 @@ const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
     return [self initWithView:imageView date:date type:type insets:insets];       
 }
 
+#pragma mark - Encoding
+
+- (void) encodeWithCoder:(NSCoder *)encoder {
+    NSLog(@"NSBubbleData encodeWithCoder");
+    
+    UIEdgeInsets local = self.insets;
+    [encoder encodeObject:self.date forKey:kDateKey];
+    [encoder encodeObject:[[NSNumber alloc] initWithInt:self.type] forKey:kBubbleTypeKey];
+    [encoder encodeObject:self.view forKey:kViewKey];
+    [encoder encodeObject:[NSValue value:&local withObjCType:@encode(UIEdgeInsets)] forKey:kInsetsKey];
+    [encoder encodeObject:self.avatar forKey:kImageKey];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    NSLog(@"NSBubbleData initWithCoder");
+    
+    NSDate *date = [decoder decodeObjectForKey:kDateKey];
+    NSNumber *typeNumber = [decoder decodeObjectForKey:kBubbleTypeKey];
+    NSBubbleType type = [typeNumber intValue];
+    UIView *view = [decoder decodeObjectForKey:kViewKey];
+    NSValue *insetsValue = [decoder decodeObjectForKey:kInsetsKey];
+    UIEdgeInsets localInsets;
+    [insetsValue getValue:&localInsets];
+    UIImage *image = [decoder decodeObjectForKey:kImageKey];
+    
+    return [self initWithDate:date type:type view:view insets:localInsets image:image];
+}
+
+- (id)initWithDate:(NSDate *)date type:(int)type view:(UIView *)view insets:(UIEdgeInsets )insets image:(UIImage *)image
+{
+    NSLog(@"NSBubbleData initWithData");
+    
+    self.date = date;
+    self.type = type;
+    self.view = view;
+    self.insets = insets;
+    self.avatar = image;
+    
+    return self;
+}
+
+
 #pragma mark - Custom view bubble
 
 + (id)dataWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets
 {
+//    NSLog(@"NSBubbleData initWithView:date:type:insets+");
 #if !__has_feature(objc_arc)
     return [[[NSBubbleData alloc] initWithView:view date:date type:type insets:insets] autorelease];
 #else
@@ -121,6 +173,7 @@ const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
 
 - (id)initWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets  
 {
+//    NSLog(@"NSBubbleData initWithView:date:type:insets-");
     self = [super init];
     if (self)
     {

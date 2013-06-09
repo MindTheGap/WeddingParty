@@ -10,4 +10,38 @@
 
 @implementation MessageModelToServer
 
+#define kDataKey            @"Data"
+#define kActionKey          @"Action"
+#define kUserIdKey          @"UserId"
+#define kUserFullNameKey    @"UserFullName"
+
+- (void) encodeWithCoder:(NSCoder *)encoder {
+    NSLog(@"MessageModelToServer encodeWithCoder");
+
+    [encoder encodeObject:self.Data forKey:kDataKey];
+    [encoder encodeObject:[[NSNumber alloc] initWithInt:self.Action] forKey:kActionKey];
+    [encoder encodeObject:[[NSNumber alloc] initWithInt:self.UserId] forKey:kUserIdKey];
+    [encoder encodeObject:self.UserFullName forKey:kUserFullNameKey];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    NSLog(@"MessageModelToServer initWithCoder");
+    NSString *Data = [decoder decodeObjectForKey:kDataKey];
+    NSNumber *Action = [decoder decodeObjectForKey:kActionKey];
+    NSNumber *UserId = [decoder decodeObjectForKey:kUserIdKey];
+    NSString *UserFullName = [decoder decodeObjectForKey:kUserFullNameKey];
+    return [self initWithData:Data action:[Action intValue] userId:[UserId intValue] userFullName:UserFullName];
+}
+
+- (id)initWithData:(NSString *)data action:(int)action userId:(int)userId userFullName:(NSString *)userFullName
+{
+    NSLog(@"MessageModelToServer initWithData");
+
+    self.Data = data;
+    self.Action = action;
+    self.UserId = userId;
+    self.UserFullName = userFullName;
+    return self;
+}
+
 @end

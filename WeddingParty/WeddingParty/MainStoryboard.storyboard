@@ -269,7 +269,7 @@
                     <connections>
                         <outlet property="bubbleTable" destination="uhr-R1-Ppx" id="yXk-8E-0ZY"/>
                         <outlet property="textField" destination="2LZ-8H-pI6" id="FTA-Bd-3Ir"/>
-                        <outlet property="textInputView" destination="6uZ-1Y-Aiq" id="617-uf-bvo"/>
+                        <outlet property="textInputView" destination="s4V-BU-bf3" id="3Ch-CJ-atk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kmy-Y2-67Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
