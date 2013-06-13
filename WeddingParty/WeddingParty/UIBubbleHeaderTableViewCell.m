@@ -30,7 +30,6 @@
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
     [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     NSString *text = [dateFormatter stringFromDate:value];
-    [dateFormatter release];
     
     if (self.label)
     {

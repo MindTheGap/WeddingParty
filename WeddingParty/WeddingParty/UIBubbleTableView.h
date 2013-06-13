@@ -28,6 +28,8 @@ typedef enum _NSBubbleTypingType
 @property (nonatomic, strong) UIColor *customFontColor;
 @property (nonatomic) NSBubbleTypingType typingBubble;
 @property (nonatomic) BOOL scrollOnActivity;
+@property (nonatomic) BOOL showAvatars;
+
 
 -(void)scrollToBottomAnimated:(BOOL)animated;
 

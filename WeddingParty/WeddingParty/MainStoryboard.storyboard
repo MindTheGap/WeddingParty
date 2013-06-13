@@ -192,82 +192,83 @@
                         <rect key="frame" x="0.0" y="44" width="320" height="436"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6uZ-1Y-Aiq">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0N-6E-iYZ" userLabel="MainViewForTV">
                                 <subviews>
-                                    <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s4V-BU-bf3">
-                                        <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="center" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" borderStyle="roundedRect" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2LZ-8H-pI6">
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="215" type="user" id="f1m-XK-eot"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A18-MX-I1q">
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="86" type="user" id="BGt-Mx-gB1"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal" title="Bless">
-                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <state key="highlighted">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="BlessButtonClick:" destination="mcS-7m-m4u" eventType="touchUpInside" id="1fb-6C-nY4"/>
-                                                    <action selector="blessButtonClicked:" destination="mcS-7m-m4u" eventType="touchUpInside" id="ENX-hU-Bfz"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="A18-MX-I1q" firstAttribute="leading" secondItem="2LZ-8H-pI6" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="0gX-Vd-w8f"/>
-                                            <constraint firstAttribute="width" constant="320" type="user" id="JUk-SC-EEM"/>
-                                            <constraint firstAttribute="height" constant="44" type="user" id="JWe-8C-Q7N"/>
-                                            <constraint firstItem="2LZ-8H-pI6" firstAttribute="leading" secondItem="s4V-BU-bf3" secondAttribute="leading" constant="5" id="WZX-jt-XhI"/>
-                                            <constraint firstItem="A18-MX-I1q" firstAttribute="centerY" secondItem="2LZ-8H-pI6" secondAttribute="centerY" type="user" id="YpU-qO-RdD"/>
-                                            <constraint firstItem="2LZ-8H-pI6" firstAttribute="centerY" secondItem="s4V-BU-bf3" secondAttribute="centerY" type="user" id="dPj-rM-lRq"/>
-                                            <constraint firstItem="2LZ-8H-pI6" firstAttribute="top" secondItem="A18-MX-I1q" secondAttribute="top" type="default" id="rp7-89-222"/>
-                                            <constraint firstItem="2LZ-8H-pI6" firstAttribute="top" secondItem="s4V-BU-bf3" secondAttribute="top" constant="7" type="user" id="rsJ-1u-l3Z"/>
-                                        </constraints>
-                                    </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="uhr-R1-Ppx" customClass="UIBubbleTableView">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="bubbleDataSource" destination="mcS-7m-m4u" id="Zyr-oO-ukf"/>
+                                        </connections>
                                     </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="uhr-R1-Ppx" firstAttribute="top" secondItem="c0N-6E-iYZ" secondAttribute="top" type="default" id="25g-lh-tDH"/>
+                                    <constraint firstItem="uhr-R1-Ppx" firstAttribute="trailing" secondItem="c0N-6E-iYZ" secondAttribute="trailing" type="default" id="BAo-sm-QRJ"/>
+                                    <constraint firstItem="uhr-R1-Ppx" firstAttribute="bottom" secondItem="c0N-6E-iYZ" secondAttribute="bottom" type="default" id="KyB-7c-evb"/>
+                                    <constraint firstItem="uhr-R1-Ppx" firstAttribute="leading" secondItem="c0N-6E-iYZ" secondAttribute="leading" type="default" id="XwD-jf-SPx"/>
+                                </constraints>
+                            </view>
+                            <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s4V-BU-bf3" userLabel="BottomBarView">
+                                <subviews>
+                                    <textField opaque="NO" contentMode="center" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" borderStyle="roundedRect" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2LZ-8H-pI6">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="215" type="user" id="f1m-XK-eot"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="mcS-7m-m4u" id="B1W-nJ-M5m"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A18-MX-I1q">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="A8b-4q-ZPE"/>
+                                            <constraint firstAttribute="width" constant="86" type="user" id="BGt-Mx-gB1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Bless">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="BlessButtonClick:" destination="mcS-7m-m4u" eventType="touchUpInside" id="1fb-6C-nY4"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="s4V-BU-bf3" firstAttribute="trailing" secondItem="6uZ-1Y-Aiq" secondAttribute="trailing" type="user" id="2rz-BV-aeS"/>
-                                    <constraint firstItem="uhr-R1-Ppx" firstAttribute="trailing" secondItem="6uZ-1Y-Aiq" secondAttribute="trailing" type="default" id="G8O-Y9-IWI"/>
-                                    <constraint firstItem="uhr-R1-Ppx" firstAttribute="top" secondItem="6uZ-1Y-Aiq" secondAttribute="top" type="user" id="hFx-bb-dWH"/>
-                                    <constraint firstItem="uhr-R1-Ppx" firstAttribute="leading" secondItem="6uZ-1Y-Aiq" secondAttribute="leading" type="default" id="hgv-6z-uZk"/>
-                                    <constraint firstItem="s4V-BU-bf3" firstAttribute="leading" secondItem="6uZ-1Y-Aiq" secondAttribute="leading" type="user" id="iXT-xn-6XW"/>
-                                    <constraint firstItem="s4V-BU-bf3" firstAttribute="bottom" secondItem="6uZ-1Y-Aiq" secondAttribute="bottom" type="user" id="kQ4-ga-fo5"/>
-                                    <constraint firstItem="s4V-BU-bf3" firstAttribute="bottom" secondItem="6uZ-1Y-Aiq" secondAttribute="bottom" type="user" id="q1s-ly-vad"/>
-                                    <constraint firstItem="s4V-BU-bf3" firstAttribute="top" secondItem="uhr-R1-Ppx" secondAttribute="bottom" type="user" id="sw4-Wc-Eg5"/>
-                                    <constraint firstItem="uhr-R1-Ppx" firstAttribute="top" secondItem="6uZ-1Y-Aiq" secondAttribute="top" type="user" id="zZp-Dz-peX"/>
+                                    <constraint firstItem="A18-MX-I1q" firstAttribute="leading" secondItem="2LZ-8H-pI6" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="0gX-Vd-w8f"/>
+                                    <constraint firstAttribute="width" constant="320" type="user" id="JUk-SC-EEM"/>
+                                    <constraint firstAttribute="height" constant="44" type="user" id="JWe-8C-Q7N"/>
+                                    <constraint firstItem="A18-MX-I1q" firstAttribute="top" secondItem="s4V-BU-bf3" secondAttribute="top" constant="6" id="PgE-sv-mFb"/>
+                                    <constraint firstItem="2LZ-8H-pI6" firstAttribute="leading" secondItem="s4V-BU-bf3" secondAttribute="leading" constant="5" id="WZX-jt-XhI"/>
+                                    <constraint firstItem="2LZ-8H-pI6" firstAttribute="top" secondItem="s4V-BU-bf3" secondAttribute="top" constant="7" type="user" id="rsJ-1u-l3Z"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6uZ-1Y-Aiq" firstAttribute="leading" secondItem="CSC-EP-cd6" secondAttribute="leading" type="user" id="DR6-GA-E2m"/>
-                            <constraint firstItem="6uZ-1Y-Aiq" firstAttribute="trailing" secondItem="CSC-EP-cd6" secondAttribute="trailing" type="user" id="Ndj-7A-m5F"/>
-                            <constraint firstItem="6uZ-1Y-Aiq" firstAttribute="bottom" secondItem="CSC-EP-cd6" secondAttribute="bottom" type="user" id="RjA-qM-ptb"/>
-                            <constraint firstItem="6uZ-1Y-Aiq" firstAttribute="top" secondItem="CSC-EP-cd6" secondAttribute="top" type="user" id="l3Y-oS-bcS"/>
+                            <constraint firstItem="c0N-6E-iYZ" firstAttribute="leading" secondItem="CSC-EP-cd6" secondAttribute="leading" type="default" id="XjL-pB-uMf"/>
+                            <constraint firstItem="s4V-BU-bf3" firstAttribute="leading" secondItem="CSC-EP-cd6" secondAttribute="leading" type="default" id="emk-Yj-yg5"/>
+                            <constraint firstItem="c0N-6E-iYZ" firstAttribute="top" secondItem="CSC-EP-cd6" secondAttribute="top" type="user" id="kUd-Ul-G05"/>
+                            <constraint firstItem="s4V-BU-bf3" firstAttribute="top" secondItem="c0N-6E-iYZ" secondAttribute="bottom" type="user" id="o8z-CL-pni"/>
+                            <constraint firstItem="c0N-6E-iYZ" firstAttribute="trailing" secondItem="CSC-EP-cd6" secondAttribute="trailing" type="default" id="s6H-4A-6oM"/>
+                            <constraint firstItem="s4V-BU-bf3" firstAttribute="bottom" secondItem="CSC-EP-cd6" secondAttribute="bottom" type="user" id="zTT-qo-3Uo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Greetings" id="gXo-lZ-tx4">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="0tv-Jp-2N5"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Greetings" id="gXo-lZ-tx4"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="bubbleTable" destination="uhr-R1-Ppx" id="yXk-8E-0ZY"/>
+                        <outlet property="keyboardHeightConstraint" destination="zTT-qo-3Uo" id="ST0-SS-EXH"/>
+                        <outlet property="mainViewOfTV" destination="c0N-6E-iYZ" id="QA8-Qx-abT"/>
                         <outlet property="textField" destination="2LZ-8H-pI6" id="FTA-Bd-3Ir"/>
                         <outlet property="textInputView" destination="s4V-BU-bf3" id="3Ch-CJ-atk"/>
                     </connections>

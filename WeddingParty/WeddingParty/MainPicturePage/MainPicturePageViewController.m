@@ -28,7 +28,8 @@
         
     WeddingPartyAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     [appDelegate setUserFBProfilePictureID:user.id];
-    [appDelegate setWelcomeUserText:[NSString stringWithFormat:@"Welcome, %@",user.first_name]];
+    [appDelegate setUserFirstName:user.first_name];
+    [appDelegate setUserLastName:user.last_name];
     
     [self presentViewController:navController animated:animated completion:nil];
 

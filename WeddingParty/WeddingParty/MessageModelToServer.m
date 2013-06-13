@@ -20,7 +20,7 @@
 
     [encoder encodeObject:self.Data forKey:kDataKey];
     [encoder encodeObject:[[NSNumber alloc] initWithInt:self.Action] forKey:kActionKey];
-    [encoder encodeObject:[[NSNumber alloc] initWithInt:self.UserId] forKey:kUserIdKey];
+    [encoder encodeObject:self.UserId forKey:kUserIdKey];
     [encoder encodeObject:self.UserFullName forKey:kUserFullNameKey];
 }
 
@@ -28,12 +28,12 @@
     NSLog(@"MessageModelToServer initWithCoder");
     NSString *Data = [decoder decodeObjectForKey:kDataKey];
     NSNumber *Action = [decoder decodeObjectForKey:kActionKey];
-    NSNumber *UserId = [decoder decodeObjectForKey:kUserIdKey];
+    NSString *UserId = [decoder decodeObjectForKey:kUserIdKey];
     NSString *UserFullName = [decoder decodeObjectForKey:kUserFullNameKey];
-    return [self initWithData:Data action:[Action intValue] userId:[UserId intValue] userFullName:UserFullName];
+    return [self initWithData:Data action:[Action intValue] userId:UserId userFullName:UserFullName];
 }
 
-- (id)initWithData:(NSString *)data action:(int)action userId:(int)userId userFullName:(NSString *)userFullName
+- (id)initWithData:(NSString *)data action:(int)action userId:(NSString *)userId userFullName:(NSString *)userFullName
 {
     NSLog(@"MessageModelToServer initWithData");
 

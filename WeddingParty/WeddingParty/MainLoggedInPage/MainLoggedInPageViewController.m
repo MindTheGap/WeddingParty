@@ -43,7 +43,7 @@
     
     WeddingPartyAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     self.UserFBProfilePicture.profileID = [appDelegate UserFBProfilePictureID];
-    self.WelcomeUserText.text = [appDelegate WelcomeUserText];
+    self.WelcomeUserText.text = [NSString stringWithFormat:@"Welcome, %@", [appDelegate UserFirstName]];
     
     
 }

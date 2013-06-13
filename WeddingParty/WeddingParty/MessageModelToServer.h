@@ -18,7 +18,7 @@ enum ActionType {
 
 @property (strong, nonatomic) NSString* Data;
 @property (assign, nonatomic) int Action;
-@property (assign, nonatomic) int UserId;
+@property (strong, nonatomic) NSString *UserId;
 @property (strong, nonatomic) NSString* UserFullName;
 
 

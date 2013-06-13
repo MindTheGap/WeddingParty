@@ -181,7 +181,7 @@
     // Now typing
 	if (indexPath.section >= [self.bubbleSection count])
     {
-        return [UIBubbleTypingTableViewCell height];
+        return MAX([UIBubbleTypingTableViewCell height], self.showAvatars ? 58 : 0);
     }
     
     // Header
@@ -191,7 +191,7 @@
     }
     
     NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
-    return data.insets.top + data.view.frame.size.height + data.insets.bottom;
+    return MAX(data.insets.top + data.view.frame.size.height + data.insets.bottom, self.showAvatars ? 58 : 0);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -204,6 +204,7 @@
         
         if (cell == nil) cell = [[UIBubbleTypingTableViewCell alloc] init];
         cell.type = self.typingBubble;
+        cell.showAvatar = self.showAvatars;
         return cell;
     }
 
@@ -227,6 +228,7 @@
     
     if (cell == nil) cell = [[UIBubbleTableViewCell alloc] init];
     cell.data = data;
+    cell.showAvatar = self.showAvatars;
     return cell;
 }
 
@@ -243,10 +245,15 @@
 -(void)scrollToBottomAnimated:(BOOL)animated;
 {
     NSInteger sectionCount = [self numberOfSections];
-    NSInteger rowCount = [self numberOfRowsInSection:sectionCount - 1];
-    
-    NSIndexPath* scrollTo = [NSIndexPath indexPathForRow:rowCount-1 inSection:sectionCount - 1];
-    [self scrollToRowAtIndexPath:scrollTo atScrollPosition:UITableViewScrollPositionTop animated:animated];
+    if (sectionCount > 0)
+    {
+        NSInteger rowCount = [self numberOfRowsInSection:sectionCount - 1];
+        if (rowCount > 0)
+        {
+            NSIndexPath* scrollTo = [NSIndexPath indexPathForRow:rowCount-1 inSection:sectionCount - 1];
+            [self scrollToRowAtIndexPath:scrollTo atScrollPosition:UITableViewScrollPositionTop animated:animated];
+        }
+    }
 }
 
 

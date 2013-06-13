@@ -21,7 +21,8 @@ NSString *const FBSessionStateChangedNotification =
 
 @implementation WeddingPartyAppDelegate
 
-@synthesize WelcomeUserText = _WelcomeUserText;
+@synthesize UserFirstName = _UserFirstName;
+@synthesize UserLastName = _UserLastName;
 @synthesize UserFBProfilePictureID = _UserFBProfilePictureID;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

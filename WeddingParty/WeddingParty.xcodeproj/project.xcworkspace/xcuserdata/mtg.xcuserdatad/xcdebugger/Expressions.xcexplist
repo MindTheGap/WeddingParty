@@ -3,13 +3,47 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "GLOBAL">
+         <PersistentStrings>
+            <PersistentString
+               value = "mainViewOfTV">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__44-[GreetingsViewController keyboardWasShown:]_block_invoke:GreetingsViewController.m">
+      </ContextState>
+      <ContextState
          contextName = "-[LoginPageViewController loginViewFetchedUserInfo:user:]:LoginPageViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "__43-[GreetingsViewController loadLastMessages]_block_invoke:GreetingsViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[MainPicturePageViewController loginViewFetchedUserInfo:user:]:MainPicturePageViewController.m">
       </ContextState>
       <ContextState
+         contextName = "-[GreetingsViewController keyboardWasShown:]:GreetingsViewController.m">
+      </ContextState>
+      <ContextState
          contextName = "-[MainLoggedInPageViewController viewWillAppear:]:MainLoggedInPageViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[GreetingsViewController rowsForBubbleTable:]:GreetingsViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[GreetingsViewController bubbleTableView:dataForRow:]:GreetingsViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[GreetingsViewController tableView:cellForRowAtIndexPath:]:GreetingsViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[GreetingsViewController tableView:numberOfRowsInSection:]:GreetingsViewController.m">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

@@ -22,15 +22,17 @@ typedef enum _NSBubbleType
 @property (readonly, nonatomic) NSBubbleType type;
 @property (readonly, nonatomic, strong) UIView *view;
 @property (readonly, nonatomic) UIEdgeInsets insets;
+@property (strong, nonatomic) NSString *userFullName;
+@property (strong, nonatomic) UIImage *avatar;
 @property (nonatomic, strong) NSObject *customField;
 
-- (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type;
-- (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type withFont:(UIFont*)customFont withFontColor:(UIColor*)color;
-+ (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type;
-+ (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type withFont:(UIFont*)customFont withFontColor:(UIColor*)color;
-- (id)initWithImage:(UIImage *)image date:(NSDate *)date type:(NSBubbleType)type;
-+ (id)dataWithImage:(UIImage *)image date:(NSDate *)date type:(NSBubbleType)type;
-- (id)initWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets;
-+ (id)dataWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets;
+- (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type image:(UIImage *)image username:(NSString *)userFullName;
+- (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type withFont:(UIFont*)customFont withFontColor:(UIColor*)color image:(UIImage *)image username:(NSString *)userFullName;
++ (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type image:(UIImage *)image username:(NSString *)userFullName;
++ (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type withFont:(UIFont*)customFont withFontColor:(UIColor*)color image:(UIImage *)image username:(NSString *)userFullName;
+- (id)initWithImage:(UIImage *)image date:(NSDate *)date type:(NSBubbleType)type username:(NSString *)userFullName;
++ (id)dataWithImage:(UIImage *)image date:(NSDate *)date type:(NSBubbleType)type username:(NSString *)userFullName;
+- (id)initWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets image:(UIImage *)image username:(NSString *)userFullName;
++ (id)dataWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets image:(UIImage *)image username:(NSString *)userFullName;
 
 @end

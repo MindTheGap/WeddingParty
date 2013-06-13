@@ -20,7 +20,9 @@ extern NSString *const FBSessionStateChangedNotification;
 
 @property (strong, nonatomic) MainPicturePageViewController *mainViewController;
 
-@property (weak, nonatomic) NSString *WelcomeUserText;
+@property (weak, nonatomic) NSString *UserFirstName;
+
+@property (weak, nonatomic) NSString *UserLastName;
 
 @property (weak, nonatomic) NSString *UserFBProfilePictureID;
 

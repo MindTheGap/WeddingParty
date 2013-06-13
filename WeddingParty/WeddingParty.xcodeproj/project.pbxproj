@@ -26,6 +26,14 @@
 		76631D3717535BDA00949C8F /* level_me_up_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 76631D3317535BDA00949C8F /* level_me_up_thumb.png */; };
 		76631D3817535BDA00949C8F /* math_ninja_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 76631D3417535BDA00949C8F /* math_ninja_thumb.png */; };
 		76631D3917535BDA00949C8F /* rpg_calc_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 76631D3517535BDA00949C8F /* rpg_calc_thumb.png */; };
+		7695607F1769CAEF00F35507 /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7695607E1769CAEF00F35507 /* Toast+UIView.m */; };
+		769560811769D12400F35507 /* heartlike.png in Resources */ = {isa = PBXBuildFile; fileRef = 769560801769D12400F35507 /* heartlike.png */; };
+		76E434021769DED600FB8991 /* NSBubbleData.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E433F81769DED600FB8991 /* NSBubbleData.m */; };
+		76E434031769DED600FB8991 /* UIBubbleHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E433FA1769DED600FB8991 /* UIBubbleHeaderTableViewCell.m */; };
+		76E434041769DED600FB8991 /* UIBubbleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E433FC1769DED600FB8991 /* UIBubbleTableView.m */; };
+		76E434051769DED600FB8991 /* UIBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E433FE1769DED600FB8991 /* UIBubbleTableViewCell.m */; };
+		76E434061769DED600FB8991 /* UIBubbleTypingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E434011769DED600FB8991 /* UIBubbleTypingTableViewCell.m */; };
+		76E43429176A11D100FB8991 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E43428176A11D100FB8991 /* like.png */; };
 		76ED33331746182C00072A23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ED33321746182C00072A23 /* UIKit.framework */; };
 		76ED33351746182C00072A23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ED33341746182C00072A23 /* Foundation.framework */; };
 		76ED33371746182C00072A23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ED33361746182C00072A23 /* CoreGraphics.framework */; };
@@ -46,11 +54,6 @@
 		76ED3375174FCDB100072A23 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ED336E174FCCEA00072A23 /* Security.framework */; };
 		76ED3376174FCDB100072A23 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ED3370174FCCF200072A23 /* Social.framework */; };
 		76ED337A174FD67100072A23 /* MainLoggedInPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ED3379174FD67100072A23 /* MainLoggedInPageViewController.m */; };
-		76F252E917567F1400E94BCF /* NSBubbleData.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F252DF17567F1400E94BCF /* NSBubbleData.m */; };
-		76F252EA17567F1400E94BCF /* UIBubbleHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F252E117567F1400E94BCF /* UIBubbleHeaderTableViewCell.m */; };
-		76F252EB17567F1400E94BCF /* UIBubbleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F252E317567F1400E94BCF /* UIBubbleTableView.m */; };
-		76F252EC17567F1400E94BCF /* UIBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F252E517567F1400E94BCF /* UIBubbleTableViewCell.m */; };
-		76F252ED17567F1400E94BCF /* UIBubbleTypingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F252E817567F1400E94BCF /* UIBubbleTypingTableViewCell.m */; };
 		76F252F917567F3900E94BCF /* bubbleMine.png in Resources */ = {isa = PBXBuildFile; fileRef = 76F252EF17567F3900E94BCF /* bubbleMine.png */; };
 		76F252FA17567F3900E94BCF /* bubbleMine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 76F252F017567F3900E94BCF /* bubbleMine@2x.png */; };
 		76F252FB17567F3900E94BCF /* bubbleSomeone.png in Resources */ = {isa = PBXBuildFile; fileRef = 76F252F117567F3900E94BCF /* bubbleSomeone.png */; };
@@ -66,10 +69,6 @@
 		76F2530D1756874000E94BCF /* halloween.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 76F253091756874000E94BCF /* halloween.jpg */; };
 		76F2530E1756874000E94BCF /* icon_57.png in Resources */ = {isa = PBXBuildFile; fileRef = 76F2530A1756874000E94BCF /* icon_57.png */; };
 		76F2530F1756874000E94BCF /* icon_114.png in Resources */ = {isa = PBXBuildFile; fileRef = 76F2530B1756874000E94BCF /* icon_114.png */; };
-		76F2531A175DBDC900E94BCF /* btnCheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 76F25314175DBDC900E94BCF /* btnCheck.png */; };
-		76F2531B175DBDC900E94BCF /* btnCheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 76F25315175DBDC900E94BCF /* btnCheck@2x.png */; };
-		76F2531C175DBDC900E94BCF /* HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F25317175DBDC900E94BCF /* HUD.m */; };
-		76F2531D175DBDC900E94BCF /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F25319175DBDC900E94BCF /* MBProgressHUD.m */; };
 		76F25338175DBE4B00E94BCF /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F25321175DBE4B00E94BCF /* JSONModel.m */; };
 		76F25339175DBE4B00E94BCF /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F25323175DBE4B00E94BCF /* JSONModelArray.m */; };
 		76F2533A175DBE4B00E94BCF /* JSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F25325175DBE4B00E94BCF /* JSONModelClassProperty.m */; };
@@ -265,6 +264,21 @@
 		76631D3317535BDA00949C8F /* level_me_up_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level_me_up_thumb.png; sourceTree = "<group>"; };
 		76631D3417535BDA00949C8F /* math_ninja_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = math_ninja_thumb.png; sourceTree = "<group>"; };
 		76631D3517535BDA00949C8F /* rpg_calc_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rpg_calc_thumb.png; sourceTree = "<group>"; };
+		7695607D1769CAEF00F35507 /* Toast+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Toast+UIView.h"; sourceTree = "<group>"; };
+		7695607E1769CAEF00F35507 /* Toast+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Toast+UIView.m"; sourceTree = "<group>"; };
+		769560801769D12400F35507 /* heartlike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heartlike.png; sourceTree = "<group>"; };
+		76E433F71769DED600FB8991 /* NSBubbleData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSBubbleData.h; sourceTree = "<group>"; };
+		76E433F81769DED600FB8991 /* NSBubbleData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSBubbleData.m; sourceTree = "<group>"; };
+		76E433F91769DED600FB8991 /* UIBubbleHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleHeaderTableViewCell.h; sourceTree = "<group>"; };
+		76E433FA1769DED600FB8991 /* UIBubbleHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleHeaderTableViewCell.m; sourceTree = "<group>"; };
+		76E433FB1769DED600FB8991 /* UIBubbleTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableView.h; sourceTree = "<group>"; };
+		76E433FC1769DED600FB8991 /* UIBubbleTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTableView.m; sourceTree = "<group>"; };
+		76E433FD1769DED600FB8991 /* UIBubbleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableViewCell.h; sourceTree = "<group>"; };
+		76E433FE1769DED600FB8991 /* UIBubbleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTableViewCell.m; sourceTree = "<group>"; };
+		76E433FF1769DED600FB8991 /* UIBubbleTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableViewDataSource.h; sourceTree = "<group>"; };
+		76E434001769DED600FB8991 /* UIBubbleTypingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTypingTableViewCell.h; sourceTree = "<group>"; };
+		76E434011769DED600FB8991 /* UIBubbleTypingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTypingTableViewCell.m; sourceTree = "<group>"; };
+		76E43428176A11D100FB8991 /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
 		76ED332F1746182C00072A23 /* WeddingParty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeddingParty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76ED33321746182C00072A23 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		76ED33341746182C00072A23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -291,17 +305,6 @@
 		76ED3370174FCCF200072A23 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		76ED3378174FD67100072A23 /* MainLoggedInPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainLoggedInPageViewController.h; path = MainLoggedInPage/MainLoggedInPageViewController.h; sourceTree = "<group>"; };
 		76ED3379174FD67100072A23 /* MainLoggedInPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainLoggedInPageViewController.m; path = MainLoggedInPage/MainLoggedInPageViewController.m; sourceTree = "<group>"; };
-		76F252DE17567F1400E94BCF /* NSBubbleData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSBubbleData.h; sourceTree = "<group>"; };
-		76F252DF17567F1400E94BCF /* NSBubbleData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSBubbleData.m; sourceTree = "<group>"; };
-		76F252E017567F1400E94BCF /* UIBubbleHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleHeaderTableViewCell.h; sourceTree = "<group>"; };
-		76F252E117567F1400E94BCF /* UIBubbleHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleHeaderTableViewCell.m; sourceTree = "<group>"; };
-		76F252E217567F1400E94BCF /* UIBubbleTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableView.h; sourceTree = "<group>"; };
-		76F252E317567F1400E94BCF /* UIBubbleTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTableView.m; sourceTree = "<group>"; };
-		76F252E417567F1400E94BCF /* UIBubbleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableViewCell.h; sourceTree = "<group>"; };
-		76F252E517567F1400E94BCF /* UIBubbleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTableViewCell.m; sourceTree = "<group>"; };
-		76F252E617567F1400E94BCF /* UIBubbleTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableViewDataSource.h; sourceTree = "<group>"; };
-		76F252E717567F1400E94BCF /* UIBubbleTypingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTypingTableViewCell.h; sourceTree = "<group>"; };
-		76F252E817567F1400E94BCF /* UIBubbleTypingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTypingTableViewCell.m; sourceTree = "<group>"; };
 		76F252EF17567F3900E94BCF /* bubbleMine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubbleMine.png; sourceTree = "<group>"; };
 		76F252F017567F3900E94BCF /* bubbleMine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubbleMine@2x.png"; sourceTree = "<group>"; };
 		76F252F117567F3900E94BCF /* bubbleSomeone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubbleSomeone.png; sourceTree = "<group>"; };
@@ -318,12 +321,6 @@
 		76F253091756874000E94BCF /* halloween.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = halloween.jpg; sourceTree = "<group>"; };
 		76F2530A1756874000E94BCF /* icon_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_57.png; sourceTree = "<group>"; };
 		76F2530B1756874000E94BCF /* icon_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_114.png; sourceTree = "<group>"; };
-		76F25314175DBDC900E94BCF /* btnCheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnCheck.png; sourceTree = "<group>"; };
-		76F25315175DBDC900E94BCF /* btnCheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnCheck@2x.png"; sourceTree = "<group>"; };
-		76F25316175DBDC900E94BCF /* HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUD.h; sourceTree = "<group>"; };
-		76F25317175DBDC900E94BCF /* HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUD.m; sourceTree = "<group>"; };
-		76F25318175DBDC900E94BCF /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		76F25319175DBDC900E94BCF /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		76F25320175DBE4B00E94BCF /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
 		76F25321175DBE4B00E94BCF /* JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModel.m; sourceTree = "<group>"; };
 		76F25322175DBE4B00E94BCF /* JSONModelArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelArray.h; sourceTree = "<group>"; };
@@ -484,6 +481,41 @@
 			name = Small;
 			sourceTree = "<group>";
 		};
+		7695607C1769CAE600F35507 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				7695607D1769CAEF00F35507 /* Toast+UIView.h */,
+				7695607E1769CAEF00F35507 /* Toast+UIView.m */,
+			);
+			name = Toast;
+			sourceTree = "<group>";
+		};
+		769560821769D13500F35507 /* HeartLike */ = {
+			isa = PBXGroup;
+			children = (
+				769560801769D12400F35507 /* heartlike.png */,
+			);
+			name = HeartLike;
+			sourceTree = "<group>";
+		};
+		76E433F61769DE7F00FB8991 /* UIBubbleTableView */ = {
+			isa = PBXGroup;
+			children = (
+				76E433F71769DED600FB8991 /* NSBubbleData.h */,
+				76E433F81769DED600FB8991 /* NSBubbleData.m */,
+				76E433F91769DED600FB8991 /* UIBubbleHeaderTableViewCell.h */,
+				76E433FA1769DED600FB8991 /* UIBubbleHeaderTableViewCell.m */,
+				76E433FB1769DED600FB8991 /* UIBubbleTableView.h */,
+				76E433FC1769DED600FB8991 /* UIBubbleTableView.m */,
+				76E433FD1769DED600FB8991 /* UIBubbleTableViewCell.h */,
+				76E433FE1769DED600FB8991 /* UIBubbleTableViewCell.m */,
+				76E433FF1769DED600FB8991 /* UIBubbleTableViewDataSource.h */,
+				76E434001769DED600FB8991 /* UIBubbleTypingTableViewCell.h */,
+				76E434011769DED600FB8991 /* UIBubbleTypingTableViewCell.m */,
+			);
+			name = UIBubbleTableView;
+			sourceTree = "<group>";
+		};
 		76ED33261746182C00072A23 = {
 			isa = PBXGroup;
 			children = (
@@ -529,8 +561,8 @@
 		76ED33381746182C00072A23 /* WeddingParty */ = {
 			isa = PBXGroup;
 			children = (
+				7695607C1769CAE600F35507 /* Toast */,
 				76F2531E175DBE4A00E94BCF /* JSONModel */,
-				76F25313175DBDC800E94BCF /* HUD */,
 				76F252D617567EE300E94BCF /* BubbleMessage */,
 				7663169917529B0300949C8F /* GalleryPage */,
 				76ED3360174690EC00072A23 /* MainStoryboard.storyboard */,
@@ -572,6 +604,7 @@
 		76ED335C1746267E00072A23 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				769560821769D13500F35507 /* HeartLike */,
 				76F2534C17611E9D00E94BCF /* GreetingPageImages */,
 				76631D2917535B9C00949C8F /* Small */,
 				76631D2817535B8B00949C8F /* Thumbnails */,
@@ -600,8 +633,8 @@
 		76F252D617567EE300E94BCF /* BubbleMessage */ = {
 			isa = PBXGroup;
 			children = (
+				76E433F61769DE7F00FB8991 /* UIBubbleTableView */,
 				76F252EE17567F2900E94BCF /* Images */,
-				76F25304175680DB00E94BCF /* BubbleData */,
 			);
 			name = BubbleMessage;
 			sourceTree = "<group>";
@@ -609,6 +642,7 @@
 		76F252EE17567F2900E94BCF /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				76E43428176A11D100FB8991 /* like.png */,
 				76F253081756874000E94BCF /* avatar1.png */,
 				76F253091756874000E94BCF /* halloween.jpg */,
 				76F2530A1756874000E94BCF /* icon_57.png */,
@@ -627,24 +661,6 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
-		76F25304175680DB00E94BCF /* BubbleData */ = {
-			isa = PBXGroup;
-			children = (
-				76F252DE17567F1400E94BCF /* NSBubbleData.h */,
-				76F252DF17567F1400E94BCF /* NSBubbleData.m */,
-				76F252E017567F1400E94BCF /* UIBubbleHeaderTableViewCell.h */,
-				76F252E117567F1400E94BCF /* UIBubbleHeaderTableViewCell.m */,
-				76F252E217567F1400E94BCF /* UIBubbleTableView.h */,
-				76F252E317567F1400E94BCF /* UIBubbleTableView.m */,
-				76F252E417567F1400E94BCF /* UIBubbleTableViewCell.h */,
-				76F252E517567F1400E94BCF /* UIBubbleTableViewCell.m */,
-				76F252E617567F1400E94BCF /* UIBubbleTableViewDataSource.h */,
-				76F252E717567F1400E94BCF /* UIBubbleTypingTableViewCell.h */,
-				76F252E817567F1400E94BCF /* UIBubbleTypingTableViewCell.m */,
-			);
-			name = BubbleData;
-			sourceTree = "<group>";
-		};
 		76F2531017568AD700E94BCF /* GreetingsPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -656,19 +672,6 @@
 				76F253461760EF9500E94BCF /* MessageModelFromServer.m */,
 			);
 			name = GreetingsPage;
-			sourceTree = "<group>";
-		};
-		76F25313175DBDC800E94BCF /* HUD */ = {
-			isa = PBXGroup;
-			children = (
-				76F25314175DBDC900E94BCF /* btnCheck.png */,
-				76F25315175DBDC900E94BCF /* btnCheck@2x.png */,
-				76F25316175DBDC900E94BCF /* HUD.h */,
-				76F25317175DBDC900E94BCF /* HUD.m */,
-				76F25318175DBDC900E94BCF /* MBProgressHUD.h */,
-				76F25319175DBDC900E94BCF /* MBProgressHUD.m */,
-			);
-			path = HUD;
 			sourceTree = "<group>";
 		};
 		76F2531E175DBE4A00E94BCF /* JSONModel */ = {
@@ -967,8 +970,6 @@
 				76F2530D1756874000E94BCF /* halloween.jpg in Resources */,
 				76F2530E1756874000E94BCF /* icon_57.png in Resources */,
 				76F2530F1756874000E94BCF /* icon_114.png in Resources */,
-				76F2531A175DBDC900E94BCF /* btnCheck.png in Resources */,
-				76F2531B175DBDC900E94BCF /* btnCheck@2x.png in Resources */,
 				76F2534F1761226A00E94BCF /* Reload.png in Resources */,
 				76F253501761226A00E94BCF /* Reload-Inv.png in Resources */,
 				76F253581761285000E94BCF /* bg1.jpg in Resources */,
@@ -978,6 +979,8 @@
 				76F2535C1761285100E94BCF /* bg5.png in Resources */,
 				76F2535D1761285100E94BCF /* bg6.jpg in Resources */,
 				76F2535E1761285100E94BCF /* bg7.jpg in Resources */,
+				769560811769D12400F35507 /* heartlike.png in Resources */,
+				76E43429176A11D100FB8991 /* like.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -994,14 +997,7 @@
 				76ED337A174FD67100072A23 /* MainLoggedInPageViewController.m in Sources */,
 				7663169F1752A45D00949C8F /* Photo.m in Sources */,
 				76631D2617535A2B00949C8F /* PhotoSet.m in Sources */,
-				76F252E917567F1400E94BCF /* NSBubbleData.m in Sources */,
-				76F252EA17567F1400E94BCF /* UIBubbleHeaderTableViewCell.m in Sources */,
-				76F252EB17567F1400E94BCF /* UIBubbleTableView.m in Sources */,
-				76F252EC17567F1400E94BCF /* UIBubbleTableViewCell.m in Sources */,
-				76F252ED17567F1400E94BCF /* UIBubbleTypingTableViewCell.m in Sources */,
 				76F253071756815C00E94BCF /* GreetingsViewController.m in Sources */,
-				76F2531C175DBDC900E94BCF /* HUD.m in Sources */,
-				76F2531D175DBDC900E94BCF /* MBProgressHUD.m in Sources */,
 				76F25338175DBE4B00E94BCF /* JSONModel.m in Sources */,
 				76F25339175DBE4B00E94BCF /* JSONModelArray.m in Sources */,
 				76F2533A175DBE4B00E94BCF /* JSONModelClassProperty.m in Sources */,
@@ -1014,6 +1010,12 @@
 				76F25341175DBE4B00E94BCF /* JSONValueTransformer.m in Sources */,
 				76F25344175DE33400E94BCF /* MessageModelToServer.m in Sources */,
 				76F253471760EF9600E94BCF /* MessageModelFromServer.m in Sources */,
+				7695607F1769CAEF00F35507 /* Toast+UIView.m in Sources */,
+				76E434021769DED600FB8991 /* NSBubbleData.m in Sources */,
+				76E434031769DED600FB8991 /* UIBubbleHeaderTableViewCell.m in Sources */,
+				76E434041769DED600FB8991 /* UIBubbleTableView.m in Sources */,
+				76E434051769DED600FB8991 /* UIBubbleTableViewCell.m in Sources */,
+				76E434061769DED600FB8991 /* UIBubbleTypingTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
