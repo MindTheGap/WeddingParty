@@ -9,13 +9,6 @@
 //
 
 #import "NSBubbleData.h"
-#import <QuartzCore/QuartzCore.h>
-
-#define kDateKey            @"Date"
-#define kBubbleTypeKey      @"BubbleType"
-#define kViewKey            @"View"
-#define kInsetsKey          @"Insets"
-#define kImageKey           @"Image"
 
 @implementation NSBubbleData
 
@@ -25,7 +18,7 @@
 @synthesize type = _type;
 @synthesize view = _view;
 @synthesize insets = _insets;
-@synthesize avatar = _avatar;
+@synthesize customField = _customField;
 
 #pragma mark - Lifecycle
 
@@ -36,9 +29,6 @@
 	_date = nil;
     [_view release];
     _view = nil;
-    
-    self.avatar = nil;
-
     [super dealloc];
 }
 #endif
@@ -50,26 +40,38 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
 
 + (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type
 {
-//    NSLog(@"NSBubbleData initWithText:date:type+");
-
-#if !__has_feature(objc_arc)
-    return [[[NSBubbleData alloc] initWithText:text date:date type:type] autorelease];
-#else
-    return [[NSBubbleData alloc] initWithText:text date:date type:type];
-#endif    
+    return [self dataWithText:text date:date type:type withFont:[UIFont systemFontOfSize:[UIFont systemFontSize]] withFontColor:[UIColor grayColor]];
 }
 
-- (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type
+
++ (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type withFont:(UIFont*)customFont withFontColor:(UIColor*)customColor
+
 {
-//    NSLog(@"NSBubbleData initWithText:date:type-");
-    UIFont *font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
-    CGSize size = [(text ? text : @"") sizeWithFont:font constrainedToSize:CGSizeMake(220, 9999) lineBreakMode:NSLineBreakByWordWrapping];
+#if !__has_feature(objc_arc)
+    return [[[NSBubbleData alloc] initWithText:text date:date type:type withFont:customFont withFontColor:customColor] autorelease];
+#else
+    return [[NSBubbleData alloc] initWithText:text date:date type:type withFont:customFont withFontColor:customColor];
+#endif
+}
+
+- (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type withFont:(UIFont*)customFont withFontColor:(UIColor*)customColor
+{
+    if (customFont == nil) {
+            customFont = [UIFont systemFontOfSize:[UIFont systemFontSize]];
+    }
+    
+    if (customColor == nil) {
+        customColor = [UIColor grayColor];
+    }
+    
+    CGSize size = [(text ? text : @"") sizeWithFont:customFont constrainedToSize:CGSizeMake(220, 9999) lineBreakMode:NSLineBreakByWordWrapping];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     label.numberOfLines = 0;
     label.lineBreakMode = NSLineBreakByWordWrapping;
     label.text = (text ? text : @"");
-    label.font = font;
+    label.font = customFont;
+    label.textColor = customColor;
     label.backgroundColor = [UIColor clearColor];
     
 #if !__has_feature(objc_arc)
@@ -78,6 +80,13 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
     
     UIEdgeInsets insets = (type == BubbleTypeMine ? textInsetsMine : textInsetsSomeone);
     return [self initWithView:label date:date type:type insets:insets];
+    
+}
+
+- (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type
+{
+    UIFont *font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
+    return [self initWithText:text date:date type:type withFont:font withFontColor:[UIColor grayColor]];
 }
 
 #pragma mark - Image bubble
@@ -105,9 +114,6 @@ const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     imageView.image = image;
-    imageView.layer.cornerRadius = 5.0;
-    imageView.layer.masksToBounds = YES;
-
     
 #if !__has_feature(objc_arc)
     [imageView autorelease];
@@ -117,53 +123,10 @@ const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
     return [self initWithView:imageView date:date type:type insets:insets];       
 }
 
-#pragma mark - Encoding
-
-- (void) encodeWithCoder:(NSCoder *)encoder {
-    NSLog(@"NSBubbleData encodeWithCoder");
-    
-    UIEdgeInsets local = self.insets;
-    [encoder encodeObject:self.date forKey:kDateKey];
-    [encoder encodeObject:[[NSNumber alloc] initWithInt:self.type] forKey:kBubbleTypeKey];
-    [encoder encodeObject:self.view forKey:kViewKey];
-    [encoder encodeObject:[NSValue value:&local withObjCType:@encode(UIEdgeInsets)] forKey:kInsetsKey];
-    [encoder encodeObject:self.avatar forKey:kImageKey];
-}
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    NSLog(@"NSBubbleData initWithCoder");
-    
-    NSDate *date = [decoder decodeObjectForKey:kDateKey];
-    NSNumber *typeNumber = [decoder decodeObjectForKey:kBubbleTypeKey];
-    NSBubbleType type = [typeNumber intValue];
-    UIView *view = [decoder decodeObjectForKey:kViewKey];
-    NSValue *insetsValue = [decoder decodeObjectForKey:kInsetsKey];
-    UIEdgeInsets localInsets;
-    [insetsValue getValue:&localInsets];
-    UIImage *image = [decoder decodeObjectForKey:kImageKey];
-    
-    return [self initWithDate:date type:type view:view insets:localInsets image:image];
-}
-
-- (id)initWithDate:(NSDate *)date type:(int)type view:(UIView *)view insets:(UIEdgeInsets )insets image:(UIImage *)image
-{
-    NSLog(@"NSBubbleData initWithData");
-    
-    self.date = date;
-    self.type = type;
-    self.view = view;
-    self.insets = insets;
-    self.avatar = image;
-    
-    return self;
-}
-
-
 #pragma mark - Custom view bubble
 
 + (id)dataWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets
 {
-//    NSLog(@"NSBubbleData initWithView:date:type:insets+");
 #if !__has_feature(objc_arc)
     return [[[NSBubbleData alloc] initWithView:view date:date type:type insets:insets] autorelease];
 #else
@@ -173,7 +136,6 @@ const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
 
 - (id)initWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets  
 {
-//    NSLog(@"NSBubbleData initWithView:date:type:insets-");
     self = [super init];
     if (self)
     {

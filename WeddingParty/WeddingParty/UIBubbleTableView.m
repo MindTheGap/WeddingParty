@@ -25,7 +25,8 @@
 @synthesize snapInterval = _snapInterval;
 @synthesize bubbleSection = _bubbleSection;
 @synthesize typingBubble = _typingBubble;
-@synthesize showAvatars = _showAvatars;
+@synthesize customFont = _customFont;
+@synthesize customFontColor = _customFontColor;
 
 #pragma mark - Initializators
 
@@ -43,7 +44,7 @@
     // UIBubbleTableView default properties
     
     self.snapInterval = 120;
-    self.typingBubble = NSBubbleTypingTypeNobody;
+    self.typingBubble = NSBubbleTypingTypeMe;
 }
 
 - (id)init
@@ -88,7 +89,6 @@
 
 - (void)reloadData
 {
-    NSLog(@"UIBubbleTableView reloadData");
     self.showsVerticalScrollIndicator = NO;
     self.showsHorizontalScrollIndicator = NO;
     
@@ -149,6 +149,12 @@
     }
     
     [super reloadData];
+	
+    if(self.scrollOnActivity)
+    {
+	[self scrollToBottomAnimated:NO];
+    }
+
 }
 
 #pragma mark - UITableViewDelegate implementation
@@ -157,8 +163,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-//    NSLog(@"numberOfSectionsInTableView");
-
     int result = [self.bubbleSection count];
     if (self.typingBubble != NSBubbleTypingTypeNobody) result++;
     return result;
@@ -166,7 +170,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    NSLog(@"tableView: numberOfRowsInSection with section %d", section);
     // This is for now typing bubble
 	if (section >= [self.bubbleSection count]) return 1;
     
@@ -175,11 +178,10 @@
 
 - (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSLog(@"tableView: heightForRowAtIndexPath");
     // Now typing
 	if (indexPath.section >= [self.bubbleSection count])
     {
-        return MAX([UIBubbleTypingTableViewCell height], self.showAvatars ? 52 : 0);
+        return [UIBubbleTypingTableViewCell height];
     }
     
     // Header
@@ -189,12 +191,11 @@
     }
     
     NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
-    return MAX(data.insets.top + data.view.frame.size.height + data.insets.bottom, self.showAvatars ? 52 : 0);
+    return data.insets.top + data.view.frame.size.height + data.insets.bottom;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSLog(@"tableView: cellForRowAtIndexPath");
     // Now typing
 	if (indexPath.section >= [self.bubbleSection count])
     {
@@ -202,10 +203,7 @@
         UIBubbleTypingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
         
         if (cell == nil) cell = [[UIBubbleTypingTableViewCell alloc] init];
-
         cell.type = self.typingBubble;
-        cell.showAvatar = self.showAvatars;
-        
         return cell;
     }
 
@@ -217,9 +215,8 @@
         NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:0];
         
         if (cell == nil) cell = [[UIBubbleHeaderTableViewCell alloc] init];
-
         cell.date = data.date;
-       
+        [cell setLabelFont:_customFont withFontColor:_customFontColor];
         return cell;
     }
     
@@ -229,11 +226,28 @@
     NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
     
     if (cell == nil) cell = [[UIBubbleTableViewCell alloc] init];
-    
     cell.data = data;
-    cell.showAvatar = self.showAvatars;
-    
     return cell;
 }
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) return;
+
+    NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
+    [self.bubbleDataSource didSelectNSBubbleDataCell:data];
+}
+
+
+-(void)scrollToBottomAnimated:(BOOL)animated;
+{
+    NSInteger sectionCount = [self numberOfSections];
+    NSInteger rowCount = [self numberOfRowsInSection:sectionCount - 1];
+    
+    NSIndexPath* scrollTo = [NSIndexPath indexPathForRow:rowCount-1 inSection:sectionCount - 1];
+    [self scrollToRowAtIndexPath:scrollTo atScrollPosition:UITableViewScrollPositionTop animated:animated];
+}
+
 
 @end
