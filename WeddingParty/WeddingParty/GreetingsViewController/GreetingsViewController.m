@@ -114,6 +114,7 @@
     mm.Data = textFromUser;
     mm.UserFullName = [self userFullName];
     mm.UserId = [self userId];
+    mm.UserIdsWhoLiked = [[NSMutableArray alloc] init];
     
     UIImage *image = [[self userIdToProfileImage] objectForKey:[self userId]];
     if (image == nil)
@@ -125,7 +126,7 @@
     }
 
     
-    NSBubbleData *bubbleMessage = [NSBubbleData dataWithText:textFromUser date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse withFont:nil withFontColor:[UIColor blackColor] image:image username:[self userFullName]];
+    NSBubbleData *bubbleMessage = [NSBubbleData dataWithText:textFromUser date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse withFont:nil withFontColor:[UIColor blackColor] image:image username:[self userFullName] userIdsWhoLiked:mm.UserIdsWhoLiked];
     [self.bubbleData addObject:bubbleMessage];
     
     textField.text = @"";
@@ -189,12 +190,71 @@
      }];
 }
 
+- (void)AddLikeSendMessage:(NSBubbleData *)bubbleMessage
+{
+    MessageModelToServer *mm = [[MessageModelToServer alloc] init];
+    mm.Action = 3;
+    UILabel *label = (UILabel *)[bubbleMessage view];
+    mm.Data = [label text];
+    mm.UserFullName = [bubbleMessage userFullName];
+    mm.UserId = [self userId];
+    mm.UserIdsWhoLiked = nil;
+    
+    NSString *jsonString = [mm toJSONString];
+    
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://54.242.242.228:4296/"]];
+    [request setValue:jsonString forHTTPHeaderField:@"json"];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:jsonData];
+    [request setTimeoutInterval:5];
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+     {
+         if ([data length] > 0 && error == nil)
+         {
+             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+             
+             self.messageModelFromServer = [[MessageModelFromServer alloc] initWithString:string error:nil];
+             
+             NSLog(@"Got action: %d",[self.messageModelFromServer Action]);
+             NSLog(@"%@",[self.messageModelFromServer MessagesList]);
+             
+             if ([self.messageModelFromServer Action] == 3)
+                 return; // put V near the message
+             
+         }
+         else if ([data length] == 0 && error == nil)
+         {
+             NSLog(@"addLike: data length is zero and no error");
+             
+             [self.view makeToast:@"something went wrong"];
+         }
+         else if (error != nil && error.code == NSURLErrorTimedOut)
+         {
+             NSLog(@"addLIke: error code is timed out");
+             
+             [self.view makeToast:@"Could not reach the server"];
+         }
+         else if (error != nil)
+         {
+             NSLog(@"addLike: error is: %@" , [error localizedDescription]);
+             
+             [self.view makeToast:[error localizedDescription]];
+         }
+     }];
+}
+
+
 - (void)didSelectNSBubbleDataCell:(NSBubbleData *)dataCell
 {
     UILabel *label = (UILabel *)dataCell.view;
     NSLog(@"dataCell text: %@",[label text]);
     
     lastBubbleSelected = dataCell;
+    [textField resignFirstResponder];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -221,23 +281,18 @@
 - (void)doubleTapLike:(id)sender
 {
     [self.view makeToast:nil
-                duration:2.0
+                duration:0.6
                 position:@"center"
                    image:[UIImage imageNamed:@"heartlike.png"]];
     
-    
-
+    if ([lastBubbleSelected.UserIdsWhoLiked indexOfObject:[self userId]] == NSNotFound)
+    {
+        [lastBubbleSelected.UserIdsWhoLiked addObject:[self userId]];
+        [bubbleTable reloadData];
+        
+        [self AddLikeSendMessage:lastBubbleSelected];
+    }
 }
-
-//-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    cell.imageView.userInteractionEnabled = YES;
-//    cell.imageView.tag = indexPath.row;
-//    
-//    UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(myFunction:)];
-//    tapped.numberOfTapsRequired = 1;
-//    [cell.imageView addGestureRecognizer:tapped];
-//}
 
 - (void)reload:(id)sender
 {
@@ -268,7 +323,7 @@
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer
 {
     
-    [recognizer cancelsTouchesInView];
+    [self resignFirstResponder];
 }
 
 
@@ -297,11 +352,13 @@
     
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
      {
-         [self.view hideToastActivity];
+         [self.view performSelectorOnMainThread:@selector(hideToastActivity) withObject:nil waitUntilDone:YES];
          
          if ([data length] > 0 && error == nil)
          {
-             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+             NSString *string = [[NSString alloc] initWithData:data encoding:CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingWindowsHebrew)];
+//             NSString *string = [[NSString alloc] initWithData:data encoding:NSWindowsCP1252StringEncoding];
+
              
              self.messageModelFromServer = [[MessageModelFromServer alloc] initWithString:string error:nil];
              
@@ -328,29 +385,20 @@
                  NSLog(@"bubbleData count = %d", count);
                  for (int j = 0; j < count; j++)
                  {
-//                     NSLog(@"searching for bubble");
                      NSBubbleData *oldMsg = [[self bubbleData] objectAtIndex:j];
-//                     NSLog(@"got oldMsg");
                      UILabel *oldMsgLabel = (UILabel *)[oldMsg view];
                      NSString *msgData = [message Data];
-//                     NSLog(@"msgData: %@", msgData);
                      NSString *oldMsgData = [oldMsgLabel text];
-//                     NSLog(@"oldMsgData: %@", oldMsgData);
                      NSString *msgUserName = [message UserFullName];
-//                     NSLog(@"msgUserName: %@", msgUserName);
                      NSString *oldMsgUserName = [oldMsg userFullName];
-//                     NSLog(@"oldMsgUserName: %@", oldMsgUserName);
                      if (([msgData compare:oldMsgData] == NSOrderedSame) && ([msgUserName compare:oldMsgUserName] == NSOrderedSame))
                      {
-//                         NSLog(@"found bubble!");
                          bFoundMessage = YES;
                      }
                  }
                  
                  if (bFoundMessage == NO)
                  {
-//                     NSLog(@"adding bubble with text: %@", [message Data]);
-//                     NSLog(@"Bubble was created!");
                      UIImage *image = [[self userIdToProfileImage] objectForKey:[message UserId]];
                      if (image == nil)
                      {
@@ -361,11 +409,8 @@
 
                      }
                      
-                     NSBubbleData *bubbleForMessage = [NSBubbleData dataWithText:[message Data] date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse withFont:nil withFontColor:[UIColor blackColor] image:image username:[message UserFullName]];
-
-//                     NSLog(@"Added Avatar!");
+                     NSBubbleData *bubbleForMessage = [NSBubbleData dataWithText:[message Data] date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse withFont:nil withFontColor:[UIColor blackColor] image:image username:[message UserFullName] userIdsWhoLiked:[message UserIdsWhoLiked]];
                      [self.bubbleData addObject:bubbleForMessage];
-//                     NSLog(@"Added bubble!");
                  }
              }
              
@@ -404,11 +449,11 @@
     {
         [self saveDataToDisk];
     }
-    
+//    
     NSLog(@"Deleting file...");
     NSFileManager *fileManager = [NSFileManager defaultManager];
     [fileManager removeItemAtPath:[self saveFilePath] error:NULL];
-//
+////
 
     
     [super viewWillDisappear:animated];

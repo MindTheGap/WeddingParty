@@ -13,13 +13,15 @@
 enum ActionType {
     RetreiveLastMessages,
     RetreivePastMessages,
-    PublishMessage
+    PublishMessage,
+    AddLike
 };
 
 @property (strong, nonatomic) NSString* Data;
 @property (assign, nonatomic) int Action;
 @property (strong, nonatomic) NSString *UserId;
 @property (strong, nonatomic) NSString* UserFullName;
+@property (strong, nonatomic) NSMutableArray *UserIdsWhoLiked;
 
 
 

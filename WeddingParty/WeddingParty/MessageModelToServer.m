@@ -14,6 +14,7 @@
 #define kActionKey          @"Action"
 #define kUserIdKey          @"UserId"
 #define kUserFullNameKey    @"UserFullName"
+#define kUserIdsWhoLikedKey @"UserIdsWhoLiked"
 
 - (void) encodeWithCoder:(NSCoder *)encoder {
     NSLog(@"MessageModelToServer encodeWithCoder");
@@ -22,6 +23,7 @@
     [encoder encodeObject:[[NSNumber alloc] initWithInt:self.Action] forKey:kActionKey];
     [encoder encodeObject:self.UserId forKey:kUserIdKey];
     [encoder encodeObject:self.UserFullName forKey:kUserFullNameKey];
+    [encoder encodeObject:self.UserIdsWhoLiked forKey:kUserIdsWhoLikedKey];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
@@ -30,10 +32,11 @@
     NSNumber *Action = [decoder decodeObjectForKey:kActionKey];
     NSString *UserId = [decoder decodeObjectForKey:kUserIdKey];
     NSString *UserFullName = [decoder decodeObjectForKey:kUserFullNameKey];
-    return [self initWithData:Data action:[Action intValue] userId:UserId userFullName:UserFullName];
+    NSMutableArray *UserIdsWhoLiked = [decoder decodeObjectForKey:kUserIdsWhoLikedKey];
+    return [self initWithData:Data action:[Action intValue] userId:UserId userFullName:UserFullName userIdsWhoLiked:UserIdsWhoLiked];
 }
 
-- (id)initWithData:(NSString *)data action:(int)action userId:(NSString *)userId userFullName:(NSString *)userFullName
+- (id)initWithData:(NSString *)data action:(int)action userId:(NSString *)userId userFullName:(NSString *)userFullName userIdsWhoLiked:(NSMutableArray *)UserIdsWhoLiked
 {
     NSLog(@"MessageModelToServer initWithData");
 
@@ -41,6 +44,7 @@
     self.Action = action;
     self.UserId = userId;
     self.UserFullName = userFullName;
+    self.UserIdsWhoLiked = UserIdsWhoLiked;
     return self;
 }
 

@@ -17,4 +17,6 @@
 
 @property (nonatomic) BOOL showAvatar;
 
+@property (nonatomic, strong) UILabel *numberOfLikesLabel;
+
 @end

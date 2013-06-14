@@ -25,14 +25,15 @@ typedef enum _NSBubbleType
 @property (strong, nonatomic) NSString *userFullName;
 @property (strong, nonatomic) UIImage *avatar;
 @property (nonatomic, strong) NSObject *customField;
+@property (strong, nonatomic) NSMutableArray *UserIdsWhoLiked;
 
-- (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type image:(UIImage *)image username:(NSString *)userFullName;
-- (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type withFont:(UIFont*)customFont withFontColor:(UIColor*)color image:(UIImage *)image username:(NSString *)userFullName;
-+ (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type image:(UIImage *)image username:(NSString *)userFullName;
-+ (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type withFont:(UIFont*)customFont withFontColor:(UIColor*)color image:(UIImage *)image username:(NSString *)userFullName;
-- (id)initWithImage:(UIImage *)image date:(NSDate *)date type:(NSBubbleType)type username:(NSString *)userFullName;
-+ (id)dataWithImage:(UIImage *)image date:(NSDate *)date type:(NSBubbleType)type username:(NSString *)userFullName;
-- (id)initWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets image:(UIImage *)image username:(NSString *)userFullName;
-+ (id)dataWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets image:(UIImage *)image username:(NSString *)userFullName;
+- (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type image:(UIImage *)image username:(NSString *)userFullName userIdsWhoLiked:(NSMutableArray *)UserIdsWhoLiked;
+- (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type withFont:(UIFont*)customFont withFontColor:(UIColor*)color image:(UIImage *)image username:(NSString *)userFullName userIdsWhoLiked:(NSMutableArray *)UserIdsWhoLiked;
++ (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type image:(UIImage *)image username:(NSString *)userFullName userIdsWhoLiked:(NSMutableArray *)UserIdsWhoLiked;
++ (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type withFont:(UIFont*)customFont withFontColor:(UIColor*)color image:(UIImage *)image username:(NSString *)userFullName userIdsWhoLiked:(NSMutableArray *)UserIdsWhoLiked;
+- (id)initWithImage:(UIImage *)image date:(NSDate *)date type:(NSBubbleType)type username:(NSString *)userFullName userIdsWhoLiked:(NSMutableArray *)UserIdsWhoLiked;
++ (id)dataWithImage:(UIImage *)image date:(NSDate *)date type:(NSBubbleType)type username:(NSString *)userFullName userIdsWhoLiked:(NSMutableArray *)UserIdsWhoLiked;
+- (id)initWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets image:(UIImage *)image username:(NSString *)userFullName userIdsWhoLiked:(NSMutableArray *)UserIdsWhoLiked;
++ (id)dataWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets image:(UIImage *)image username:(NSString *)userFullName userIdsWhoLiked:(NSMutableArray *)UserIdsWhoLiked;
 
 @end

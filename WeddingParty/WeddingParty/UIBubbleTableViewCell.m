@@ -80,7 +80,16 @@
     self.customView = self.data.view;
     
     self.imageView.image = [UIImage imageNamed:@"like.png"];
-//    self.imageView.frame = CGRectMake(100, 0, self.imageView.image.size.width, self.imageView.image.size.height);
+    [self.imageView setHidden:YES];
+    
+    UILabel *likeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, -15, 25, 20)];
+    [likeLabel setTextAlignment:NSTextAlignmentCenter];
+    [likeLabel setBackgroundColor:[UIColor clearColor]];
+    [likeLabel setFont:[UIFont systemFontOfSize:13]];
+    [likeLabel setAlpha:0.0];
+    [likeLabel setText:[NSString stringWithFormat:@"%d",[self.data.UserIdsWhoLiked count]]];
+    self.numberOfLikesLabel = likeLabel;
+    [self.imageView addSubview:likeLabel];
     
     // Adjusting the x coordinate for avatar
     if (self.showAvatar)
@@ -151,8 +160,12 @@
 {
     [super layoutSubviews];
     
-    
-    self.imageView.frame = CGRectMake( 250, 13, 30, 30 ); // your positioning here
+    self.imageView.frame = CGRectMake( 54+self.bubbleImage.frame.size.width, self.bubbleImage.frame.origin.y + self.bubbleImage.frame.size.height - 26, 23, 24 ); // your positioning here
+    if ([self.data.UserIdsWhoLiked count] > 0)
+    {
+        [self.numberOfLikesLabel setAlpha:0.7];
+        [self.imageView setHidden:NO];
+    }
 }
 
 @end

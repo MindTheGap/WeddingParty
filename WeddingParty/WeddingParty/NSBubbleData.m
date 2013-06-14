@@ -17,6 +17,7 @@
 #define kInsetsKey          @"Insets"
 #define kImageKey           @"Image"
 #define kUserFullNameKey    @"UserFullName"
+#define kUserIdsWhoLikedKey @"UserIdsWhoLiked"
 
 @implementation NSBubbleData
 
@@ -29,6 +30,7 @@
 @synthesize avatar = _avatar;
 @synthesize userFullName = _userFullName;
 @synthesize customField = _customField;
+@synthesize UserIdsWhoLiked = _UserIdsWhoLiked;
 
 #pragma mark - Lifecycle
 
@@ -51,23 +53,23 @@
 const UIEdgeInsets textInsetsMine = {5, 10, 11, 17};
 const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
 
-+ (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type image:(UIImage *)image username:(NSString *)userFullName
++ (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type image:(UIImage *)image username:(NSString *)userFullName userIdsWhoLiked:(NSMutableArray *)UserIdsWhoLiked
 {
-    return [self dataWithText:text date:date type:type withFont:[UIFont systemFontOfSize:[UIFont systemFontSize]] withFontColor:[UIColor grayColor] image:image username:userFullName];
+    return [self dataWithText:text date:date type:type withFont:[UIFont systemFontOfSize:[UIFont systemFontSize]] withFontColor:[UIColor grayColor] image:image username:userFullName userIdsWhoLiked:UserIdsWhoLiked];
 }
 
 
-+ (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type withFont:(UIFont*)customFont withFontColor:(UIColor*)customColor image:(UIImage *)image username:(NSString *)userFullName
++ (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type withFont:(UIFont*)customFont withFontColor:(UIColor*)customColor image:(UIImage *)image username:(NSString *)userFullName userIdsWhoLiked:(NSMutableArray *)UserIdsWhoLiked
 
 {
 #if !__has_feature(objc_arc)
-    return [[[NSBubbleData alloc] initWithText:text date:date type:type withFont:customFont withFontColor:customColor image:image username:userFullName] autorelease];
+    return [[[NSBubbleData alloc] initWithText:text date:date type:type withFont:customFont withFontColor:customColor image:image username:userFullName userIdsWhoLiked:UserIdsWhoLiked] autorelease];
 #else
-    return [[NSBubbleData alloc] initWithText:text date:date type:type withFont:customFont withFontColor:customColor image:image username:userFullName];
+    return [[NSBubbleData alloc] initWithText:text date:date type:type withFont:customFont withFontColor:customColor image:image username:userFullName userIdsWhoLiked:UserIdsWhoLiked];
 #endif
 }
 
-- (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type withFont:(UIFont*)customFont withFontColor:(UIColor*)customColor image:(UIImage *)image username:(NSString *)userFullName
+- (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type withFont:(UIFont*)customFont withFontColor:(UIColor*)customColor image:(UIImage *)image username:(NSString *)userFullName userIdsWhoLiked:(NSMutableArray *)UserIdsWhoLiked
 {
     if (customFont == nil) {
             customFont = [UIFont systemFontOfSize:[UIFont systemFontSize]];
@@ -92,14 +94,14 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
 #endif
     
     UIEdgeInsets insets = (type == BubbleTypeMine ? textInsetsMine : textInsetsSomeone);
-    return [self initWithView:label date:date type:type insets:insets image:image username:userFullName];
+    return [self initWithView:label date:date type:type insets:insets image:image username:userFullName userIdsWhoLiked:UserIdsWhoLiked];
     
 }
 
-- (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type image:(UIImage *)image username:(NSString *)userFullName
+- (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type image:(UIImage *)image username:(NSString *)userFullName userIdsWhoLiked:(NSMutableArray *)UserIdsWhoLiked
 {
     UIFont *font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
-    return [self initWithText:text date:date type:type withFont:font withFontColor:[UIColor grayColor] image:image username:userFullName];
+    return [self initWithText:text date:date type:type withFont:font withFontColor:[UIColor grayColor] image:image username:userFullName userIdsWhoLiked:UserIdsWhoLiked];
 }
 
 #pragma mark - Image bubble
@@ -107,16 +109,16 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
 const UIEdgeInsets imageInsetsMine = {11, 13, 16, 22};
 const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
 
-+ (id)dataWithImage:(UIImage *)image date:(NSDate *)date type:(NSBubbleType)type username:(NSString *)userFullName
++ (id)dataWithImage:(UIImage *)image date:(NSDate *)date type:(NSBubbleType)type username:(NSString *)userFullName userIdsWhoLiked:(NSMutableArray *)UserIdsWhoLiked
 {
 #if !__has_feature(objc_arc)
-    return [[[NSBubbleData alloc] initWithImage:image date:date type:type username:userFullName] autorelease];
+    return [[[NSBubbleData alloc] initWithImage:image date:date type:type username:userFullName userIdsWhoLiked:UserIdsWhoLiked] autorelease];
 #else
-    return [[NSBubbleData alloc] initWithImage:image date:date type:type username:userFullName];
+    return [[NSBubbleData alloc] initWithImage:image date:date type:type username:userFullName userIdsWhoLiked:UserIdsWhoLiked];
 #endif    
 }
 
-- (id)initWithImage:(UIImage *)image date:(NSDate *)date type:(NSBubbleType)type username:(NSString *)userFullName 
+- (id)initWithImage:(UIImage *)image date:(NSDate *)date type:(NSBubbleType)type username:(NSString *)userFullName userIdsWhoLiked:(NSMutableArray *)UserIdsWhoLiked
 {
     CGSize size = image.size;
     if (size.width > 220)
@@ -133,7 +135,7 @@ const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
 #endif
     
     UIEdgeInsets insets = (type == BubbleTypeMine ? imageInsetsMine : imageInsetsSomeone);
-    return [self initWithView:imageView date:date type:type insets:insets image:image username:userFullName];
+    return [self initWithView:imageView date:date type:type insets:insets image:image username:userFullName userIdsWhoLiked:UserIdsWhoLiked];
 }
 
 #pragma mark - Encoding
@@ -148,6 +150,7 @@ const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
     [encoder encodeObject:[NSValue value:&local withObjCType:@encode(UIEdgeInsets)] forKey:kInsetsKey];
     [encoder encodeObject:self.avatar forKey:kImageKey];
     [encoder encodeObject:self.userFullName forKey:kUserFullNameKey];
+    [encoder encodeObject:self.UserIdsWhoLiked forKey:kUserIdsWhoLikedKey];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
@@ -162,24 +165,25 @@ const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
     [insetsValue getValue:&localInsets];
     UIImage *image = [decoder decodeObjectForKey:kImageKey];
     NSString *userFullName = [decoder decodeObjectForKey:kUserFullNameKey];
+    NSMutableArray *UserIdsWhoLiked = [decoder decodeObjectForKey:kUserIdsWhoLikedKey];
     
-    return [self initWithView:view date:date type:type insets:localInsets image:image username:userFullName];
+    return [self initWithView:view date:date type:type insets:localInsets image:image username:userFullName userIdsWhoLiked:UserIdsWhoLiked];
 }
 
 
 
 #pragma mark - Custom view bubble
 
-+ (id)dataWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets image:(UIImage *)image username:(NSString *)userFullName
++ (id)dataWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets image:(UIImage *)image username:(NSString *)userFullName userIdsWhoLiked:(NSMutableArray *)UserIdsWhoLiked
 {
 #if !__has_feature(objc_arc)
-    return [[[NSBubbleData alloc] initWithView:view date:date type:type insets:insets image:image username:userFullName] autorelease];
+    return [[[NSBubbleData alloc] initWithView:view date:date type:type insets:insets image:image username:userFullName userIdsWhoLiked:UserIdsWhoLiked] autorelease];
 #else
-    return [[NSBubbleData alloc] initWithView:view date:date type:type insets:insets image:image username:userFullName];
+    return [[NSBubbleData alloc] initWithView:view date:date type:type insets:insets image:image username:userFullName userIdsWhoLiked:UserIdsWhoLiked];
 #endif    
 }
 
-- (id)initWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets image:(UIImage *)image username:(NSString *)userFullName
+- (id)initWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets image:(UIImage *)image username:(NSString *)userFullName userIdsWhoLiked:(NSMutableArray *)UserIdsWhoLiked
 {
     self = [super init];
     if (self)
@@ -189,11 +193,13 @@ const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
         _date = [date retain];
         _userFullName = [userFullName retain];
         _avatar = [image retain];
+        _UserIdsWhoLiked = [UserIdsWhoLiked retain];
 #else
         _view = view;
         _date = date;
         _userFullName = userFullName;
         _avatar = image;
+        _UserIdsWhoLiked = UserIdsWhoLiked;
 #endif
         _type = type;
         _insets = insets;
