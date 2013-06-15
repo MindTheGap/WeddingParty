@@ -28,6 +28,7 @@
 		76631D3917535BDA00949C8F /* rpg_calc_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 76631D3517535BDA00949C8F /* rpg_calc_thumb.png */; };
 		7695607F1769CAEF00F35507 /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7695607E1769CAEF00F35507 /* Toast+UIView.m */; };
 		769560811769D12400F35507 /* heartlike.png in Resources */ = {isa = PBXBuildFile; fileRef = 769560801769D12400F35507 /* heartlike.png */; };
+		76DBF2DF176CE921005F039E /* TopHitsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DBF2DE176CE921005F039E /* TopHitsViewController.m */; };
 		76E434021769DED600FB8991 /* NSBubbleData.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E433F81769DED600FB8991 /* NSBubbleData.m */; };
 		76E434031769DED600FB8991 /* UIBubbleHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E433FA1769DED600FB8991 /* UIBubbleHeaderTableViewCell.m */; };
 		76E434041769DED600FB8991 /* UIBubbleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E433FC1769DED600FB8991 /* UIBubbleTableView.m */; };
@@ -267,6 +268,8 @@
 		7695607D1769CAEF00F35507 /* Toast+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Toast+UIView.h"; sourceTree = "<group>"; };
 		7695607E1769CAEF00F35507 /* Toast+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Toast+UIView.m"; sourceTree = "<group>"; };
 		769560801769D12400F35507 /* heartlike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heartlike.png; sourceTree = "<group>"; };
+		76DBF2DD176CE921005F039E /* TopHitsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopHitsViewController.h; path = "Top Hits/TopHitsViewController.h"; sourceTree = "<group>"; };
+		76DBF2DE176CE921005F039E /* TopHitsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopHitsViewController.m; path = "Top Hits/TopHitsViewController.m"; sourceTree = "<group>"; };
 		76E433F71769DED600FB8991 /* NSBubbleData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSBubbleData.h; sourceTree = "<group>"; };
 		76E433F81769DED600FB8991 /* NSBubbleData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSBubbleData.m; sourceTree = "<group>"; };
 		76E433F91769DED600FB8991 /* UIBubbleHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleHeaderTableViewCell.h; sourceTree = "<group>"; };
@@ -498,6 +501,15 @@
 			name = HeartLike;
 			sourceTree = "<group>";
 		};
+		76DBF2E7176CE926005F039E /* TopHits */ = {
+			isa = PBXGroup;
+			children = (
+				76DBF2DD176CE921005F039E /* TopHitsViewController.h */,
+				76DBF2DE176CE921005F039E /* TopHitsViewController.m */,
+			);
+			name = TopHits;
+			sourceTree = "<group>";
+		};
 		76E433F61769DE7F00FB8991 /* UIBubbleTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -569,6 +581,7 @@
 				76ED335C1746267E00072A23 /* Images */,
 				76ED3377174FD62C00072A23 /* MainLoggedInPage */,
 				76ED3356174618A400072A23 /* MainPicturePage */,
+				76DBF2E7176CE926005F039E /* TopHits */,
 				76F2531017568AD700E94BCF /* GreetingsPage */,
 				76ED33391746182C00072A23 /* Supporting Files */,
 			);
@@ -1016,6 +1029,7 @@
 				76E434041769DED600FB8991 /* UIBubbleTableView.m in Sources */,
 				76E434051769DED600FB8991 /* UIBubbleTableViewCell.m in Sources */,
 				76E434061769DED600FB8991 /* UIBubbleTypingTableViewCell.m in Sources */,
+				76DBF2DF176CE921005F039E /* TopHitsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

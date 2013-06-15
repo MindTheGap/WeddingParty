@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 MTG. All rights reserved.
 //
 
-#import "GreetingsViewController.h"
+#import "TopHitsViewController.h"
 #import "UIBubbleTableView.h"
 #import "UIBubbleTableViewDataSource.h"
 #import "NSBubbleData.h"
@@ -19,17 +19,11 @@
 #define kMessageModelKey @"MessageModel"
 #define kBubbleDataKey @"BubbleData"
 
-@interface GreetingsViewController ()
+@interface TopHitsViewController ()
 {
     IBOutlet UIBubbleTableView *bubbleTable;
-    IBOutlet UIView *textInputView;
-    IBOutlet UITextField *textField;
     
     BOOL bLoadedFile;
-    
-    __weak IBOutlet UIView *mainViewOfTV;
-   
-    __weak IBOutlet NSLayoutConstraint *keyboardHeightConstraint;
     
     NSBubbleData *lastBubbleSelected;
 }
@@ -46,7 +40,7 @@
 
 @end
 
-@implementation GreetingsViewController
+@implementation TopHitsViewController
 
 @synthesize bubbleData = _bubbleData;
 @synthesize messageModelFromServer = _messageModelFromServer;
@@ -105,90 +99,6 @@
     return self;
 }
 
-- (IBAction)BlessButtonClick:(UIButton *)sender
-{
-    NSString *textFromUser = [[textField text] copy];
-    
-    MessageModelToServer *mm = [[MessageModelToServer alloc] init];
-    mm.Action = 2;
-    mm.Data = textFromUser;
-    mm.UserFullName = [self userFullName];
-    mm.UserId = [self userId];
-    mm.UserIdsWhoLiked = [[NSMutableArray alloc] init];
-    
-    UIImage *image = [[self userIdToProfileImage] objectForKey:[self userId]];
-    if (image == nil)
-    {
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?", [self userId]]];
-        NSData *data = [NSData dataWithContentsOfURL:url];
-        image = [[UIImage alloc] initWithData:data];
-        [[self userIdToProfileImage] setObject:image forKey:[self userId]];
-    }
-
-    
-    NSBubbleData *bubbleMessage = [NSBubbleData dataWithText:textFromUser date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse withFont:nil withFontColor:[UIColor blackColor] image:image username:[self userFullName] userIdsWhoLiked:mm.UserIdsWhoLiked];
-    [self.bubbleData addObject:bubbleMessage];
-    
-    textField.text = @"";
-    [textField resignFirstResponder];
-    
-    [bubbleTable reloadData];
-    
-    NSString *jsonString = [mm toJSONString];
-    
-    NSData *jsonData = [jsonString dataUsingEncoding:NSUnicodeStringEncoding];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://54.242.242.228:4296/"]];
-    [request setValue:jsonString forHTTPHeaderField:@"json"];
-    [request setHTTPMethod:@"POST"];
-    [request setHTTPBody:jsonData];
-    [request setTimeoutInterval:5];
-    
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    
-    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-     {
-         if ([data length] > 0 && error == nil)
-         {
-             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF16LittleEndianStringEncoding];
-             
-             self.messageModelFromServer = [[MessageModelFromServer alloc] initWithString:string error:nil];
-             
-             NSLog(@"Got action: %d",[self.messageModelFromServer Action]);
-             NSLog(@"%@",[self.messageModelFromServer MessagesList]);
-             
-             if ([self.messageModelFromServer Action] == 2)
-                 return; // put V near the message
-             
-         }
-         else if ([data length] == 0 && error == nil)
-         {
-             NSLog(@"publish: data length is zero and no error");
-             
-             textField.text = textFromUser;
-             [[self bubbleData] removeLastObject];
-             
-             [self.view makeToast:@"something went wrong"];
-         }
-         else if (error != nil && error.code == NSURLErrorTimedOut)
-         {
-             NSLog(@"publish: error code is timed out");
-             
-             textField.text = textFromUser;
-             [[self bubbleData] removeLastObject];
-             
-             [self.view makeToast:@"Could not reach the server"];
-         }
-         else if (error != nil)
-         {
-             NSLog(@"publish: error is: %@" , [error localizedDescription]);
-             
-             textField.text = textFromUser;
-             [[self bubbleData] removeLastObject];
-             
-             [self.view makeToast:[error localizedDescription]];
-         }
-     }];
-}
 
 - (void)AddLikeSendMessage:(NSBubbleData *)bubbleMessage
 {
@@ -254,16 +164,11 @@
     NSLog(@"dataCell text: %@",[label text]);
     
     lastBubbleSelected = dataCell;
-    [textField resignFirstResponder];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:NO animated:NO];
-    
-    UIBarButtonItem *rightTopHitsButton = [[UIBarButtonItem alloc] initWithTitle:@"Top Hits"
-                                                                    style:UIBarButtonItemStyleDone target:self action:@selector(topHitsButtonClick:)];
-    self.navigationItem.rightBarButtonItem = rightTopHitsButton;
     
     UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg1.jpg"]];
     [backgroundImageView setFrame:bubbleTable.frame];
@@ -291,47 +196,19 @@
     }
 }
 
-- (void)topHitsButtonClick:(id)sender
-{
-    UIStoryboard *storyboard = self.storyboard;
-    
-    UIViewController *topHitsViewController = [storyboard instantiateViewControllerWithIdentifier:@"TopHitsViewController"];
-    if (topHitsViewController == nil)
-    {
-        NSLog(@"Couldn't instantiate Top Hits View Controller from storyboard");
-        return;
-    }
-    
-    [self.navigationController pushViewController:topHitsViewController animated:YES];
-}
-
-
 - (void)viewDidAppear:(BOOL)animated
 {
-//    UITapGestureRecognizer *singleFingerTap =
-//    [[UITapGestureRecognizer alloc] initWithTarget:self
-//                                            action:@selector(handleSingleTap:)];
-//
-//    [mainViewOfTV addGestureRecognizer:singleFingerTap];
-    
     self.userIdToProfileImage = [[NSMutableDictionary alloc] initWithCapacity:10];
     
     WeddingPartyAppDelegate *appDelegate = (WeddingPartyAppDelegate *)[[UIApplication sharedApplication] delegate];
     [self setUserId:[appDelegate UserFBProfilePictureID]];
     [self setUserFullName:[NSString stringWithFormat:@"%@ %@",[appDelegate UserFirstName], [appDelegate UserLastName]]];
     
-    [self loadLastMessages];
+    [self loadTopHitsMessages];
     
 }
 
-- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer
-{
-    
-    [self resignFirstResponder];
-}
-
-
-- (void)loadLastMessages
+- (void)loadTopHitsMessages
 {
     if ([self.bubbleData count] == 0)
     {
@@ -340,7 +217,7 @@
     }
 
     MessageModelToServer *mm = [[MessageModelToServer alloc] init];
-    mm.Action = 0;
+    mm.Action = 4;
     mm.UserId = [self userId];
     mm.UserFullName = [self userFullName];
     
@@ -361,8 +238,6 @@
          if ([data length] > 0 && error == nil)
          {
              NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF16LittleEndianStringEncoding];
-//             NSString *string = [[NSString alloc] initWithData:data encoding:NSWindowsCP1252StringEncoding];
-
              
              self.messageModelFromServer = [[MessageModelFromServer alloc] initWithString:string error:nil];
              
@@ -398,6 +273,7 @@
                      if (([msgData compare:oldMsgData] == NSOrderedSame) && ([msgUserName compare:oldMsgUserName] == NSOrderedSame))
                      {
                          bFoundMessage = YES;
+                         [oldMsg setUserIdsWhoLiked:[message UserIdsWhoLiked]];
                      }
                  }
                  
@@ -419,6 +295,12 @@
              }
              
              NSLog(@"Entering reloadData");
+             
+             self.bubbleData = [NSMutableArray arrayWithArray:[self.bubbleData sortedArrayUsingComparator:^NSComparisonResult(NSBubbleData *a, NSBubbleData *b) {
+                 int first = [[(NSBubbleData *)a UserIdsWhoLiked] count];
+                 int second = [[(NSBubbleData *)b UserIdsWhoLiked] count];
+                 return first < second;
+             }]];
              
              [bubbleTable performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
 
@@ -453,11 +335,11 @@
     {
         [self saveDataToDisk];
     }
-//    
+////    
 //    NSLog(@"Deleting file...");
 //    NSFileManager *fileManager = [NSFileManager defaultManager];
 //    [fileManager removeItemAtPath:[self saveFilePath] error:NULL];
-////
+//////
 
     
     [super viewWillDisappear:animated];
@@ -491,7 +373,7 @@
     // Interval of 120 means that if the next messages comes in 2 minutes since the last message, it will be added into the same group.
     // Groups are delimited with header which contains date and time for the first message in the group.
     
-//    bubbleTable.snapInterval = 99999999999;
+//    bubbleTable.snapInterval = -1;
     
     // The line below enables avatar support. Avatar can be specified for each bubble with .avatar property of NSBubbleData.
     // Avatars are enabled for the whole table at once. If particular NSBubbleData misses the avatar, a default placeholder will be set (missingAvatar.png)
@@ -508,11 +390,7 @@
     
     [bubbleTable reloadData];
     [bubbleTable scrollToBottomAnimated:YES];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
-    
-    
+   
 }
 
 - (NSString *) saveFilePath
@@ -520,7 +398,7 @@
 	NSArray *path =
 	NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
-	return [[path objectAtIndex:0] stringByAppendingPathComponent:@"weddingparty.plist"];
+	return [[path objectAtIndex:0] stringByAppendingPathComponent:@"weddingpartytophits.plist"];
     
 }
 
@@ -567,51 +445,5 @@
     NSLog(@"Entered bubbleTableView:dataForRow with row %d", row);
     return [self.bubbleData objectAtIndex:row];
 }
-
-#pragma mark - Keyboard events
-
-- (void)keyboardWasShown:(NSNotification*)notification
-{
-    
-    NSDictionary *info = [notification userInfo];
-    NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
-    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    CGRect keyboardFrame = [kbFrame CGRectValue];
-    
-    BOOL isPortrait = UIDeviceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation);
-    CGFloat height = isPortrait ? keyboardFrame.size.height : keyboardFrame.size.width;
-    NSLog(@"The keyboard height is: %f", height);
-    
-    NSLog(@"Updating constraints.");
-    // Because the "space" is actually the difference between the bottom lines of the 2 views,
-    // we need to set a negative constant value here.
-    keyboardHeightConstraint.constant = -height;
-    [self.view setNeedsUpdateConstraints];
-    
-    [UIView animateWithDuration:animationDuration animations:^{
-        [self.view layoutIfNeeded];
-        [bubbleTable scrollToBottomAnimated:YES];
-    }];
-    
-}
-
-- (void)keyboardWillBeHidden:(NSNotification*)notification
-{
-    
-    NSDictionary *info = [notification userInfo];
-    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    
-    keyboardHeightConstraint.constant = 0;
-    [self.view setNeedsUpdateConstraints];
-    
-    [UIView animateWithDuration:animationDuration animations:^{
-        [self.view layoutIfNeeded];
-    }];
-    
-    
-
-}
-
-
 
 @end

@@ -164,11 +164,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WeddingParty/GreetingsViewController/GreetingsViewController.m"
-         timestampString = "392938917.952452"
+         timestampString = "393017237.012429"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "586"
-         endingLineNumber = "586"
+         startingLineNumber = "590"
+         endingLineNumber = "590"
          landmarkName = "-keyboardWasShown:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -177,11 +177,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WeddingParty/GreetingsViewController/GreetingsViewController.m"
-         timestampString = "392938917.952452"
+         timestampString = "393017237.012429"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "458"
-         endingLineNumber = "458"
+         startingLineNumber = "462"
+         endingLineNumber = "462"
          landmarkName = "-viewWillDisappear:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -190,11 +190,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WeddingParty/GreetingsViewController/GreetingsViewController.m"
-         timestampString = "392938917.952452"
+         timestampString = "393017237.012429"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "547"
-         endingLineNumber = "547"
+         startingLineNumber = "551"
+         endingLineNumber = "551"
          landmarkName = "@implementation GreetingsViewController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -203,11 +203,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WeddingParty/GreetingsViewController/GreetingsViewController.m"
-         timestampString = "392938917.952452"
+         timestampString = "393017237.012429"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "553"
-         endingLineNumber = "553"
+         startingLineNumber = "557"
+         endingLineNumber = "557"
          landmarkName = "@implementation GreetingsViewController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -216,11 +216,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WeddingParty/GreetingsViewController/GreetingsViewController.m"
-         timestampString = "392938917.952452"
+         timestampString = "393017237.012429"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "409"
-         endingLineNumber = "409"
+         startingLineNumber = "413"
+         endingLineNumber = "413"
          landmarkName = "-loadLastMessages"
          landmarkType = "5">
       </FileBreakpoint>
@@ -277,11 +277,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WeddingParty/GreetingsViewController/GreetingsViewController.m"
-         timestampString = "392936913.11042"
+         timestampString = "393017237.012429"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "315"
-         endingLineNumber = "315"
+         startingLineNumber = "319"
+         endingLineNumber = "319"
          landmarkName = "-viewDidAppear:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -342,11 +342,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WeddingParty/GreetingsViewController/GreetingsViewController.m"
-         timestampString = "392938917.952452"
+         timestampString = "393017237.012429"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "375"
-         endingLineNumber = "375"
+         startingLineNumber = "379"
+         endingLineNumber = "379"
          landmarkName = "-loadLastMessages"
          landmarkType = "5">
       </FileBreakpoint>
@@ -368,11 +368,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WeddingParty/GreetingsViewController/GreetingsViewController.m"
-         timestampString = "392938917.952452"
+         timestampString = "393017237.012429"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "374"
-         endingLineNumber = "374"
+         startingLineNumber = "378"
+         endingLineNumber = "378"
          landmarkName = "-loadLastMessages"
          landmarkType = "5">
       </FileBreakpoint>
@@ -381,11 +381,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WeddingParty/GreetingsViewController/GreetingsViewController.m"
-         timestampString = "392938917.952452"
+         timestampString = "393017237.012429"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "376"
-         endingLineNumber = "376"
+         startingLineNumber = "380"
+         endingLineNumber = "380"
          landmarkName = "-loadLastMessages"
          landmarkType = "5">
       </FileBreakpoint>
@@ -537,11 +537,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WeddingParty/GreetingsViewController/GreetingsViewController.m"
-         timestampString = "392936913.11042"
+         timestampString = "393017237.012429"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "288"
-         endingLineNumber = "288"
+         startingLineNumber = "284"
+         endingLineNumber = "284"
          landmarkName = "-doubleTapLike:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -550,11 +550,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WeddingParty/GreetingsViewController/GreetingsViewController.m"
-         timestampString = "392936913.11042"
+         timestampString = "393017237.012429"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "289"
-         endingLineNumber = "289"
+         startingLineNumber = "285"
+         endingLineNumber = "285"
          landmarkName = "-doubleTapLike:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -563,11 +563,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WeddingParty/GreetingsViewController/GreetingsViewController.m"
-         timestampString = "392936913.11042"
+         timestampString = "393017237.012429"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "287"
-         endingLineNumber = "287"
+         startingLineNumber = "283"
+         endingLineNumber = "283"
          landmarkName = "-doubleTapLike:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -576,11 +576,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WeddingParty/GreetingsViewController/GreetingsViewController.m"
-         timestampString = "392936913.11042"
+         timestampString = "393017237.012429"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "286"
-         endingLineNumber = "286"
+         startingLineNumber = "282"
+         endingLineNumber = "282"
          landmarkName = "-doubleTapLike:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -602,11 +602,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WeddingParty/GreetingsViewController/GreetingsViewController.m"
-         timestampString = "392938917.952452"
+         timestampString = "393017237.012429"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "412"
-         endingLineNumber = "412"
+         startingLineNumber = "416"
+         endingLineNumber = "416"
          landmarkName = "-loadLastMessages"
          landmarkType = "5">
       </FileBreakpoint>
@@ -615,11 +615,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WeddingParty/GreetingsViewController/GreetingsViewController.m"
-         timestampString = "392938917.952452"
+         timestampString = "393017237.012429"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "363"
-         endingLineNumber = "363"
+         startingLineNumber = "367"
+         endingLineNumber = "367"
          landmarkName = "-loadLastMessages"
          landmarkType = "5">
       </FileBreakpoint>
@@ -628,11 +628,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WeddingParty/GreetingsViewController/GreetingsViewController.m"
-         timestampString = "392938917.952452"
+         timestampString = "393017237.012429"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "364"
-         endingLineNumber = "364"
+         startingLineNumber = "368"
+         endingLineNumber = "368"
          landmarkName = "-loadLastMessages"
          landmarkType = "5">
       </FileBreakpoint>
@@ -641,12 +641,51 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WeddingParty/GreetingsViewController/GreetingsViewController.m"
-         timestampString = "393000572.163686"
+         timestampString = "393017237.012429"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "345"
-         endingLineNumber = "345"
+         startingLineNumber = "349"
+         endingLineNumber = "349"
          landmarkName = "-loadLastMessages"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "WeddingParty/Top Hits/TopHitsViewController.m"
+         timestampString = "393015585.808982"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "238"
+         endingLineNumber = "238"
+         landmarkName = "-loadTopHitsMessages"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "WeddingParty/Top Hits/TopHitsViewController.m"
+         timestampString = "393017519.191184"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "299"
+         endingLineNumber = "299"
+         landmarkName = "-loadTopHitsMessages"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "WeddingParty/Top Hits/TopHitsViewController.m"
+         timestampString = "393017974.832192"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "300"
+         endingLineNumber = "300"
+         landmarkName = "-loadTopHitsMessages"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
