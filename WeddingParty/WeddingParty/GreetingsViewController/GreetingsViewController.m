@@ -136,8 +136,8 @@
     
     NSString *jsonString = [mm toJSONString];
     
-    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://54.242.242.228:4296/"]];
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUnicodeStringEncoding];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.103:4296/"]];
     [request setValue:jsonString forHTTPHeaderField:@"json"];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:jsonData];
@@ -149,7 +149,7 @@
      {
          if ([data length] > 0 && error == nil)
          {
-             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF16LittleEndianStringEncoding];
              
              self.messageModelFromServer = [[MessageModelFromServer alloc] initWithString:string error:nil];
              
@@ -202,8 +202,8 @@
     
     NSString *jsonString = [mm toJSONString];
     
-    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://54.242.242.228:4296/"]];
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF16LittleEndianStringEncoding];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.103:4296/"]];
     [request setValue:jsonString forHTTPHeaderField:@"json"];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:jsonData];
@@ -215,7 +215,7 @@
      {
          if ([data length] > 0 && error == nil)
          {
-             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF16LittleEndianStringEncoding];
              
              self.messageModelFromServer = [[MessageModelFromServer alloc] initWithString:string error:nil];
              
@@ -343,7 +343,7 @@
     NSString *jsonString = [mm toJSONString];
     
     NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://54.242.242.228:4296/"]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.103:4296/"]];
     [request setValue:jsonString forHTTPHeaderField:@"json"];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:jsonData];
@@ -356,7 +356,7 @@
          
          if ([data length] > 0 && error == nil)
          {
-             NSString *string = [[NSString alloc] initWithData:data encoding:CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingWindowsHebrew)];
+             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF16LittleEndianStringEncoding];
 //             NSString *string = [[NSString alloc] initWithData:data encoding:NSWindowsCP1252StringEncoding];
 
              
