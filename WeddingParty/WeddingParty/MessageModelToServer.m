@@ -17,7 +17,7 @@
 #define kUserIdsWhoLikedKey @"UserIdsWhoLiked"
 
 - (void) encodeWithCoder:(NSCoder *)encoder {
-    NSLog(@"MessageModelToServer encodeWithCoder");
+//    NSLog(@"MessageModelToServer encodeWithCoder");
 
     [encoder encodeObject:self.Data forKey:kDataKey];
     [encoder encodeObject:[[NSNumber alloc] initWithInt:self.Action] forKey:kActionKey];
@@ -27,7 +27,7 @@
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
-    NSLog(@"MessageModelToServer initWithCoder");
+//    NSLog(@"MessageModelToServer initWithCoder");
     NSString *Data = [decoder decodeObjectForKey:kDataKey];
     NSNumber *Action = [decoder decodeObjectForKey:kActionKey];
     NSString *UserId = [decoder decodeObjectForKey:kUserIdKey];
@@ -38,7 +38,7 @@
 
 - (id)initWithData:(NSString *)data action:(int)action userId:(NSString *)userId userFullName:(NSString *)userFullName userIdsWhoLiked:(NSMutableArray *)UserIdsWhoLiked
 {
-    NSLog(@"MessageModelToServer initWithData");
+//    NSLog(@"MessageModelToServer initWithData");
 
     self.Data = data;
     self.Action = action;

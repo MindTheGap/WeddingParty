@@ -13,13 +13,13 @@
 #define kMessagesKey       @"Messages"
 
 - (void) encodeWithCoder:(NSCoder *)encoder {
-    NSLog(@"MessageModelFromServer encodeWithCoder");
+//    NSLog(@"MessageModelFromServer encodeWithCoder");
 
     [encoder encodeObject:self.MessagesList forKey:kMessagesKey];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
-    NSLog(@"MessageModelFromServer initWithCoder");
+//    NSLog(@"MessageModelFromServer initWithCoder");
 
     NSMutableArray *messagesArray = [decoder decodeObjectForKey:kMessagesKey];
     return [self initWithMessages:messagesArray];
@@ -27,7 +27,7 @@
 
 - (id)initWithMessages:(NSMutableArray *)messages
 {
-    NSLog(@"MessageModelFromServer initWithMessages");
+//    NSLog(@"MessageModelFromServer initWithMessages");
 
     self.MessagesList = messages;
     return self;

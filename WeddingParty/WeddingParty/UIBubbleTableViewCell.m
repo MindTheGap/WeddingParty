@@ -92,7 +92,7 @@
     [self.imageView addSubview:likeLabel];
     
     // Adjusting the x coordinate for avatar
-    if (self.showAvatar)
+    if (self.showAvatar && [self.data.view isKindOfClass:[UILabel class]])
     {
         [self.avatarImage removeFromSuperview];
 #if !__has_feature(objc_arc)
@@ -112,6 +112,16 @@
         self.avatarImage.frame = CGRectMake(avatarX, avatarY, 50, 50);
         [self addSubview:self.avatarImage];
         
+        if ([self.data.view isKindOfClass:[UILabel class]])
+        {
+            UILabel *label22 = (UILabel *)self.data.view;
+            [label22 setBackgroundColor:[UIColor clearColor]];
+            [self addSubview:label22];
+        }
+        else if ([self.data.view isKindOfClass:[UIButton class]])
+        {
+            [self addSubview:self.data.view];
+        }
         
         CGFloat delta = self.frame.size.height - (self.data.insets.top + self.data.insets.bottom + self.data.view.frame.size.height);
         if (delta > 0) y = delta;
@@ -134,15 +144,12 @@
         whiteBorderView.frame = CGRectMake(borderX+self.data.insets.left - self.data.insets.right, self.data.insets.top - self.data.insets.bottom+4, width + self.data.insets.left + self.data.insets.right-8, height + self.data.insets.top + self.data.insets.bottom-2);
         
         [self.contentView addSubview:whiteBorderView];
-        
     
     }
     
-
-    
     self.customView.frame = CGRectMake(x + self.data.insets.left, y + self.data.insets.top, width, height);
 
-    [self.contentView addSubview:self.customView];
+//    [self.contentView addSubview:self.customView];
 
     if (type == BubbleTypeSomeoneElse)
     {

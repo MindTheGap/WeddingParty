@@ -79,15 +79,24 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
         customColor = [UIColor grayColor];
     }
     
-    CGSize size = [(text ? text : @"") sizeWithFont:customFont constrainedToSize:CGSizeMake(220, 9999) lineBreakMode:NSLineBreakByWordWrapping];
+    NSString *tempFormat = [NSString stringWithFormat:@"%@:\n%@",userFullName,text];
+    NSMutableAttributedString *userFullNameUnderline = [[NSMutableAttributedString alloc] initWithString:(tempFormat ? tempFormat : @"")];
+    int len = (userFullName ? [userFullName length] : 0);
+    [userFullNameUnderline addAttribute:NSUnderlineStyleAttributeName value:@1 range:NSMakeRange(0, len)];
+    [userFullNameUnderline addAttribute:NSFontAttributeName value:customFont range:NSMakeRange(0, [tempFormat length])];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    UILabel *label = [[UILabel alloc] init];
     label.numberOfLines = 0;
     label.lineBreakMode = NSLineBreakByWordWrapping;
-    label.text = (text ? text : @"");
-    label.font = customFont;
-    label.textColor = customColor;
-    label.backgroundColor = [UIColor clearColor];
+    CGSize size = [(text ? [userFullNameUnderline string] : @"") sizeWithFont:customFont constrainedToSize:CGSizeMake(220, 9999) lineBreakMode:NSLineBreakByWordWrapping];
+    [label setFrame:CGRectMake(0, 0, size.width, size.height+10)];
+        
+    [label setAttributedText:userFullNameUnderline];
+    
+//    label.text = (text ? text : @"");
+//    label.font = customFont;
+//    label.textColor = customColor;
+//    label.backgroundColor = [UIColor clearColor];
     
 #if !__has_feature(objc_arc)
     [label autorelease];
@@ -141,7 +150,7 @@ const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
 #pragma mark - Encoding
 
 - (void) encodeWithCoder:(NSCoder *)encoder {
-    NSLog(@"NSBubbleData encodeWithCoder");
+//    NSLog(@"NSBubbleData encodeWithCoder");
     
     UIEdgeInsets local = self.insets;
     [encoder encodeObject:self.date forKey:kDateKey];
@@ -154,7 +163,7 @@ const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
-    NSLog(@"NSBubbleData initWithCoder");
+//    NSLog(@"NSBubbleData initWithCoder");
     
     NSDate *date = [decoder decodeObjectForKey:kDateKey];
     NSNumber *typeNumber = [decoder decodeObjectForKey:kBubbleTypeKey];

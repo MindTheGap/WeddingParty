@@ -3,17 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "GLOBAL">
-         <PersistentStrings>
-            <PersistentString
-               value = "mainViewOfTV">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "__44-[GreetingsViewController keyboardWasShown:]_block_invoke:GreetingsViewController.m">
-      </ContextState>
-      <ContextState
          contextName = "-[LoginPageViewController loginViewFetchedUserInfo:user:]:LoginPageViewController.m">
       </ContextState>
       <ContextState
@@ -28,22 +17,55 @@
          contextName = "-[MainPicturePageViewController loginViewFetchedUserInfo:user:]:MainPicturePageViewController.m">
       </ContextState>
       <ContextState
-         contextName = "-[GreetingsViewController keyboardWasShown:]:GreetingsViewController.m">
+         contextName = "-[UIBubbleTableView reloadData]:UIBubbleTableView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "(NSBubbleData *)object">
+            </PersistentString>
+            <PersistentString
+               value = "((UILabel *)(((NSBubbleData *)object).view)).text">
+            </PersistentString>
+            <PersistentString
+               value = "(UILabel *)$0-&gt;_view">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[MainLoggedInPageViewController viewWillAppear:]:MainLoggedInPageViewController.m">
       </ContextState>
       <ContextState
-         contextName = "-[GreetingsViewController rowsForBubbleTable:]:GreetingsViewController.m">
+         contextName = "-[UIBubbleTableView tableView:cellForRowAtIndexPath:]:UIBubbleTableView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "((UILabel *)cell.data.view).text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[GreetingsViewController tableView:numberOfRowsInSection:]:GreetingsViewController.m">
       </ContextState>
       <ContextState
          contextName = "-[GreetingsViewController bubbleTableView:dataForRow:]:GreetingsViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[(UILabel *)bubble.view text]">
+            </PersistentString>
+            <PersistentString
+               value = "(UILabel *)bubble.view">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[GreetingsViewController tableView:cellForRowAtIndexPath:]:GreetingsViewController.m">
       </ContextState>
       <ContextState
-         contextName = "-[GreetingsViewController tableView:numberOfRowsInSection:]:GreetingsViewController.m">
+         contextName = "-[GreetingsViewController keyboardWasShown:]:GreetingsViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "__44-[GreetingsViewController keyboardWasShown:]_block_invoke:GreetingsViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[GreetingsViewController rowsForBubbleTable:]:GreetingsViewController.m">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

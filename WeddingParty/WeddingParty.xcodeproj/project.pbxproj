@@ -26,6 +26,7 @@
 		76631D3717535BDA00949C8F /* level_me_up_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 76631D3317535BDA00949C8F /* level_me_up_thumb.png */; };
 		76631D3817535BDA00949C8F /* math_ninja_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 76631D3417535BDA00949C8F /* math_ninja_thumb.png */; };
 		76631D3917535BDA00949C8F /* rpg_calc_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 76631D3517535BDA00949C8F /* rpg_calc_thumb.png */; };
+		767600EC176DC8BB003757A1 /* MoreBlessingsEng.png in Resources */ = {isa = PBXBuildFile; fileRef = 767600EB176DC8BB003757A1 /* MoreBlessingsEng.png */; };
 		7695607F1769CAEF00F35507 /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7695607E1769CAEF00F35507 /* Toast+UIView.m */; };
 		769560811769D12400F35507 /* heartlike.png in Resources */ = {isa = PBXBuildFile; fileRef = 769560801769D12400F35507 /* heartlike.png */; };
 		76DBF2DF176CE921005F039E /* TopHitsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DBF2DE176CE921005F039E /* TopHitsViewController.m */; };
@@ -265,6 +266,7 @@
 		76631D3317535BDA00949C8F /* level_me_up_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level_me_up_thumb.png; sourceTree = "<group>"; };
 		76631D3417535BDA00949C8F /* math_ninja_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = math_ninja_thumb.png; sourceTree = "<group>"; };
 		76631D3517535BDA00949C8F /* rpg_calc_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rpg_calc_thumb.png; sourceTree = "<group>"; };
+		767600EB176DC8BB003757A1 /* MoreBlessingsEng.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MoreBlessingsEng.png; sourceTree = "<group>"; };
 		7695607D1769CAEF00F35507 /* Toast+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Toast+UIView.h"; sourceTree = "<group>"; };
 		7695607E1769CAEF00F35507 /* Toast+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Toast+UIView.m"; sourceTree = "<group>"; };
 		769560801769D12400F35507 /* heartlike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heartlike.png; sourceTree = "<group>"; };
@@ -750,6 +752,7 @@
 		76F2534C17611E9D00E94BCF /* GreetingPageImages */ = {
 			isa = PBXGroup;
 			children = (
+				767600EB176DC8BB003757A1 /* MoreBlessingsEng.png */,
 				76F253511761285000E94BCF /* bg1.jpg */,
 				76F253521761285000E94BCF /* bg2.jpg */,
 				76F253531761285000E94BCF /* bg3.jpg */,
@@ -994,6 +997,7 @@
 				76F2535E1761285100E94BCF /* bg7.jpg in Resources */,
 				769560811769D12400F35507 /* heartlike.png in Resources */,
 				76E43429176A11D100FB8991 /* like.png in Resources */,
+				767600EC176DC8BB003757A1 /* MoreBlessingsEng.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

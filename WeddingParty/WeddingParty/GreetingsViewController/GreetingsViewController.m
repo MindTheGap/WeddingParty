@@ -58,7 +58,7 @@
 {
     if (_bubbleData) return _bubbleData;
     
-    NSLog(@"entered getter for bubbleData");
+//    NSLog(@"entered getter for bubbleData");
     NSString *bubbleDataPath = [self saveFilePath];
     NSData *codedData = [[NSData alloc] initWithContentsOfFile:bubbleDataPath];
     if (codedData == nil)
@@ -66,6 +66,7 @@
         NSLog(@"bubbleData couldn't decode, returning nil");
         return nil;
     }
+    NSLog(@"bubbleData could decode!");
     
     bLoadedFile = YES;
     NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:codedData];
@@ -79,7 +80,7 @@
 {
     if (_messageModelFromServer) return _messageModelFromServer;
     
-    NSLog(@"entered getter for messageModelFromServer");
+//    NSLog(@"entered getter for messageModelFromServer");
     NSString *bubbleDataPath = [self saveFilePath];
     NSData *codedData = [[NSData alloc] initWithContentsOfFile:bubbleDataPath];
     if (codedData == nil)
@@ -87,7 +88,8 @@
         NSLog(@"messageModelFromServer couldn't decode, returning nil");
         return nil;
     }
-    
+    NSLog(@"messageModelFromServer could decode!");
+
     bLoadedFile = YES;
     NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:codedData];
     _messageModelFromServer = [unarchiver decodeObjectForKey:kMessageModelKey];
@@ -117,14 +119,6 @@
     mm.UserIdsWhoLiked = [[NSMutableArray alloc] init];
     
     UIImage *image = [[self userIdToProfileImage] objectForKey:[self userId]];
-    if (image == nil)
-    {
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?", [self userId]]];
-        NSData *data = [NSData dataWithContentsOfURL:url];
-        image = [[UIImage alloc] initWithData:data];
-        [[self userIdToProfileImage] setObject:image forKey:[self userId]];
-    }
-
     
     NSBubbleData *bubbleMessage = [NSBubbleData dataWithText:textFromUser date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse withFont:nil withFontColor:[UIColor blackColor] image:image username:[self userFullName] userIdsWhoLiked:mm.UserIdsWhoLiked];
     [self.bubbleData addObject:bubbleMessage];
@@ -153,8 +147,8 @@
              
              self.messageModelFromServer = [[MessageModelFromServer alloc] initWithString:string error:nil];
              
-             NSLog(@"Got action: %d",[self.messageModelFromServer Action]);
-             NSLog(@"%@",[self.messageModelFromServer MessagesList]);
+//             NSLog(@"Got action: %d",[self.messageModelFromServer Action]);
+//             NSLog(@"%@",[self.messageModelFromServer MessagesList]);
              
              if ([self.messageModelFromServer Action] == 2)
                  return; // put V near the message
@@ -191,7 +185,7 @@
 }
 
 - (void)AddLikeSendMessage:(NSBubbleData *)bubbleMessage
-{
+{    
     MessageModelToServer *mm = [[MessageModelToServer alloc] init];
     mm.Action = 3;
     UILabel *label = (UILabel *)[bubbleMessage view];
@@ -219,8 +213,8 @@
              
              self.messageModelFromServer = [[MessageModelFromServer alloc] initWithString:string error:nil];
              
-             NSLog(@"Got action: %d",[self.messageModelFromServer Action]);
-             NSLog(@"%@",[self.messageModelFromServer MessagesList]);
+//             NSLog(@"Got action: %d",[self.messageModelFromServer Action]);
+//             NSLog(@"%@",[self.messageModelFromServer MessagesList]);
              
              if ([self.messageModelFromServer Action] == 3)
                  return; // put V near the message
@@ -250,8 +244,14 @@
 
 - (void)didSelectNSBubbleDataCell:(NSBubbleData *)dataCell
 {
+    if ([[dataCell view] isKindOfClass:[UILabel class]] == NO)
+        return;
+
     UILabel *label = (UILabel *)dataCell.view;
-    NSLog(@"dataCell text: %@",[label text]);
+    if (label)
+        NSLog(@"dataCell text: %@",[label text]);
+    else
+        NSLog(@"dataCell is the first one");
     
     lastBubbleSelected = dataCell;
     [textField resignFirstResponder];
@@ -277,6 +277,9 @@
 
 - (void)doubleTapLike:(id)sender
 {
+    if ([[lastBubbleSelected view] isKindOfClass:[UILabel class]] == NO)
+        return;
+    
     [self.view makeToast:nil
                 duration:0.6
                 position:@"center"
@@ -308,11 +311,6 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-//    UITapGestureRecognizer *singleFingerTap =
-//    [[UITapGestureRecognizer alloc] initWithTarget:self
-//                                            action:@selector(handleSingleTap:)];
-//
-//    [mainViewOfTV addGestureRecognizer:singleFingerTap];
     
     self.userIdToProfileImage = [[NSMutableDictionary alloc] initWithCapacity:10];
     
@@ -320,6 +318,16 @@
     [self setUserId:[appDelegate UserFBProfilePictureID]];
     [self setUserFullName:[NSString stringWithFormat:@"%@ %@",[appDelegate UserFirstName], [appDelegate UserLastName]]];
     
+    if ([[self userIdToProfileImage] objectForKey:[self userId]] == nil)
+    {
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?", [self userId]]];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        [[self userIdToProfileImage] setObject:[[UIImage alloc] initWithData:data] forKey:[self userId]];
+    }
+    
+    if (self.bubbleData == nil)
+        self.bubbleData = [[NSMutableArray alloc] init];
+   
     [self loadLastMessages];
     
 }
@@ -333,10 +341,14 @@
 
 - (void)loadLastMessages
 {
+    [bubbleTable setScrollOnActivity:NO];
+    
     if ([self.bubbleData count] == 0)
     {
         // display toast with an activity spinner
         [self.view makeToastActivity];
+        
+        [bubbleTable setScrollOnActivity:YES];
     }
 
     MessageModelToServer *mm = [[MessageModelToServer alloc] init];
@@ -358,19 +370,32 @@
      {
          [self.view performSelectorOnMainThread:@selector(hideToastActivity) withObject:nil waitUntilDone:YES];
          
+         NSLog(@"finished hiding toast");
+         
          if ([data length] > 0 && error == nil)
          {
              NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF16LittleEndianStringEncoding];
-//             NSString *string = [[NSString alloc] initWithData:data encoding:NSWindowsCP1252StringEncoding];
-
              
              self.messageModelFromServer = [[MessageModelFromServer alloc] initWithString:string error:nil];
              
-             NSLog(@"Got action: %d",[self.messageModelFromServer Action]);
-             NSLog(@"%@",[self.messageModelFromServer MessagesList]);
+//             NSLog(@"Got action: %d",[self.messageModelFromServer Action]);
+//             NSLog(@"%@",[self.messageModelFromServer MessagesList]);
              
              if (self.bubbleData == nil)
                  self.bubbleData = [[NSMutableArray alloc] init];
+             
+             self.bubbleData = [[NSMutableArray alloc] init];
+             UIButton *pastMessagesButton = [UIButton buttonWithType:UIButtonTypeCustom];
+             [pastMessagesButton setFrame:CGRectMake(15, 0, 200, 50)];
+             [pastMessagesButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
+             [pastMessagesButton setTitle:@"More Blessings..." forState:UIControlStateNormal];
+             [pastMessagesButton setBackgroundColor:[UIColor clearColor]];
+             [pastMessagesButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+             [pastMessagesButton setTitleColor:[UIColor blueColor] forState:UIControlStateHighlighted];
+             [pastMessagesButton addTarget:self action:@selector(pastMessagesButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+             NSBubbleData *bubble = [[NSBubbleData alloc] initWithView:pastMessagesButton date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeMine insets:UIEdgeInsetsMake(0, 7, 5, 3) image:nil username:@"User" userIdsWhoLiked:nil];
+             
+             [self.bubbleData addObject:bubble];
              
              for (int i = 0; i < [[self.messageModelFromServer MessagesList] count]; i++)
              {
@@ -386,10 +411,14 @@
                  
                  BOOL bFoundMessage = NO;
                  int count = [self.bubbleData count];
-                 NSLog(@"bubbleData count = %d", count);
+//                 NSLog(@"bubbleData count = %d", count);
                  for (int j = 0; j < count; j++)
                  {
                      NSBubbleData *oldMsg = [[self bubbleData] objectAtIndex:j];
+                     
+                     if ([[oldMsg view] isKindOfClass:[UILabel class]] == NO)
+                         continue;
+
                      UILabel *oldMsgLabel = (UILabel *)[oldMsg view];
                      NSString *msgData = [message Data];
                      NSString *oldMsgData = [oldMsgLabel text];
@@ -454,9 +483,9 @@
         [self saveDataToDisk];
     }
 //    
-//    NSLog(@"Deleting file...");
-//    NSFileManager *fileManager = [NSFileManager defaultManager];
-//    [fileManager removeItemAtPath:[self saveFilePath] error:NULL];
+    NSLog(@"Deleting file...");
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager removeItemAtPath:[self saveFilePath] error:NULL];
 ////
 
     
@@ -515,6 +544,119 @@
     
 }
 
+- (void)pastMessagesButtonClick:(id)sender
+{
+//    NSLog(@"past Messages Clicked!");
+    
+    int numberOfPastMessagesClicked = ([self.bubbleData count] % 10);
+    
+    MessageModelToServer *mm = [[MessageModelToServer alloc] init];
+    mm.Action = 1;
+    mm.UserId = [self userId];
+    mm.UserFullName = [self userFullName];
+    mm.Data = [NSString stringWithFormat:@"%d",numberOfPastMessagesClicked];
+    
+    NSString *jsonString = [mm toJSONString];
+    
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://54.242.242.228:4296/"]];
+    [request setValue:jsonString forHTTPHeaderField:@"json"];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:jsonData];
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+     {
+//         [self.view performSelectorOnMainThread:@selector(hideToastActivity) withObject:nil waitUntilDone:YES];
+         
+         if ([data length] > 0 && error == nil)
+         {
+             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF16LittleEndianStringEncoding];
+                          
+             self.messageModelFromServer = [[MessageModelFromServer alloc] initWithString:string error:nil];
+             
+//             NSLog(@"Got action: %d",[self.messageModelFromServer Action]);
+//             NSLog(@"%@",[self.messageModelFromServer MessagesList]);
+             
+             for (int i = 0; i < [[self.messageModelFromServer MessagesList] count]; i++)
+             {
+                 NSDictionary *messageDictionary = (NSDictionary*)[[self.messageModelFromServer MessagesList] objectAtIndex:i];
+                 
+                 NSError *errorParsing;
+                 MessageModelToServer *message = [[MessageModelToServer alloc] initWithDictionary:messageDictionary error:&errorParsing];
+                 if (errorParsing)
+                 {
+                     NSLog(@"init with dictionary has an error: %@", [errorParsing localizedDescription]);
+                     return;
+                 }
+                 
+                 BOOL bFoundMessage = NO;
+                 int count = [self.bubbleData count];
+//                 NSLog(@"bubbleData count = %d", count);
+                 for (int j = 0; j < count; j++)
+                 {
+                     NSBubbleData *oldMsg = [[self bubbleData] objectAtIndex:j];
+                     
+                     if ([[oldMsg view] isKindOfClass:[UILabel class]] == NO)
+                         continue;
+                     
+                     UILabel *oldMsgLabel = (UILabel *)[oldMsg view];
+                     NSString *msgData = [message Data];
+                     NSString *oldMsgData = [oldMsgLabel text];
+                     NSString *msgUserName = [message UserFullName];
+                     NSString *oldMsgUserName = [oldMsg userFullName];
+                     if (([msgData compare:oldMsgData] == NSOrderedSame) && ([msgUserName compare:oldMsgUserName] == NSOrderedSame))
+                     {
+                         bFoundMessage = YES;
+                     }
+                 }
+                 
+                 if (bFoundMessage == NO)
+                 {
+                     UIImage *image = [[self userIdToProfileImage] objectForKey:[message UserId]];
+                     if (image == nil)
+                     {
+                         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?", [message UserId]]];
+                         NSData *data = [NSData dataWithContentsOfURL:url];
+                         image = [[UIImage alloc] initWithData:data];
+                         [[self userIdToProfileImage] setObject:image forKey:[message UserId]];
+                         
+                     }
+                     
+                     NSBubbleData *bubbleForMessage = [NSBubbleData dataWithText:[message Data] date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse withFont:nil withFontColor:[UIColor blackColor] image:image username:[message UserFullName] userIdsWhoLiked:[message UserIdsWhoLiked]];
+                     [self.bubbleData insertObject:bubbleForMessage atIndex:1];
+                 }
+             }
+             
+             NSLog(@"Entering reloadData");
+             
+             [bubbleTable performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
+             
+             NSLog(@"After reloadData");
+             
+         }
+         else if ([data length] == 0 && error == nil)
+         {
+             NSLog(@"data length is zero and no error");
+             
+             [self.view makeToast:@"Error receiving information."];
+         }
+         else if (error != nil && error.code == NSURLErrorTimedOut)
+         {
+             NSLog(@"error code is timed out");
+             
+             [self.view makeToast:@"Timed out, server is down?"];
+         }
+         else if (error != nil)
+         {
+             NSLog(@"error is: %@" , [error localizedDescription]);
+             
+             [self.view makeToast:[error localizedDescription]];
+         }
+     }];
+}
+
 - (NSString *) saveFilePath
 {
 	NSArray *path =
@@ -526,7 +668,7 @@
 
 - (void)saveDataToDisk
 {
-    NSLog(@"applicationDidEnterBackground, about to save");
+//    NSLog(@"applicationDidEnterBackground, about to save");
     NSString *dataPath = [self saveFilePath];
     NSMutableData *data = [[NSMutableData alloc] init];
     NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
@@ -564,8 +706,12 @@
 
 - (NSBubbleData *)bubbleTableView:(UIBubbleTableView *)tableView dataForRow:(NSInteger)row
 {
-    NSLog(@"Entered bubbleTableView:dataForRow with row %d", row);
-    return [self.bubbleData objectAtIndex:row];
+    NSBubbleData *bubble = [self.bubbleData objectAtIndex:row];
+    
+    if ([bubble.view isKindOfClass:[UILabel class]])
+        NSLog(@"Entered bubbleTableView:dataForRow with row %d and text %@", row,((UILabel *)bubble.view).text);
+    
+    return bubble;
 }
 
 #pragma mark - Keyboard events
@@ -580,9 +726,9 @@
     
     BOOL isPortrait = UIDeviceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation);
     CGFloat height = isPortrait ? keyboardFrame.size.height : keyboardFrame.size.width;
-    NSLog(@"The keyboard height is: %f", height);
+//    NSLog(@"The keyboard height is: %f", height);
     
-    NSLog(@"Updating constraints.");
+//    NSLog(@"Updating constraints.");
     // Because the "space" is actually the difference between the bottom lines of the 2 views,
     // we need to set a negative constant value here.
     keyboardHeightConstraint.constant = -height;
