@@ -126,7 +126,11 @@
     textField.text = @"";
     [textField resignFirstResponder];
     
+    bubbleTable.scrollOnActivity = YES;
+    
     [bubbleTable reloadData];
+    
+    bubbleTable.scrollOnActivity = NO;
     
     NSString *jsonString = [mm toJSONString];
     
@@ -188,8 +192,7 @@
 {    
     MessageModelToServer *mm = [[MessageModelToServer alloc] init];
     mm.Action = 3;
-    UILabel *label = (UILabel *)[bubbleMessage view];
-    mm.Data = [label text];
+    mm.Data = [bubbleMessage text];
     mm.UserFullName = [bubbleMessage userFullName];
     mm.UserId = [self userId];
     mm.UserIdsWhoLiked = nil;
@@ -328,6 +331,32 @@
     if (self.bubbleData == nil)
         self.bubbleData = [[NSMutableArray alloc] init];
    
+    if ([self.bubbleData count] == 0)
+    {
+        UIButton *pastMessagesButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+        NSString *tempFormat = @"More Blessings...";
+        int len = [tempFormat length];
+
+        NSMutableAttributedString *moreBlessingsAttrNormal = [[NSMutableAttributedString alloc] initWithString:tempFormat];
+        [moreBlessingsAttrNormal addAttribute:NSForegroundColorAttributeName value:[UIColor darkGrayColor] range:NSMakeRange(0, len)];
+        [moreBlessingsAttrNormal addAttribute:NSBackgroundColorAttributeName value:[UIColor clearColor] range:NSMakeRange(0, len)];
+        
+        NSMutableAttributedString *moreBlessingsAttrHighlight = [[NSMutableAttributedString alloc] initWithString:tempFormat];
+        [moreBlessingsAttrHighlight addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(0, len)];
+        [moreBlessingsAttrHighlight addAttribute:NSBackgroundColorAttributeName value:[UIColor clearColor] range:NSMakeRange(0, len)];
+        
+        [pastMessagesButton setFrame:CGRectMake(15, 0, 200, 50)];
+        [pastMessagesButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
+        [pastMessagesButton setAttributedTitle:moreBlessingsAttrNormal forState:UIControlStateNormal];
+        [pastMessagesButton setAttributedTitle:moreBlessingsAttrHighlight forState:UIControlStateHighlighted];
+        [pastMessagesButton setBackgroundColor:[UIColor clearColor]];
+        [pastMessagesButton addTarget:self action:@selector(pastMessagesButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        NSBubbleData *bubble = [[NSBubbleData alloc] initWithView:pastMessagesButton date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeMine insets:UIEdgeInsetsMake(0, 7, 5, 3) image:nil username:@"User" userIdsWhoLiked:nil];
+    
+        [self.bubbleData addObject:bubble];
+    }
+    
     [self loadLastMessages];
     
 }
@@ -343,7 +372,7 @@
 {
     [bubbleTable setScrollOnActivity:NO];
     
-    if ([self.bubbleData count] == 0)
+    if ([self.bubbleData count] == 1)
     {
         // display toast with an activity spinner
         [self.view makeToastActivity];
@@ -380,22 +409,6 @@
              
 //             NSLog(@"Got action: %d",[self.messageModelFromServer Action]);
 //             NSLog(@"%@",[self.messageModelFromServer MessagesList]);
-             
-             if (self.bubbleData == nil)
-                 self.bubbleData = [[NSMutableArray alloc] init];
-             
-             self.bubbleData = [[NSMutableArray alloc] init];
-             UIButton *pastMessagesButton = [UIButton buttonWithType:UIButtonTypeCustom];
-             [pastMessagesButton setFrame:CGRectMake(15, 0, 200, 50)];
-             [pastMessagesButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
-             [pastMessagesButton setTitle:@"More Blessings..." forState:UIControlStateNormal];
-             [pastMessagesButton setBackgroundColor:[UIColor clearColor]];
-             [pastMessagesButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-             [pastMessagesButton setTitleColor:[UIColor blueColor] forState:UIControlStateHighlighted];
-             [pastMessagesButton addTarget:self action:@selector(pastMessagesButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-             NSBubbleData *bubble = [[NSBubbleData alloc] initWithView:pastMessagesButton date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeMine insets:UIEdgeInsetsMake(0, 7, 5, 3) image:nil username:@"User" userIdsWhoLiked:nil];
-             
-             [self.bubbleData addObject:bubble];
              
              for (int i = 0; i < [[self.messageModelFromServer MessagesList] count]; i++)
              {
@@ -548,7 +561,8 @@
 {
 //    NSLog(@"past Messages Clicked!");
     
-    int numberOfPastMessagesClicked = ([self.bubbleData count] % 10);
+    int numberOfPastMessagesClicked = ([self.bubbleData count] / 10) + 1;
+    NSLog(@"bubbleData count: %d, numberOfPastMessagesClicked: %d", [self.bubbleData count], numberOfPastMessagesClicked);
     
     MessageModelToServer *mm = [[MessageModelToServer alloc] init];
     mm.Action = 1;

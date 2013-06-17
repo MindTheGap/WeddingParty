@@ -91,6 +91,11 @@
     self.numberOfLikesLabel = likeLabel;
     [self.imageView addSubview:likeLabel];
     
+//    if ([self.data.view isKindOfClass:[UIButton class]])
+//    {
+//        [self addSubview:self.data.view];
+//    }
+    
     // Adjusting the x coordinate for avatar
     if (self.showAvatar && [self.data.view isKindOfClass:[UILabel class]])
     {
@@ -117,10 +122,6 @@
             UILabel *label22 = (UILabel *)self.data.view;
             [label22 setBackgroundColor:[UIColor clearColor]];
             [self addSubview:label22];
-        }
-        else if ([self.data.view isKindOfClass:[UIButton class]])
-        {
-            [self addSubview:self.data.view];
         }
         
         CGFloat delta = self.frame.size.height - (self.data.insets.top + self.data.insets.bottom + self.data.view.frame.size.height);
@@ -149,7 +150,11 @@
     
     self.customView.frame = CGRectMake(x + self.data.insets.left, y + self.data.insets.top, width, height);
 
-//    [self.contentView addSubview:self.customView];
+    if ([self.data.view isKindOfClass:[UILabel class]] == NO)
+    {
+        [self addSubview:self.customView];
+    }
+    
 
     if (type == BubbleTypeSomeoneElse)
     {

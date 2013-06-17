@@ -31,6 +31,7 @@
 @synthesize userFullName = _userFullName;
 @synthesize customField = _customField;
 @synthesize UserIdsWhoLiked = _UserIdsWhoLiked;
+@synthesize text = _text;
 
 #pragma mark - Lifecycle
 
@@ -78,6 +79,8 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
     if (customColor == nil) {
         customColor = [UIColor grayColor];
     }
+    
+    self.text = text;
     
     NSString *tempFormat = [NSString stringWithFormat:@"%@:\n%@",userFullName,text];
     NSMutableAttributedString *userFullNameUnderline = [[NSMutableAttributedString alloc] initWithString:(tempFormat ? tempFormat : @"")];

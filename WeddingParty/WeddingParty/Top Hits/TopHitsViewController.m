@@ -104,8 +104,7 @@
 {
     MessageModelToServer *mm = [[MessageModelToServer alloc] init];
     mm.Action = 3;
-    UILabel *label = (UILabel *)[bubbleMessage view];
-    mm.Data = [label text];
+    mm.Data = [bubbleMessage text];
     mm.UserFullName = [bubbleMessage userFullName];
     mm.UserId = [self userId];
     mm.UserIdsWhoLiked = nil;
@@ -336,9 +335,9 @@
         [self saveDataToDisk];
     }
 ////    
-//    NSLog(@"Deleting file...");
-//    NSFileManager *fileManager = [NSFileManager defaultManager];
-//    [fileManager removeItemAtPath:[self saveFilePath] error:NULL];
+    NSLog(@"Deleting file...");
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager removeItemAtPath:[self saveFilePath] error:NULL];
 //////
 
     

@@ -26,6 +26,7 @@ typedef enum _NSBubbleType
 @property (strong, nonatomic) UIImage *avatar;
 @property (nonatomic, strong) NSObject *customField;
 @property (strong, nonatomic) NSMutableArray *UserIdsWhoLiked;
+@property (strong, nonatomic) NSString *text;
 
 - (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type image:(UIImage *)image username:(NSString *)userFullName userIdsWhoLiked:(NSMutableArray *)UserIdsWhoLiked;
 - (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type withFont:(UIFont*)customFont withFontColor:(UIColor*)color image:(UIImage *)image username:(NSString *)userFullName userIdsWhoLiked:(NSMutableArray *)UserIdsWhoLiked;
