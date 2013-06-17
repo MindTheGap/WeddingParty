@@ -272,7 +272,6 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="A18-MX-I1q" firstAttribute="leading" secondItem="2LZ-8H-pI6" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="0gX-Vd-w8f"/>
-                                    <constraint firstAttribute="width" constant="320" type="user" id="JUk-SC-EEM"/>
                                     <constraint firstAttribute="height" constant="44" type="user" id="JWe-8C-Q7N"/>
                                     <constraint firstItem="A18-MX-I1q" firstAttribute="top" secondItem="s4V-BU-bf3" secondAttribute="top" constant="6" id="PgE-sv-mFb"/>
                                     <constraint firstItem="2LZ-8H-pI6" firstAttribute="leading" secondItem="s4V-BU-bf3" secondAttribute="leading" constant="5" id="WZX-jt-XhI"/>
@@ -282,8 +281,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="s4V-BU-bf3" firstAttribute="trailing" secondItem="CSC-EP-cd6" secondAttribute="trailing" type="user" id="E6M-0e-Y6M"/>
                             <constraint firstItem="c0N-6E-iYZ" firstAttribute="leading" secondItem="CSC-EP-cd6" secondAttribute="leading" type="default" id="XjL-pB-uMf"/>
-                            <constraint firstItem="s4V-BU-bf3" firstAttribute="leading" secondItem="CSC-EP-cd6" secondAttribute="leading" type="default" id="emk-Yj-yg5"/>
+                            <constraint firstItem="s4V-BU-bf3" firstAttribute="leading" secondItem="CSC-EP-cd6" secondAttribute="leading" type="user" id="Yqb-OI-dGQ"/>
+                            <constraint firstItem="s4V-BU-bf3" firstAttribute="leading" secondItem="CSC-EP-cd6" secondAttribute="leading" type="user" id="emk-Yj-yg5"/>
                             <constraint firstItem="c0N-6E-iYZ" firstAttribute="top" secondItem="CSC-EP-cd6" secondAttribute="top" type="user" id="kUd-Ul-G05"/>
                             <constraint firstItem="s4V-BU-bf3" firstAttribute="top" secondItem="c0N-6E-iYZ" secondAttribute="bottom" type="user" id="o8z-CL-pni"/>
                             <constraint firstItem="c0N-6E-iYZ" firstAttribute="trailing" secondItem="CSC-EP-cd6" secondAttribute="trailing" type="default" id="s6H-4A-6oM"/>
@@ -313,6 +314,53 @@
         <image name="MainPicture.jpg" width="369" height="549"/>
         <image name="main_banner.jpg" width="641" height="240"/>
     </resources>
+    <classes>
+        <class className="FBLoginView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FBLoginView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delegate"/>
+            </relationships>
+        </class>
+        <class className="FBProfilePictureView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FBProfilePictureView.h"/>
+        </class>
+        <class className="GreetingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GreetingsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="bubbleTable" candidateClass="UIBubbleTableView"/>
+                <relationship kind="outlet" name="keyboardHeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="mainViewOfTV" candidateClass="UIView"/>
+                <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="textInputView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="MainLoggedInPageViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainLoggedInPageViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="UserFBProfilePicture" candidateClass="FBProfilePictureView"/>
+                <relationship kind="outlet" name="WelcomeUserText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="mainBannerPicture" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="MainPicturePageViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainPicturePageViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="mainPictureImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="TopHitsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TopHitsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="bubbleTable" candidateClass="UIBubbleTableView"/>
+            </relationships>
+        </class>
+        <class className="UIBubbleTableView" superclassName="UITableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIBubbleTableView.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

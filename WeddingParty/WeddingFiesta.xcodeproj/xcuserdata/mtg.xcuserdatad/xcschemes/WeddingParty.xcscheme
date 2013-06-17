@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "76ED332E1746182C00072A23"
                BuildableName = "WeddingParty.app"
-               BlueprintName = "WeddingParty"
-               ReferencedContainer = "container:WeddingParty.xcodeproj">
+               BlueprintName = "WeddingFiesta"
+               ReferencedContainer = "container:WeddingFiesta.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "76ED332E1746182C00072A23"
             BuildableName = "WeddingParty.app"
-            BlueprintName = "WeddingParty"
-            ReferencedContainer = "container:WeddingParty.xcodeproj">
+            BlueprintName = "WeddingFiesta"
+            ReferencedContainer = "container:WeddingFiesta.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -53,8 +53,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "76ED332E1746182C00072A23"
             BuildableName = "WeddingParty.app"
-            BlueprintName = "WeddingParty"
-            ReferencedContainer = "container:WeddingParty.xcodeproj">
+            BlueprintName = "WeddingFiesta"
+            ReferencedContainer = "container:WeddingFiesta.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -71,8 +71,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "76ED332E1746182C00072A23"
             BuildableName = "WeddingParty.app"
-            BlueprintName = "WeddingParty"
-            ReferencedContainer = "container:WeddingParty.xcodeproj">
+            BlueprintName = "WeddingFiesta"
+            ReferencedContainer = "container:WeddingFiesta.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

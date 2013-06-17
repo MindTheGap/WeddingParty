@@ -561,7 +561,12 @@
 {
 //    NSLog(@"past Messages Clicked!");
     
-    int numberOfPastMessagesClicked = ([self.bubbleData count] / 10) + 1;
+    int numberOfPastMessagesClicked;
+    if (([self.bubbleData count] - 1) % 10 == 0)
+        numberOfPastMessagesClicked = [self.bubbleData count] / 10;
+    else
+        numberOfPastMessagesClicked = (([self.bubbleData count] - 1) / 10) + 1;
+    
     NSLog(@"bubbleData count: %d, numberOfPastMessagesClicked: %d", [self.bubbleData count], numberOfPastMessagesClicked);
     
     MessageModelToServer *mm = [[MessageModelToServer alloc] init];
@@ -645,7 +650,11 @@
              
              NSLog(@"Entering reloadData");
              
+             bubbleTable.scrollOnActivity = NO;
+             
              [bubbleTable performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
+             
+             bubbleTable.scrollOnActivity = YES;
              
              NSLog(@"After reloadData");
              

@@ -545,14 +545,14 @@
 		76E434001769DED600FB8991 /* UIBubbleTypingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTypingTableViewCell.h; sourceTree = "<group>"; };
 		76E434011769DED600FB8991 /* UIBubbleTypingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTypingTableViewCell.m; sourceTree = "<group>"; };
 		76E43428176A11D100FB8991 /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
-		76ED332F1746182C00072A23 /* WeddingParty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeddingParty.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		76ED332F1746182C00072A23 /* WeddingFiesta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeddingFiesta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76ED33321746182C00072A23 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		76ED33341746182C00072A23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		76ED33361746182C00072A23 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		76ED333A1746182C00072A23 /* WeddingParty-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WeddingParty-Info.plist"; sourceTree = "<group>"; };
+		76ED333A1746182C00072A23 /* WeddingFiesta-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WeddingFiesta-Info.plist"; sourceTree = "<group>"; };
 		76ED333C1746182C00072A23 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		76ED333E1746182C00072A23 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		76ED33401746182C00072A23 /* WeddingParty-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WeddingParty-Prefix.pch"; sourceTree = "<group>"; };
+		76ED33401746182C00072A23 /* WeddingFiesta-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WeddingFiesta-Prefix.pch"; sourceTree = "<group>"; };
 		76ED33411746182C00072A23 /* WeddingPartyAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeddingPartyAppDelegate.h; sourceTree = "<group>"; };
 		76ED33421746182C00072A23 /* WeddingPartyAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeddingPartyAppDelegate.m; sourceTree = "<group>"; };
 		76ED33441746182C00072A23 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -948,7 +948,7 @@
 		76ED33301746182C00072A23 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				76ED332F1746182C00072A23 /* WeddingParty.app */,
+				76ED332F1746182C00072A23 /* WeddingFiesta.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1003,10 +1003,10 @@
 				76631D221753534B00949C8F /* Three20.bundle */,
 				76ED33411746182C00072A23 /* WeddingPartyAppDelegate.h */,
 				76ED33421746182C00072A23 /* WeddingPartyAppDelegate.m */,
-				76ED333A1746182C00072A23 /* WeddingParty-Info.plist */,
+				76ED333A1746182C00072A23 /* WeddingFiesta-Info.plist */,
 				76ED333B1746182C00072A23 /* InfoPlist.strings */,
 				76ED333E1746182C00072A23 /* main.m */,
-				76ED33401746182C00072A23 /* WeddingParty-Prefix.pch */,
+				76ED33401746182C00072A23 /* WeddingFiesta-Prefix.pch */,
 				76ED33441746182C00072A23 /* Default.png */,
 				76ED33461746182C00072A23 /* Default@2x.png */,
 				76ED33481746182C00072A23 /* Default-568h@2x.png */,
@@ -1174,9 +1174,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		76ED332E1746182C00072A23 /* WeddingParty */ = {
+		76ED332E1746182C00072A23 /* WeddingFiesta */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 76ED33521746182C00072A23 /* Build configuration list for PBXNativeTarget "WeddingParty" */;
+			buildConfigurationList = 76ED33521746182C00072A23 /* Build configuration list for PBXNativeTarget "WeddingFiesta" */;
 			buildPhases = (
 				76ED332B1746182C00072A23 /* Sources */,
 				76ED332C1746182C00072A23 /* Frameworks */,
@@ -1193,9 +1193,9 @@
 				76631D1F175352E300949C8F /* PBXTargetDependency */,
 				76631D21175352E300949C8F /* PBXTargetDependency */,
 			);
-			name = WeddingParty;
+			name = WeddingFiesta;
 			productName = WeddingParty;
-			productReference = 76ED332F1746182C00072A23 /* WeddingParty.app */;
+			productReference = 76ED332F1746182C00072A23 /* WeddingFiesta.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1208,7 +1208,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = MTG;
 			};
-			buildConfigurationList = 76ED332A1746182C00072A23 /* Build configuration list for PBXProject "WeddingParty" */;
+			buildConfigurationList = 76ED332A1746182C00072A23 /* Build configuration list for PBXProject "WeddingFiesta" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1250,7 +1250,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				76ED332E1746182C00072A23 /* WeddingParty */,
+				76ED332E1746182C00072A23 /* WeddingFiesta */,
 			);
 		};
 /* End PBXProject section */
@@ -1707,20 +1707,20 @@
 					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WeddingParty/WeddingParty-Prefix.pch";
+				GCC_PREFIX_HEADER = "WeddingParty/WeddingFiesta-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					../three20/Build/Products/three20,
 					three20/Build/Products/three20,
 					"$(BUILT_PRODUCTS_DIR)/../three20",
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
 				);
-				INFOPLIST_FILE = "WeddingParty/WeddingParty-Info.plist";
+				INFOPLIST_FILE = "WeddingParty/WeddingFiesta-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = WeddingFiesta;
 				PROVISIONING_PROFILE = "25ED0FE2-B2AD-449E-91D8-2C2164D61C0E";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "25ED0FE2-B2AD-449E-91D8-2C2164D61C0E";
 				WRAPPER_EXTENSION = app;
@@ -1737,20 +1737,20 @@
 					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WeddingParty/WeddingParty-Prefix.pch";
+				GCC_PREFIX_HEADER = "WeddingParty/WeddingFiesta-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					../three20/Build/Products/three20,
 					three20/Build/Products/three20,
 					"$(BUILT_PRODUCTS_DIR)/../three20",
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
 				);
-				INFOPLIST_FILE = "WeddingParty/WeddingParty-Info.plist";
+				INFOPLIST_FILE = "WeddingParty/WeddingFiesta-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = WeddingFiesta;
 				PROVISIONING_PROFILE = "25ED0FE2-B2AD-449E-91D8-2C2164D61C0E";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "25ED0FE2-B2AD-449E-91D8-2C2164D61C0E";
 				WRAPPER_EXTENSION = app;
@@ -1760,7 +1760,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		76ED332A1746182C00072A23 /* Build configuration list for PBXProject "WeddingParty" */ = {
+		76ED332A1746182C00072A23 /* Build configuration list for PBXProject "WeddingFiesta" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				76ED33501746182C00072A23 /* Debug */,
@@ -1769,7 +1769,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		76ED33521746182C00072A23 /* Build configuration list for PBXNativeTarget "WeddingParty" */ = {
+		76ED33521746182C00072A23 /* Build configuration list for PBXNativeTarget "WeddingFiesta" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				76ED33531746182C00072A23 /* Debug */,

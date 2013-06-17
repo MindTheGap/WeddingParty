@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.wedding.party.mtg</string>
+	<string>com.wedding.fiesta.mtg</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -25,7 +25,7 @@
 	<key>FacebookAppID</key>
 	<string>316722691791258</string>
 	<key>FacebookDisplayName</key>
-	<string>WeddingParty</string>
+	<string>WeddingFiesta</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIMainStoryboardFile</key>
