@@ -10,4 +10,14 @@
 
 @implementation UINavigationController (autototate)
 
+- (BOOL)shouldAutorotate
+{
+    return [[self.viewControllers lastObject] shouldAutorotate];
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return [[self.viewControllers lastObject] supportedInterfaceOrientations];
+}
+
 @end

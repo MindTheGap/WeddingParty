@@ -45,7 +45,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ix7-OK-ECp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-832" y="-197"/>
+            <point key="canvasLocation" x="-833" y="-194"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CIR-1y-cZ0">
@@ -70,7 +70,7 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xJA-dt-ext">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="main_banner.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="xJA-dt-ext">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="129" type="user" id="3DN-RJ-jq6"/>
                                 </constraints>
@@ -142,7 +142,7 @@
                                         </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.97647064924240112" green="0.97647064924240112" blue="0.92549026012420654" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstItem="te9-F1-kRZ" firstAttribute="centerY" secondItem="zVM-Bt-2Ko" secondAttribute="centerY" type="default" id="3Z9-hU-rDG"/>
                                     <constraint firstItem="AWt-xk-Usw" firstAttribute="centerX" secondItem="zVM-Bt-2Ko" secondAttribute="centerX" type="default" id="7Ku-rd-TxP"/>
@@ -155,7 +155,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97647064924240112" green="0.97647064924240112" blue="0.92549026012420654" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="zVM-Bt-2Ko" secondAttribute="bottom" constant="80" id="1Hc-jy-K0X"/>
                             <constraint firstItem="xJA-dt-ext" firstAttribute="leading" secondItem="ND1-90-QMH" secondAttribute="leading" type="user" id="2gb-Y5-Rzx"/>
@@ -178,6 +178,7 @@
                     <connections>
                         <outlet property="UserFBProfilePicture" destination="1wb-AJ-Cab" id="qZC-va-ES4"/>
                         <outlet property="WelcomeUserText" destination="4oK-3Y-W0z" id="yIM-Kr-9kW"/>
+                        <outlet property="mainBannerPicture" destination="xJA-dt-ext" id="zZd-IY-pKs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GbZ-63-3v7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -309,7 +310,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="MainPicture.jpg" width="960" height="640"/>
+        <image name="MainPicture.jpg" width="369" height="549"/>
+        <image name="main_banner.jpg" width="641" height="240"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

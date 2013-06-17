@@ -11,7 +11,7 @@
 
 @interface MainPicturePageViewController : UIViewController <FBLoginViewDelegate>
 
-- (void)showLoginView;
-- (void)showLoggedInView;
+//- (void)showLoginView;
+//- (void)showLoggedInView;
 
 @end

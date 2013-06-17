@@ -48,24 +48,24 @@ NSString *const FBSessionStateChangedNotification =
                       state:(FBSessionState) state
                       error:(NSError *)error
 {
-    switch (state) {
-        case FBSessionStateOpen:
-            if ([self.window.rootViewController isMemberOfClass:[MainPicturePageViewController class]])
-            {
-                [self.mainViewController showLoggedInView];
-            }
-            break;
-        
-        case FBSessionStateClosed:
-        case FBSessionStateClosedLoginFailed:
-            
-            [FBSession.activeSession closeAndClearTokenInformation];
-                    
-            [self.mainViewController showLoginView];
-            break;
-        default:
-            break;
-    }
+//    switch (state) {
+//        case FBSessionStateOpen:
+//            if ([self.window.rootViewController isMemberOfClass:[MainPicturePageViewController class]])
+//            {
+//                [self.mainViewController showLoggedInView];
+//            }
+//            break;
+//        
+//        case FBSessionStateClosed:
+//        case FBSessionStateClosedLoginFailed:
+//            
+//            [FBSession.activeSession closeAndClearTokenInformation];
+//                    
+//            [self.mainViewController showLoginView];
+//            break;
+//        default:
+//            break;
+//    }
     
     if (error) {
         UIAlertView *alertView = [[UIAlertView alloc]

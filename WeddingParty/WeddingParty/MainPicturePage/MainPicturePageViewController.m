@@ -36,6 +36,11 @@
 
 }
 
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     NSLog(@"MainPicturePage - ViewWillAppear");
