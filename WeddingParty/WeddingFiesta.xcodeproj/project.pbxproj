@@ -160,6 +160,8 @@
 		76760297176F5A09003757A1 /* UINavigationController+autototate.m in Sources */ = {isa = PBXBuildFile; fileRef = 76760296176F5A03003757A1 /* UINavigationController+autototate.m */; };
 		7676029B176F9776003757A1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7676029D176F9776003757A1 /* Localizable.strings */; };
 		767602A117703AE6003757A1 /* main_banner_he.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 767602A017703AE5003757A1 /* main_banner_he.jpg */; };
+		767602A31770620F003757A1 /* DefaultIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 767602A21770620B003757A1 /* DefaultIcon.png */; };
+		767602A51770628B003757A1 /* DefaultIconRetina.png in Resources */ = {isa = PBXBuildFile; fileRef = 767602A417706288003757A1 /* DefaultIconRetina.png */; };
 		7695607F1769CAEF00F35507 /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7695607E1769CAEF00F35507 /* Toast+UIView.m */; };
 		769560811769D12400F35507 /* heartlike.png in Resources */ = {isa = PBXBuildFile; fileRef = 769560801769D12400F35507 /* heartlike.png */; };
 		76DBF2DF176CE921005F039E /* TopHitsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DBF2DE176CE921005F039E /* TopHitsViewController.m */; };
@@ -534,6 +536,8 @@
 		7676029E177032D3003757A1 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7676029F177032D3003757A1 /* he */ = {isa = PBXFileReference; lastKnownFileType = file; name = he; path = he.lproj/Localizable.strings; sourceTree = "<group>"; };
 		767602A017703AE5003757A1 /* main_banner_he.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = main_banner_he.jpg; sourceTree = "<group>"; };
+		767602A21770620B003757A1 /* DefaultIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultIcon.png; sourceTree = "<group>"; };
+		767602A417706288003757A1 /* DefaultIconRetina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultIconRetina.png; sourceTree = "<group>"; };
 		7695607D1769CAEF00F35507 /* Toast+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Toast+UIView.h"; sourceTree = "<group>"; };
 		7695607E1769CAEF00F35507 /* Toast+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Toast+UIView.m"; sourceTree = "<group>"; };
 		769560801769D12400F35507 /* heartlike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heartlike.png; sourceTree = "<group>"; };
@@ -946,6 +950,8 @@
 		76ED33261746182C00072A23 = {
 			isa = PBXGroup;
 			children = (
+				767602A417706288003757A1 /* DefaultIconRetina.png */,
+				767602A21770620B003757A1 /* DefaultIcon.png */,
 				76ED33381746182C00072A23 /* WeddingParty */,
 				76ED33311746182C00072A23 /* Frameworks */,
 				76ED33301746182C00072A23 /* Products */,
@@ -1542,6 +1548,8 @@
 				76760294176F3F6F003757A1 /* t69.jpg in Resources */,
 				7676029B176F9776003757A1 /* Localizable.strings in Resources */,
 				767602A117703AE6003757A1 /* main_banner_he.jpg in Resources */,
+				767602A31770620F003757A1 /* DefaultIcon.png in Resources */,
+				767602A51770628B003757A1 /* DefaultIconRetina.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1736,6 +1744,7 @@
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
 				);
 				INFOPLIST_FILE = "WeddingParty/WeddingFiesta-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1765,6 +1774,7 @@
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
 				);
 				INFOPLIST_FILE = "WeddingParty/WeddingFiesta-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
