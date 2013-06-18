@@ -177,6 +177,8 @@
     UITapGestureRecognizer *doubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapLike:)];
     doubleTapGesture.numberOfTapsRequired = 2;
     [bubbleTable addGestureRecognizer:doubleTapGesture];
+    
+    [self.navigationItem setTitle:NSLocalizedString(@"Top Hits", nil)];
 }
 
 - (void)doubleTapLike:(id)sender

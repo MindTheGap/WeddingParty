@@ -31,6 +31,7 @@
    
     __weak IBOutlet NSLayoutConstraint *keyboardHeightConstraint;
     
+    __weak IBOutlet UIButton *BlessButton;
     NSBubbleData *lastBubbleSelected;
 }
 
@@ -264,7 +265,7 @@
 {
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
-    UIBarButtonItem *rightTopHitsButton = [[UIBarButtonItem alloc] initWithTitle:@"Top Hits"
+    UIBarButtonItem *rightTopHitsButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Top Hits", nil)
                                                                     style:UIBarButtonItemStyleDone target:self action:@selector(topHitsButtonClick:)];
     self.navigationItem.rightBarButtonItem = rightTopHitsButton;
     
@@ -276,6 +277,11 @@
     UITapGestureRecognizer *doubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapLike:)];
     doubleTapGesture.numberOfTapsRequired = 2;
     [bubbleTable addGestureRecognizer:doubleTapGesture];
+    
+    [BlessButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [BlessButton setTitle:NSLocalizedString(@"Bless", nil) forState:UIControlStateNormal];
+    
+    [self.navigationItem setTitle:NSLocalizedString(@"Greetings", nil)];
 }
 
 - (void)doubleTapLike:(id)sender
@@ -335,7 +341,7 @@
     {
         UIButton *pastMessagesButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
-        NSString *tempFormat = @"More Blessings...";
+        NSString *tempFormat = NSLocalizedString(@"MoreBlessings", nil);
         int len = [tempFormat length];
 
         NSMutableAttributedString *moreBlessingsAttrNormal = [[NSMutableAttributedString alloc] initWithString:tempFormat];
