@@ -9,7 +9,7 @@
 #import "PhotoSet.h"
 #import "Photo.h"
 
-#define NUMBER_OF_PICS 69
+#define NUMBER_OF_PICS 45
 
 @implementation PhotoSet
 @synthesize title = _title;
@@ -71,7 +71,7 @@ static PhotoSet *samplePhotoSet = nil;
             for (int fileIndex = 1; fileIndex < NUMBER_OF_PICS; fileIndex++)
             {
                 UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg",fileIndex]];
-                Photo *photo = [[Photo alloc] initWithCaption:@"" urlLarge:[NSString stringWithFormat:@"http://54.242.242.228/%d.jpg",fileIndex] urlSmall:[NSString stringWithFormat:@"bundle://%d.jpg",fileIndex] urlThumb:[NSString stringWithFormat:@"bundle://%d.jpg",fileIndex] size:image.size];
+                Photo *photo = [[Photo alloc] initWithCaption:@"" urlLarge:nil urlSmall:[NSString stringWithFormat:@"bundle://%d.jpg",fileIndex] urlThumb:[NSString stringWithFormat:@"bundle://%d.jpg",fileIndex] size:image.size];
                 if (photo)
                 {
                     [photosArray addObject:photo];
