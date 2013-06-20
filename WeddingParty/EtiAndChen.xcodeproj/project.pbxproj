@@ -60,10 +60,9 @@
 		767601EC176F3F5A003757A1 /* 39.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 767601A7176F3F59003757A1 /* 39.jpg */; };
 		767601ED176F3F5A003757A1 /* 40.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 767601A8176F3F59003757A1 /* 40.jpg */; };
 		767601EE176F3F5A003757A1 /* 41.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 767601A9176F3F59003757A1 /* 41.jpg */; };
-		767601EF176F3F5A003757A1 /* 42.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 767601AA176F3F59003757A1 /* 42.jpg */; };
 		767601F0176F3F5A003757A1 /* 43.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 767601AB176F3F59003757A1 /* 43.jpg */; };
 		767601F1176F3F5A003757A1 /* 44.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 767601AC176F3F59003757A1 /* 44.jpg */; };
-		767601F2176F3F5A003757A1 /* 45.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 767601AD176F3F59003757A1 /* 45.jpg */; };
+		767601F2176F3F5A003757A1 /* 42.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 767601AD176F3F59003757A1 /* 42.jpg */; };
 		76760250176F3F6F003757A1 /* t1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7676020B176F3F6F003757A1 /* t1.jpg */; };
 		76760251176F3F6F003757A1 /* t2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7676020C176F3F6F003757A1 /* t2.jpg */; };
 		76760252176F3F6F003757A1 /* t3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7676020D176F3F6F003757A1 /* t3.jpg */; };
@@ -105,10 +104,9 @@
 		76760276176F3F6F003757A1 /* t39.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 76760231176F3F6F003757A1 /* t39.jpg */; };
 		76760277176F3F6F003757A1 /* t40.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 76760232176F3F6F003757A1 /* t40.jpg */; };
 		76760278176F3F6F003757A1 /* t41.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 76760233176F3F6F003757A1 /* t41.jpg */; };
-		76760279176F3F6F003757A1 /* t42.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 76760234176F3F6F003757A1 /* t42.jpg */; };
 		7676027A176F3F6F003757A1 /* t43.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 76760235176F3F6F003757A1 /* t43.jpg */; };
 		7676027B176F3F6F003757A1 /* t44.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 76760236176F3F6F003757A1 /* t44.jpg */; };
-		7676027C176F3F6F003757A1 /* t45.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 76760237176F3F6F003757A1 /* t45.jpg */; };
+		7676027C176F3F6F003757A1 /* t42.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 76760237176F3F6F003757A1 /* t42.jpg */; };
 		76760297176F5A09003757A1 /* UINavigationController+autototate.m in Sources */ = {isa = PBXBuildFile; fileRef = 76760296176F5A03003757A1 /* UINavigationController+autototate.m */; };
 		7676029B176F9776003757A1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7676029D176F9776003757A1 /* Localizable.strings */; };
 		767602A117703AE6003757A1 /* main_banner_he.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 767602A017703AE5003757A1 /* main_banner_he.jpg */; };
@@ -385,10 +383,9 @@
 		767601A7176F3F59003757A1 /* 39.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 39.jpg; path = small/39.jpg; sourceTree = "<group>"; };
 		767601A8176F3F59003757A1 /* 40.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 40.jpg; path = small/40.jpg; sourceTree = "<group>"; };
 		767601A9176F3F59003757A1 /* 41.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 41.jpg; path = small/41.jpg; sourceTree = "<group>"; };
-		767601AA176F3F59003757A1 /* 42.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 42.jpg; path = small/42.jpg; sourceTree = "<group>"; };
 		767601AB176F3F59003757A1 /* 43.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 43.jpg; path = small/43.jpg; sourceTree = "<group>"; };
 		767601AC176F3F59003757A1 /* 44.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 44.jpg; path = small/44.jpg; sourceTree = "<group>"; };
-		767601AD176F3F59003757A1 /* 45.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 45.jpg; path = small/45.jpg; sourceTree = "<group>"; };
+		767601AD176F3F59003757A1 /* 42.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 42.jpg; path = small/42.jpg; sourceTree = "<group>"; };
 		7676020B176F3F6F003757A1 /* t1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = t1.jpg; path = thumb/t1.jpg; sourceTree = "<group>"; };
 		7676020C176F3F6F003757A1 /* t2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = t2.jpg; path = thumb/t2.jpg; sourceTree = "<group>"; };
 		7676020D176F3F6F003757A1 /* t3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = t3.jpg; path = thumb/t3.jpg; sourceTree = "<group>"; };
@@ -430,15 +427,14 @@
 		76760231176F3F6F003757A1 /* t39.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = t39.jpg; path = thumb/t39.jpg; sourceTree = "<group>"; };
 		76760232176F3F6F003757A1 /* t40.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = t40.jpg; path = thumb/t40.jpg; sourceTree = "<group>"; };
 		76760233176F3F6F003757A1 /* t41.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = t41.jpg; path = thumb/t41.jpg; sourceTree = "<group>"; };
-		76760234176F3F6F003757A1 /* t42.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = t42.jpg; path = thumb/t42.jpg; sourceTree = "<group>"; };
 		76760235176F3F6F003757A1 /* t43.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = t43.jpg; path = thumb/t43.jpg; sourceTree = "<group>"; };
 		76760236176F3F6F003757A1 /* t44.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = t44.jpg; path = thumb/t44.jpg; sourceTree = "<group>"; };
-		76760237176F3F6F003757A1 /* t45.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = t45.jpg; path = thumb/t45.jpg; sourceTree = "<group>"; };
+		76760237176F3F6F003757A1 /* t42.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = t42.jpg; path = thumb/t42.jpg; sourceTree = "<group>"; };
 		76760295176F59FA003757A1 /* UINavigationController+autototate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+autototate.h"; path = "AutoRotateCategory/UINavigationController+autototate.h"; sourceTree = "<group>"; };
 		76760296176F5A03003757A1 /* UINavigationController+autototate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+autototate.m"; path = "AutoRotateCategory/UINavigationController+autototate.m"; sourceTree = "<group>"; };
-		7676029C176F9776003757A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7676029C176F9776003757A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7676029E177032D3003757A1 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		7676029F177032D3003757A1 /* he */ = {isa = PBXFileReference; lastKnownFileType = file; name = he; path = he.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7676029F177032D3003757A1 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Localizable.strings; sourceTree = "<group>"; };
 		767602A017703AE5003757A1 /* main_banner_he.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = main_banner_he.jpg; sourceTree = "<group>"; };
 		767602A21770620B003757A1 /* DefaultIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultIcon.png; sourceTree = "<group>"; };
 		767602A417706288003757A1 /* DefaultIconRetina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultIconRetina.png; sourceTree = "<group>"; };
@@ -459,14 +455,14 @@
 		76E434001769DED600FB8991 /* UIBubbleTypingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTypingTableViewCell.h; sourceTree = "<group>"; };
 		76E434011769DED600FB8991 /* UIBubbleTypingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTypingTableViewCell.m; sourceTree = "<group>"; };
 		76E43428176A11D100FB8991 /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
-		76ED332F1746182C00072A23 /* WeddingFiesta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeddingFiesta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		76ED332F1746182C00072A23 /* EtiAndChen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EtiAndChen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76ED33321746182C00072A23 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		76ED33341746182C00072A23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		76ED33361746182C00072A23 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		76ED333A1746182C00072A23 /* WeddingFiesta-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WeddingFiesta-Info.plist"; sourceTree = "<group>"; };
+		76ED333A1746182C00072A23 /* EtiAndChen-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EtiAndChen-Info.plist"; sourceTree = "<group>"; };
 		76ED333C1746182C00072A23 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		76ED333E1746182C00072A23 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		76ED33401746182C00072A23 /* WeddingFiesta-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WeddingFiesta-Prefix.pch"; sourceTree = "<group>"; };
+		76ED33401746182C00072A23 /* EtiAndChen-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EtiAndChen-Prefix.pch"; sourceTree = "<group>"; };
 		76ED33411746182C00072A23 /* WeddingPartyAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeddingPartyAppDelegate.h; sourceTree = "<group>"; };
 		76ED33421746182C00072A23 /* WeddingPartyAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeddingPartyAppDelegate.m; sourceTree = "<group>"; };
 		76ED33441746182C00072A23 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -681,10 +677,9 @@
 				76760231176F3F6F003757A1 /* t39.jpg */,
 				76760232176F3F6F003757A1 /* t40.jpg */,
 				76760233176F3F6F003757A1 /* t41.jpg */,
-				76760234176F3F6F003757A1 /* t42.jpg */,
 				76760235176F3F6F003757A1 /* t43.jpg */,
 				76760236176F3F6F003757A1 /* t44.jpg */,
-				76760237176F3F6F003757A1 /* t45.jpg */,
+				76760237176F3F6F003757A1 /* t42.jpg */,
 			);
 			name = Thumbnails;
 			sourceTree = "<group>";
@@ -733,10 +728,9 @@
 				767601A7176F3F59003757A1 /* 39.jpg */,
 				767601A8176F3F59003757A1 /* 40.jpg */,
 				767601A9176F3F59003757A1 /* 41.jpg */,
-				767601AA176F3F59003757A1 /* 42.jpg */,
 				767601AB176F3F59003757A1 /* 43.jpg */,
 				767601AC176F3F59003757A1 /* 44.jpg */,
-				767601AD176F3F59003757A1 /* 45.jpg */,
+				767601AD176F3F59003757A1 /* 42.jpg */,
 			);
 			name = Small;
 			sourceTree = "<group>";
@@ -808,7 +802,7 @@
 			children = (
 				767602A417706288003757A1 /* DefaultIconRetina.png */,
 				767602A21770620B003757A1 /* DefaultIcon.png */,
-				76ED33381746182C00072A23 /* WeddingParty */,
+				76ED33381746182C00072A23 /* EtiAndChen */,
 				76ED33311746182C00072A23 /* Frameworks */,
 				76ED33301746182C00072A23 /* Products */,
 			);
@@ -817,7 +811,7 @@
 		76ED33301746182C00072A23 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				76ED332F1746182C00072A23 /* WeddingFiesta.app */,
+				76ED332F1746182C00072A23 /* EtiAndChen.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -847,7 +841,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		76ED33381746182C00072A23 /* WeddingParty */ = {
+		76ED33381746182C00072A23 /* EtiAndChen */ = {
 			isa = PBXGroup;
 			children = (
 				7695607C1769CAE600F35507 /* Toast */,
@@ -860,9 +854,10 @@
 				76ED3356174618A400072A23 /* MainPicturePage */,
 				76DBF2E7176CE926005F039E /* TopHits */,
 				76F2531017568AD700E94BCF /* GreetingsPage */,
-				76ED33391746182C00072A23 /* Supporting Files */,
 				76760298176F5AE7003757A1 /* AutoRotateCategory */,
+				76ED33391746182C00072A23 /* Supporting Files */,
 			);
+			name = EtiAndChen;
 			path = WeddingParty;
 			sourceTree = "<group>";
 		};
@@ -873,10 +868,10 @@
 				76631D221753534B00949C8F /* Three20.bundle */,
 				76ED33411746182C00072A23 /* WeddingPartyAppDelegate.h */,
 				76ED33421746182C00072A23 /* WeddingPartyAppDelegate.m */,
-				76ED333A1746182C00072A23 /* WeddingFiesta-Info.plist */,
+				76ED333A1746182C00072A23 /* EtiAndChen-Info.plist */,
 				76ED333B1746182C00072A23 /* InfoPlist.strings */,
 				76ED333E1746182C00072A23 /* main.m */,
-				76ED33401746182C00072A23 /* WeddingFiesta-Prefix.pch */,
+				76ED33401746182C00072A23 /* EtiAndChen-Prefix.pch */,
 				76ED33441746182C00072A23 /* Default.png */,
 				76ED33461746182C00072A23 /* Default@2x.png */,
 				76ED33481746182C00072A23 /* Default-568h@2x.png */,
@@ -1044,9 +1039,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		76ED332E1746182C00072A23 /* WeddingFiesta */ = {
+		76ED332E1746182C00072A23 /* EtiAndChen */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 76ED33521746182C00072A23 /* Build configuration list for PBXNativeTarget "WeddingFiesta" */;
+			buildConfigurationList = 76ED33521746182C00072A23 /* Build configuration list for PBXNativeTarget "EtiAndChen" */;
 			buildPhases = (
 				76ED332B1746182C00072A23 /* Sources */,
 				76ED332C1746182C00072A23 /* Frameworks */,
@@ -1063,9 +1058,9 @@
 				76631D1F175352E300949C8F /* PBXTargetDependency */,
 				76631D21175352E300949C8F /* PBXTargetDependency */,
 			);
-			name = WeddingFiesta;
+			name = EtiAndChen;
 			productName = WeddingParty;
-			productReference = 76ED332F1746182C00072A23 /* WeddingFiesta.app */;
+			productReference = 76ED332F1746182C00072A23 /* EtiAndChen.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1078,7 +1073,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = MTG;
 			};
-			buildConfigurationList = 76ED332A1746182C00072A23 /* Build configuration list for PBXProject "WeddingFiesta" */;
+			buildConfigurationList = 76ED332A1746182C00072A23 /* Build configuration list for PBXProject "EtiAndChen" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1121,7 +1116,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				76ED332E1746182C00072A23 /* WeddingFiesta */,
+				76ED332E1746182C00072A23 /* EtiAndChen */,
 			);
 		};
 /* End PBXProject section */
@@ -1305,10 +1300,9 @@
 				767601EC176F3F5A003757A1 /* 39.jpg in Resources */,
 				767601ED176F3F5A003757A1 /* 40.jpg in Resources */,
 				767601EE176F3F5A003757A1 /* 41.jpg in Resources */,
-				767601EF176F3F5A003757A1 /* 42.jpg in Resources */,
 				767601F0176F3F5A003757A1 /* 43.jpg in Resources */,
 				767601F1176F3F5A003757A1 /* 44.jpg in Resources */,
-				767601F2176F3F5A003757A1 /* 45.jpg in Resources */,
+				767601F2176F3F5A003757A1 /* 42.jpg in Resources */,
 				76760250176F3F6F003757A1 /* t1.jpg in Resources */,
 				76760251176F3F6F003757A1 /* t2.jpg in Resources */,
 				76760252176F3F6F003757A1 /* t3.jpg in Resources */,
@@ -1350,10 +1344,9 @@
 				76760276176F3F6F003757A1 /* t39.jpg in Resources */,
 				76760277176F3F6F003757A1 /* t40.jpg in Resources */,
 				76760278176F3F6F003757A1 /* t41.jpg in Resources */,
-				76760279176F3F6F003757A1 /* t42.jpg in Resources */,
 				7676027A176F3F6F003757A1 /* t43.jpg in Resources */,
 				7676027B176F3F6F003757A1 /* t44.jpg in Resources */,
-				7676027C176F3F6F003757A1 /* t45.jpg in Resources */,
+				7676027C176F3F6F003757A1 /* t42.jpg in Resources */,
 				7676029B176F9776003757A1 /* Localizable.strings in Resources */,
 				767602A117703AE6003757A1 /* main_banner_he.jpg in Resources */,
 				767602A31770620F003757A1 /* DefaultIcon.png in Resources */,
@@ -1537,29 +1530,30 @@
 		76ED33531746182C00072A23 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Chen Avnery (E68W5R7QT7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chen Avnery (E68W5R7QT7)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WeddingParty/WeddingFiesta-Prefix.pch";
+				GCC_PREFIX_HEADER = "WeddingParty/EtiAndChen-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					../three20/Build/Products/three20,
 					three20/Build/Products/three20,
 					"$(BUILT_PRODUCTS_DIR)/../three20",
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
 				);
-				INFOPLIST_FILE = "WeddingParty/WeddingFiesta-Info.plist";
+				INFOPLIST_FILE = "WeddingParty/EtiAndChen-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = WeddingFiesta;
-				PROVISIONING_PROFILE = "CE8A101F-F06E-4798-8B97-0C5D257D0B0D";
+				PRODUCT_NAME = EtiAndChen;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1567,29 +1561,30 @@
 		76ED33541746182C00072A23 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Chen Avnery (E68W5R7QT7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chen Avnery (E68W5R7QT7)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WeddingParty/WeddingFiesta-Prefix.pch";
+				GCC_PREFIX_HEADER = "WeddingParty/EtiAndChen-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					../three20/Build/Products/three20,
 					three20/Build/Products/three20,
 					"$(BUILT_PRODUCTS_DIR)/../three20",
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
 				);
-				INFOPLIST_FILE = "WeddingParty/WeddingFiesta-Info.plist";
+				INFOPLIST_FILE = "WeddingParty/EtiAndChen-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = WeddingFiesta;
-				PROVISIONING_PROFILE = "CE8A101F-F06E-4798-8B97-0C5D257D0B0D";
+				PRODUCT_NAME = EtiAndChen;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1597,7 +1592,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		76ED332A1746182C00072A23 /* Build configuration list for PBXProject "WeddingFiesta" */ = {
+		76ED332A1746182C00072A23 /* Build configuration list for PBXProject "EtiAndChen" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				76ED33501746182C00072A23 /* Debug */,
@@ -1606,7 +1601,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		76ED33521746182C00072A23 /* Build configuration list for PBXNativeTarget "WeddingFiesta" */ = {
+		76ED33521746182C00072A23 /* Build configuration list for PBXNativeTarget "EtiAndChen" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				76ED33531746182C00072A23 /* Debug */,

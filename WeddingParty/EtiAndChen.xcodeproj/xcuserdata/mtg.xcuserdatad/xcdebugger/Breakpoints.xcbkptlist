@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WeddingParty/GreetingsViewController/GreetingsViewController.m"
-         timestampString = "393234672.190762"
+         timestampString = "393279630.645019"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "289"
-         endingLineNumber = "289"
+         startingLineNumber = "290"
+         endingLineNumber = "290"
          landmarkName = "-doubleTapLike:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -112,12 +112,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WeddingParty/MainLoggedInPage/MainLoggedInPageViewController.m"
-         timestampString = "393232361.197484"
+         timestampString = "393352073.202403"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "49"
-         endingLineNumber = "49"
+         startingLineNumber = "54"
+         endingLineNumber = "54"
          landmarkName = "-viewWillAppear:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "WeddingParty/MainLoggedInPage/MainLoggedInPageViewController.m"
+         timestampString = "393352096.936635"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "50"
+         endingLineNumber = "50"
+         landmarkName = "-supportedInterfaceOrientations:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

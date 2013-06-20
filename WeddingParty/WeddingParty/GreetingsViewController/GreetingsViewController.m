@@ -282,6 +282,7 @@
     [BlessButton setTitle:NSLocalizedString(@"Bless", nil) forState:UIControlStateNormal];
     
     [self.navigationItem setTitle:NSLocalizedString(@"Greetings", nil)];
+    
 }
 
 - (void)doubleTapLike:(id)sender
@@ -502,9 +503,9 @@
         [self saveDataToDisk];
     }
 //    
-    NSLog(@"Deleting file...");
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    [fileManager removeItemAtPath:[self saveFilePath] error:NULL];
+//    NSLog(@"Deleting file...");
+//    NSFileManager *fileManager = [NSFileManager defaultManager];
+//    [fileManager removeItemAtPath:[self saveFilePath] error:NULL];
 ////
 
     

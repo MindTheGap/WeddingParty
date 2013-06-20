@@ -9,7 +9,7 @@
 #import "PhotoSet.h"
 #import "Photo.h"
 
-#define NUMBER_OF_PICS 45
+#define NUMBER_OF_PICS 44
 
 @implementation PhotoSet
 @synthesize title = _title;

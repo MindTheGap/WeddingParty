@@ -20,7 +20,7 @@
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>com.wedding.fiesta.mtg</string>
+	<string>com.eti.chen.mtg</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -36,7 +36,7 @@
 	<key>FacebookAppID</key>
 	<string>316722691791258</string>
 	<key>FacebookDisplayName</key>
-	<string>WeddingFiesta</string>
+	<string>EtiAndChen</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIMainStoryboardFile</key>

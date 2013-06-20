@@ -337,9 +337,9 @@
         [self saveDataToDisk];
     }
 ////    
-    NSLog(@"Deleting file...");
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    [fileManager removeItemAtPath:[self saveFilePath] error:NULL];
+//    NSLog(@"Deleting file...");
+//    NSFileManager *fileManager = [NSFileManager defaultManager];
+//    [fileManager removeItemAtPath:[self saveFilePath] error:NULL];
 //////
 
     

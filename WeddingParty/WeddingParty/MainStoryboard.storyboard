@@ -85,8 +85,16 @@
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
                                 </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="76" type="user" id="eOW-nK-78k"/>
+                                    <constraint firstAttribute="width" constant="76" type="user" id="kvn-dz-dgp"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddJ-xe-ig4" customClass="FBLoginView" colorLabel="IBBuiltInLabel-Gray">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" type="user" id="ABE-3O-hWn"/>
+                                    <constraint firstAttribute="width" constant="115" type="user" id="rbT-eT-zsT"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="WXJ-o8-mHt" id="wZm-Pv-0rw"/>
                                 </connections>
@@ -150,20 +158,20 @@
                         <constraints>
                             <constraint firstItem="xJA-dt-ext" firstAttribute="trailing" secondItem="ND1-90-QMH" secondAttribute="trailing" type="default" id="2Yc-MW-KeV"/>
                             <constraint firstItem="4oK-3Y-W0z" firstAttribute="top" secondItem="ND1-90-QMH" secondAttribute="top" constant="125" id="4ek-qf-esa"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ddJ-xe-ig4" secondAttribute="bottom" constant="4" type="user" id="64h-3N-dBc"/>
                             <constraint firstItem="zVM-Bt-2Ko" firstAttribute="top" secondItem="ND1-90-QMH" secondAttribute="top" constant="178" id="9G3-b2-rlD"/>
-                            <constraint firstItem="1wb-AJ-Cab" firstAttribute="top" secondItem="ND1-90-QMH" secondAttribute="top" type="default" id="GHn-Oa-fg1"/>
+                            <constraint firstItem="1wb-AJ-Cab" firstAttribute="top" secondItem="ND1-90-QMH" secondAttribute="top" type="user" id="GHn-Oa-fg1"/>
                             <constraint firstItem="xJA-dt-ext" firstAttribute="leading" secondItem="ND1-90-QMH" secondAttribute="leading" type="default" id="I6w-mR-0mV"/>
-                            <constraint firstAttribute="trailing" secondItem="1wb-AJ-Cab" secondAttribute="trailing" constant="244" id="IbQ-Pm-T2a"/>
                             <constraint firstItem="4oK-3Y-W0z" firstAttribute="centerX" secondItem="zVM-Bt-2Ko" secondAttribute="centerX" type="default" id="Iw8-tk-pml"/>
-                            <constraint firstAttribute="bottom" secondItem="1wb-AJ-Cab" secondAttribute="bottom" constant="384" id="ROb-hu-dbe"/>
-                            <constraint firstAttribute="trailing" secondItem="ddJ-xe-ig4" secondAttribute="trailing" constant="4" id="TfF-gI-41h"/>
-                            <constraint firstItem="ddJ-xe-ig4" firstAttribute="top" secondItem="ND1-90-QMH" secondAttribute="top" constant="412" id="YwQ-T9-X28"/>
-                            <constraint firstItem="ddJ-xe-ig4" firstAttribute="leading" secondItem="ND1-90-QMH" secondAttribute="leading" constant="201" id="beW-Bn-MsX"/>
-                            <constraint firstItem="1wb-AJ-Cab" firstAttribute="leading" secondItem="ND1-90-QMH" secondAttribute="leading" type="default" id="dd7-QE-qHG"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ddJ-xe-ig4" secondAttribute="trailing" constant="4" type="user" id="KD5-OY-LVr"/>
+                            <constraint firstAttribute="trailing" secondItem="ddJ-xe-ig4" secondAttribute="trailing" constant="4" type="user" id="TfF-gI-41h"/>
+                            <constraint firstItem="1wb-AJ-Cab" firstAttribute="leading" secondItem="ND1-90-QMH" secondAttribute="leading" type="user" id="Z7S-CO-8qr"/>
+                            <constraint firstItem="1wb-AJ-Cab" firstAttribute="leading" secondItem="ND1-90-QMH" secondAttribute="leading" type="user" id="dd7-QE-qHG"/>
+                            <constraint firstItem="1wb-AJ-Cab" firstAttribute="top" secondItem="ND1-90-QMH" secondAttribute="top" type="user" id="eoo-W3-V0q"/>
                             <constraint firstItem="4oK-3Y-W0z" firstAttribute="centerX" secondItem="xJA-dt-ext" secondAttribute="centerX" type="default" id="fSc-aE-HV7"/>
                             <constraint firstAttribute="bottom" secondItem="zVM-Bt-2Ko" secondAttribute="bottom" constant="80" id="gbM-N8-i2S"/>
                             <constraint firstItem="xJA-dt-ext" firstAttribute="top" secondItem="ND1-90-QMH" secondAttribute="top" type="default" id="kJT-OV-dz3"/>
-                            <constraint firstAttribute="bottom" secondItem="ddJ-xe-ig4" secondAttribute="bottom" constant="4" id="q5V-R8-Yz8"/>
+                            <constraint firstAttribute="bottom" secondItem="ddJ-xe-ig4" secondAttribute="bottom" constant="4" type="user" id="q5V-R8-Yz8"/>
                             <constraint firstItem="zVM-Bt-2Ko" firstAttribute="leading" secondItem="ND1-90-QMH" secondAttribute="leading" constant="56" id="x1i-lH-3qR"/>
                         </constraints>
                     </view>
@@ -228,18 +236,15 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="uhr-R1-Ppx" firstAttribute="leading" secondItem="c0N-6E-iYZ" secondAttribute="leading" type="default" id="ADh-Ck-LQ8"/>
-                                    <constraint firstItem="uhr-R1-Ppx" firstAttribute="bottom" secondItem="c0N-6E-iYZ" secondAttribute="bottom" type="default" id="B7y-jF-8lq"/>
+                                    <constraint firstItem="uhr-R1-Ppx" firstAttribute="bottom" secondItem="c0N-6E-iYZ" secondAttribute="bottom" type="user" id="B7y-jF-8lq"/>
+                                    <constraint firstAttribute="trailing" secondItem="uhr-R1-Ppx" secondAttribute="trailing" constant="-1" type="user" id="F64-eD-ydB"/>
+                                    <constraint firstItem="uhr-R1-Ppx" firstAttribute="leading" secondItem="c0N-6E-iYZ" secondAttribute="leading" constant="1" type="user" id="TiH-ZK-VWt"/>
                                     <constraint firstItem="uhr-R1-Ppx" firstAttribute="top" secondItem="c0N-6E-iYZ" secondAttribute="top" type="default" id="job-Vv-lRM"/>
-                                    <constraint firstItem="uhr-R1-Ppx" firstAttribute="trailing" secondItem="c0N-6E-iYZ" secondAttribute="trailing" type="default" id="zbn-fR-sOj"/>
                                 </constraints>
                             </view>
                             <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s4V-BU-bf3" userLabel="BottomBarView">
                                 <subviews>
                                     <textField opaque="NO" contentMode="center" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" borderStyle="roundedRect" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2LZ-8H-pI6">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="215" type="user" id="zTw-qv-MLQ"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -267,26 +272,27 @@
                                 <constraints>
                                     <constraint firstItem="A18-MX-I1q" firstAttribute="bottom" secondItem="2LZ-8H-pI6" secondAttribute="bottom" type="user" id="6qI-jr-55q"/>
                                     <constraint firstItem="A18-MX-I1q" firstAttribute="leading" secondItem="2LZ-8H-pI6" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="7dK-63-mCx"/>
+                                    <constraint firstAttribute="trailing" secondItem="A18-MX-I1q" secondAttribute="trailing" constant="6" type="user" id="EIT-eG-XXZ"/>
                                     <constraint firstItem="2LZ-8H-pI6" firstAttribute="centerY" secondItem="s4V-BU-bf3" secondAttribute="centerY" type="user" id="HHB-y0-S45"/>
                                     <constraint firstItem="2LZ-8H-pI6" firstAttribute="top" secondItem="A18-MX-I1q" secondAttribute="top" type="user" id="Htm-ry-zeu"/>
                                     <constraint firstAttribute="bottom" secondItem="A18-MX-I1q" secondAttribute="bottom" constant="7" type="user" id="IsG-Rt-xej"/>
                                     <constraint firstAttribute="height" constant="44" type="user" id="Jhd-ad-cIO"/>
-                                    <constraint firstItem="2LZ-8H-pI6" firstAttribute="leading" secondItem="s4V-BU-bf3" secondAttribute="leading" constant="5" id="dGv-vh-A0p"/>
+                                    <constraint firstItem="2LZ-8H-pI6" firstAttribute="leading" secondItem="s4V-BU-bf3" secondAttribute="leading" constant="5" type="user" id="dGv-vh-A0p"/>
                                     <constraint firstItem="2LZ-8H-pI6" firstAttribute="top" secondItem="s4V-BU-bf3" secondAttribute="top" constant="7" type="user" id="efG-Kr-pPc"/>
+                                    <constraint firstItem="2LZ-8H-pI6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="s4V-BU-bf3" secondAttribute="leading" constant="5" type="user" id="etY-26-PzO"/>
                                     <constraint firstAttribute="bottom" secondItem="2LZ-8H-pI6" secondAttribute="bottom" constant="7" type="user" id="hxA-eN-d6g"/>
-                                    <constraint firstItem="A18-MX-I1q" firstAttribute="leading" secondItem="2LZ-8H-pI6" secondAttribute="trailing" constant="8" type="user" id="rsu-Vp-sNM"/>
                                     <constraint firstItem="A18-MX-I1q" firstAttribute="top" secondItem="s4V-BU-bf3" secondAttribute="top" constant="7" type="user" id="yfc-mn-Mgu"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="c0N-6E-iYZ" firstAttribute="trailing" secondItem="CSC-EP-cd6" secondAttribute="trailing" type="default" id="GhA-1w-zBW"/>
+                            <constraint firstItem="c0N-6E-iYZ" firstAttribute="trailing" secondItem="CSC-EP-cd6" secondAttribute="trailing" type="user" id="GhA-1w-zBW"/>
                             <constraint firstAttribute="bottom" secondItem="c0N-6E-iYZ" secondAttribute="bottom" constant="44" id="O7F-MT-Ljb"/>
                             <constraint firstItem="s4V-BU-bf3" firstAttribute="bottom" secondItem="CSC-EP-cd6" secondAttribute="bottom" type="user" id="QIc-L8-Z6O"/>
-                            <constraint firstItem="c0N-6E-iYZ" firstAttribute="leading" secondItem="CSC-EP-cd6" secondAttribute="leading" type="default" id="XdA-pr-0bN"/>
-                            <constraint firstItem="s4V-BU-bf3" firstAttribute="leading" secondItem="CSC-EP-cd6" secondAttribute="leading" type="default" id="cYc-V5-pHJ"/>
-                            <constraint firstItem="s4V-BU-bf3" firstAttribute="trailing" secondItem="CSC-EP-cd6" secondAttribute="trailing" type="default" id="e8J-iG-IBL"/>
+                            <constraint firstItem="c0N-6E-iYZ" firstAttribute="leading" secondItem="CSC-EP-cd6" secondAttribute="leading" type="user" id="XdA-pr-0bN"/>
+                            <constraint firstItem="s4V-BU-bf3" firstAttribute="leading" secondItem="CSC-EP-cd6" secondAttribute="leading" type="user" id="cYc-V5-pHJ"/>
+                            <constraint firstItem="s4V-BU-bf3" firstAttribute="trailing" secondItem="CSC-EP-cd6" secondAttribute="trailing" type="user" id="e8J-iG-IBL"/>
                             <constraint firstItem="c0N-6E-iYZ" firstAttribute="top" secondItem="CSC-EP-cd6" secondAttribute="top" type="default" id="g1u-6h-eDW"/>
                         </constraints>
                     </view>
@@ -299,6 +305,7 @@
                     <connections>
                         <outlet property="BlessButton" destination="A18-MX-I1q" id="bH2-oB-wBA"/>
                         <outlet property="bubbleTable" destination="uhr-R1-Ppx" id="yXk-8E-0ZY"/>
+                        <outlet property="keyboardHeightConstraint" destination="QIc-L8-Z6O" id="UZL-KK-EUT"/>
                         <outlet property="mainViewOfTV" destination="c0N-6E-iYZ" id="QA8-Qx-abT"/>
                         <outlet property="textField" destination="2LZ-8H-pI6" id="FTA-Bd-3Ir"/>
                         <outlet property="textInputView" destination="s4V-BU-bf3" id="3Ch-CJ-atk"/>
@@ -312,56 +319,6 @@
     <resources>
         <image name="MainPicture.jpg" width="369" height="549"/>
     </resources>
-    <classes>
-        <class className="FBLoginView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FBLoginView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="delegate"/>
-            </relationships>
-        </class>
-        <class className="FBProfilePictureView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FBProfilePictureView.h"/>
-        </class>
-        <class className="GreetingsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GreetingsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="BlessButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="bubbleTable" candidateClass="UIBubbleTableView"/>
-                <relationship kind="outlet" name="keyboardHeightConstraint" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="mainViewOfTV" candidateClass="UIView"/>
-                <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="textInputView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="MainLoggedInPageViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainLoggedInPageViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="GalleryButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="GreetingsButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="UserFBProfilePicture" candidateClass="FBProfilePictureView"/>
-                <relationship kind="outlet" name="WelcomeUserText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="mainBannerPicture" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="MainPicturePageViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainPicturePageViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mainPictureImageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="TopHitsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TopHitsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="bubbleTable" candidateClass="UIBubbleTableView"/>
-            </relationships>
-        </class>
-        <class className="UIBubbleTableView" superclassName="UITableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIBubbleTableView.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

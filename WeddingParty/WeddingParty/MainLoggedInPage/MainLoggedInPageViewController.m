@@ -42,7 +42,12 @@
 
 - (BOOL)shouldAutorotate
 {
-    return NO;
+    return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return (UIInterfaceOrientationMaskPortraitUpsideDown | UIInterfaceOrientationMaskPortrait);
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -78,8 +83,6 @@
     
     [self.GreetingsButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
     [self.GreetingsButton setTitle:NSLocalizedString(@"Greetings", nil) forState:UIControlStateNormal];
-
-    
 }
 
 - (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView
