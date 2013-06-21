@@ -266,9 +266,8 @@
                  for (int j = 0; j < count; j++)
                  {
                      NSBubbleData *oldMsg = [[self bubbleData] objectAtIndex:j];
-                     UILabel *oldMsgLabel = (UILabel *)[oldMsg view];
                      NSString *msgData = [message Data];
-                     NSString *oldMsgData = [oldMsgLabel text];
+                     NSString *oldMsgData = [oldMsg text];
                      NSString *msgUserName = [message UserFullName];
                      NSString *oldMsgUserName = [oldMsg userFullName];
                      if (([msgData compare:oldMsgData] == NSOrderedSame) && ([msgUserName compare:oldMsgUserName] == NSOrderedSame))

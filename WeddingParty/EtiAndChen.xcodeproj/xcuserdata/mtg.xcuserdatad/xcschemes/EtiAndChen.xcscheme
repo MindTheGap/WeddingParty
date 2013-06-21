@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "76ED332E1746182C00072A23"
-               BuildableName = "WeddingLoco.app"
+               BuildableName = "EtiAndChen.app"
                BlueprintName = "EtiAndChen"
                ReferencedContainer = "container:EtiAndChen.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "76ED332E1746182C00072A23"
-            BuildableName = "WeddingLoco.app"
+            BuildableName = "EtiAndChen.app"
             BlueprintName = "EtiAndChen"
             ReferencedContainer = "container:EtiAndChen.xcodeproj">
          </BuildableReference>
@@ -52,7 +52,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "76ED332E1746182C00072A23"
-            BuildableName = "WeddingLoco.app"
+            BuildableName = "EtiAndChen.app"
             BlueprintName = "EtiAndChen"
             ReferencedContainer = "container:EtiAndChen.xcodeproj">
          </BuildableReference>
@@ -70,7 +70,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "76ED332E1746182C00072A23"
-            BuildableName = "WeddingLoco.app"
+            BuildableName = "EtiAndChen.app"
             BlueprintName = "EtiAndChen"
             ReferencedContainer = "container:EtiAndChen.xcodeproj">
          </BuildableReference>

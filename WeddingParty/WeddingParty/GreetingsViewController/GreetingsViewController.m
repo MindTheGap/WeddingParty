@@ -359,7 +359,7 @@
         [pastMessagesButton setAttributedTitle:moreBlessingsAttrHighlight forState:UIControlStateHighlighted];
         [pastMessagesButton setBackgroundColor:[UIColor clearColor]];
         [pastMessagesButton addTarget:self action:@selector(pastMessagesButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        NSBubbleData *bubble = [[NSBubbleData alloc] initWithView:pastMessagesButton date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeMine insets:UIEdgeInsetsMake(0, 7, 5, 3) image:nil username:@"User" userIdsWhoLiked:nil];
+        NSBubbleData *bubble = [[NSBubbleData alloc] initWithView:pastMessagesButton date:[NSDate dateWithTimeIntervalSinceNow:-300] text:nil type:BubbleTypeMine insets:UIEdgeInsetsMake(0, 7, 5, 3) image:nil username:@"User" userIdsWhoLiked:nil];
     
         [self.bubbleData addObject:bubble];
     }
@@ -439,9 +439,8 @@
                      if ([[oldMsg view] isKindOfClass:[UILabel class]] == NO)
                          continue;
 
-                     UILabel *oldMsgLabel = (UILabel *)[oldMsg view];
                      NSString *msgData = [message Data];
-                     NSString *oldMsgData = [oldMsgLabel text];
+                     NSString *oldMsgData = [oldMsg text];
                      NSString *msgUserName = [message UserFullName];
                      NSString *oldMsgUserName = [oldMsg userFullName];
                      if (([msgData compare:oldMsgData] == NSOrderedSame) && ([msgUserName compare:oldMsgUserName] == NSOrderedSame))
