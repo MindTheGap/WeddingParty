@@ -121,6 +121,8 @@
 		76E434051769DED600FB8991 /* UIBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E433FE1769DED600FB8991 /* UIBubbleTableViewCell.m */; };
 		76E434061769DED600FB8991 /* UIBubbleTypingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E434011769DED600FB8991 /* UIBubbleTypingTableViewCell.m */; };
 		76E43429176A11D100FB8991 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E43428176A11D100FB8991 /* like.png */; };
+		76E51991177DE300005CCA59 /* upload-inv.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E5198F177DE300005CCA59 /* upload-inv.png */; };
+		76E51992177DE300005CCA59 /* upload.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E51990177DE300005CCA59 /* upload.png */; };
 		76ED33331746182C00072A23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ED33321746182C00072A23 /* UIKit.framework */; };
 		76ED33351746182C00072A23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ED33341746182C00072A23 /* Foundation.framework */; };
 		76ED33371746182C00072A23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ED33361746182C00072A23 /* CoreGraphics.framework */; };
@@ -455,6 +457,8 @@
 		76E434001769DED600FB8991 /* UIBubbleTypingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTypingTableViewCell.h; sourceTree = "<group>"; };
 		76E434011769DED600FB8991 /* UIBubbleTypingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTypingTableViewCell.m; sourceTree = "<group>"; };
 		76E43428176A11D100FB8991 /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
+		76E5198F177DE300005CCA59 /* upload-inv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upload-inv.png"; sourceTree = "<group>"; };
+		76E51990177DE300005CCA59 /* upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upload.png; sourceTree = "<group>"; };
 		76ED332F1746182C00072A23 /* EtiAndChen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EtiAndChen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76ED33321746182C00072A23 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		76ED33341746182C00072A23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1025,6 +1029,8 @@
 		76F2534C17611E9D00E94BCF /* GreetingPageImages */ = {
 			isa = PBXGroup;
 			children = (
+				76E5198F177DE300005CCA59 /* upload-inv.png */,
+				76E51990177DE300005CCA59 /* upload.png */,
 				76F253511761285000E94BCF /* bg1.jpg */,
 				76F253521761285000E94BCF /* bg2.jpg */,
 				76F253531761285000E94BCF /* bg3.jpg */,
@@ -1351,6 +1357,8 @@
 				767602A117703AE6003757A1 /* main_banner_he.jpg in Resources */,
 				767602A31770620F003757A1 /* DefaultIcon.png in Resources */,
 				767602A51770628B003757A1 /* DefaultIconRetina.png in Resources */,
+				76E51991177DE300005CCA59 /* upload-inv.png in Resources */,
+				76E51992177DE300005CCA59 /* upload.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1530,8 +1538,8 @@
 		76ED33531746182C00072A23 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
@@ -1561,8 +1569,8 @@
 		76ED33541746182C00072A23 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",

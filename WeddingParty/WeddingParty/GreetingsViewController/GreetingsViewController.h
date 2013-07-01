@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "UIBubbleTableViewDataSource.h"
 
-@interface GreetingsViewController : UIViewController <UIBubbleTableViewDataSource>
+@interface GreetingsViewController : UIViewController <UIBubbleTableViewDataSource, UIActionSheetDelegate, UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @end

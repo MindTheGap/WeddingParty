@@ -237,14 +237,17 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="uhr-R1-Ppx" firstAttribute="bottom" secondItem="c0N-6E-iYZ" secondAttribute="bottom" type="user" id="B7y-jF-8lq"/>
-                                    <constraint firstAttribute="trailing" secondItem="uhr-R1-Ppx" secondAttribute="trailing" constant="-1" type="user" id="F64-eD-ydB"/>
-                                    <constraint firstItem="uhr-R1-Ppx" firstAttribute="leading" secondItem="c0N-6E-iYZ" secondAttribute="leading" constant="1" type="user" id="TiH-ZK-VWt"/>
+                                    <constraint firstItem="uhr-R1-Ppx" firstAttribute="trailing" secondItem="c0N-6E-iYZ" secondAttribute="trailing" type="default" id="IbT-Uv-qUD"/>
+                                    <constraint firstItem="uhr-R1-Ppx" firstAttribute="leading" secondItem="c0N-6E-iYZ" secondAttribute="leading" type="default" id="RNa-My-FTj"/>
                                     <constraint firstItem="uhr-R1-Ppx" firstAttribute="top" secondItem="c0N-6E-iYZ" secondAttribute="top" type="default" id="job-Vv-lRM"/>
                                 </constraints>
                             </view>
                             <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s4V-BU-bf3" userLabel="BottomBarView">
                                 <subviews>
                                     <textField opaque="NO" contentMode="center" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" borderStyle="roundedRect" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2LZ-8H-pI6">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="RLb-Oi-l14"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -267,21 +270,34 @@
                                             <action selector="BlessButtonClick:" destination="mcS-7m-m4u" eventType="touchUpInside" id="1fb-6C-nY4"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXt-xR-1Mp">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="5x8-pk-uDH"/>
+                                            <constraint firstAttribute="width" constant="30" id="JEd-Xw-ggv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="UL">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="uploadButtonClicked:" destination="mcS-7m-m4u" eventType="touchUpInside" id="oCG-ff-RFH"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="A18-MX-I1q" firstAttribute="bottom" secondItem="2LZ-8H-pI6" secondAttribute="bottom" type="user" id="6qI-jr-55q"/>
                                     <constraint firstItem="A18-MX-I1q" firstAttribute="leading" secondItem="2LZ-8H-pI6" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="7dK-63-mCx"/>
-                                    <constraint firstAttribute="trailing" secondItem="A18-MX-I1q" secondAttribute="trailing" constant="6" type="user" id="EIT-eG-XXZ"/>
-                                    <constraint firstItem="2LZ-8H-pI6" firstAttribute="centerY" secondItem="s4V-BU-bf3" secondAttribute="centerY" type="user" id="HHB-y0-S45"/>
-                                    <constraint firstItem="2LZ-8H-pI6" firstAttribute="top" secondItem="A18-MX-I1q" secondAttribute="top" type="user" id="Htm-ry-zeu"/>
-                                    <constraint firstAttribute="bottom" secondItem="A18-MX-I1q" secondAttribute="bottom" constant="7" type="user" id="IsG-Rt-xej"/>
+                                    <constraint firstItem="2LZ-8H-pI6" firstAttribute="leading" secondItem="s4V-BU-bf3" secondAttribute="leading" constant="40" type="user" id="EvG-FL-Bnm"/>
                                     <constraint firstAttribute="height" constant="44" type="user" id="Jhd-ad-cIO"/>
-                                    <constraint firstItem="2LZ-8H-pI6" firstAttribute="leading" secondItem="s4V-BU-bf3" secondAttribute="leading" constant="5" type="user" id="dGv-vh-A0p"/>
-                                    <constraint firstItem="2LZ-8H-pI6" firstAttribute="top" secondItem="s4V-BU-bf3" secondAttribute="top" constant="7" type="user" id="efG-Kr-pPc"/>
-                                    <constraint firstItem="2LZ-8H-pI6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="s4V-BU-bf3" secondAttribute="leading" constant="5" type="user" id="etY-26-PzO"/>
-                                    <constraint firstAttribute="bottom" secondItem="2LZ-8H-pI6" secondAttribute="bottom" constant="7" type="user" id="hxA-eN-d6g"/>
-                                    <constraint firstItem="A18-MX-I1q" firstAttribute="top" secondItem="s4V-BU-bf3" secondAttribute="top" constant="7" type="user" id="yfc-mn-Mgu"/>
+                                    <constraint firstItem="2LZ-8H-pI6" firstAttribute="leading" secondItem="qXt-xR-1Mp" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="R4v-5l-sBO"/>
+                                    <constraint firstItem="qXt-xR-1Mp" firstAttribute="top" secondItem="A18-MX-I1q" secondAttribute="top" type="default" id="dme-lg-zOi"/>
+                                    <constraint firstItem="2LZ-8H-pI6" firstAttribute="bottom" secondItem="A18-MX-I1q" secondAttribute="bottom" type="default" id="pqG-ZE-xwS"/>
+                                    <constraint firstItem="qXt-xR-1Mp" firstAttribute="centerY" secondItem="A18-MX-I1q" secondAttribute="centerY" type="default" id="u5k-hi-CJG"/>
+                                    <constraint firstItem="2LZ-8H-pI6" firstAttribute="centerY" secondItem="s4V-BU-bf3" secondAttribute="centerY" type="default" id="zOC-Fz-ufp"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -309,6 +325,7 @@
                         <outlet property="mainViewOfTV" destination="c0N-6E-iYZ" id="QA8-Qx-abT"/>
                         <outlet property="textField" destination="2LZ-8H-pI6" id="FTA-Bd-3Ir"/>
                         <outlet property="textInputView" destination="s4V-BU-bf3" id="3Ch-CJ-atk"/>
+                        <outlet property="uploadButton" destination="qXt-xR-1Mp" id="itP-cY-z9y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kmy-Y2-67Y" userLabel="First Responder" sceneMemberID="firstResponder"/>

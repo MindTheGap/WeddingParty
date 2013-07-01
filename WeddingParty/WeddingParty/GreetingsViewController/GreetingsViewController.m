@@ -26,13 +26,17 @@
     IBOutlet UITextField *textField;
     
     BOOL bLoadedFile;
+    UIImagePickerController* imagePickerController;
     
     __weak IBOutlet UIView *mainViewOfTV;
    
     __weak IBOutlet NSLayoutConstraint *keyboardHeightConstraint;
     
     __weak IBOutlet UIButton *BlessButton;
+    
     NSBubbleData *lastBubbleSelected;
+    
+    __weak IBOutlet UIButton *uploadButton;
 }
 
 @property (strong, nonatomic) MessageModelFromServer *messageModelFromServer;
@@ -97,6 +101,136 @@
     [unarchiver finishDecoding];
     
     return _messageModelFromServer;
+}
+
+- (void)uploadImage:(UIImage *)image
+{
+    [self.view makeToastActivity];
+    
+    MessageModelToServer *mm = [[MessageModelToServer alloc] init];
+    mm.Action = 2;
+    mm.UserId = [self userId];
+    mm.UserFullName = [self userFullName];
+    NSData *imageData = UIImageJPEGRepresentation(image, 90);
+    mm.Data = [[NSString alloc] initWithData:imageData encoding:NSUTF16LittleEndianStringEncoding];
+    mm.UserIdsWhoLiked = nil;
+    
+    NSString *jsonString = [mm toJSONString];
+    
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://54.242.242.228:4296/"]];
+    [request setValue:jsonString forHTTPHeaderField:@"json"];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:jsonData];
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+     {
+         [self.view performSelectorOnMainThread:@selector(hideToastActivity) withObject:nil waitUntilDone:YES];
+             
+         if ([data length] > 0 && error == nil)
+         {
+             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF16LittleEndianStringEncoding];
+             
+             self.messageModelFromServer = [[MessageModelFromServer alloc] initWithString:string error:nil];
+             
+             if (self.messageModelFromServer.Action != 2)
+             {
+                 [self.view makeToast:@"Server error"];
+             }
+                 
+         }
+         else if ([data length] == 0 && error == nil)
+         {
+             NSLog(@"data length is zero and no error");
+             
+             [self.view makeToast:@"Error receiving information."];
+         }
+         else if (error != nil && error.code == NSURLErrorTimedOut)
+         {
+             NSLog(@"error code is timed out");
+             
+             [self.view makeToast:@"Timed out, server is down?"];
+         }
+         else if (error != nil)
+         {
+             NSLog(@"error is: %@" , [error localizedDescription]);
+             
+             [self.view makeToast:[error localizedDescription]];
+         }
+     }];
+    
+}
+
+- (IBAction)uploadButtonClicked:(id)sender
+{
+    UIActionSheet *popupQuery = [[UIActionSheet alloc]
+                                 initWithTitle:nil
+                                 delegate:self
+                                 cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                 destructiveButtonTitle:nil
+                                 otherButtonTitles:NSLocalizedString(@"TakePicture",nil), NSLocalizedString(@"ImageLocation",nil), nil];
+    popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [popupQuery showInView:self.view];
+
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker
+        didFinishPickingImage:(UIImage *)image
+                  editingInfo:(NSDictionary *)editingInfo
+{
+    
+    [picker dismissModalViewControllerAnimated:YES];
+    imagePickerController.view.hidden = YES;
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+
+    NSLog(@"finished picking image");
+
+}
+
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch (buttonIndex) {
+        case 0: // take picture
+            
+            if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+            {
+            
+                // Set up the image picker controller and add it to the view
+                imagePickerController = [[UIImagePickerController alloc] init];
+                imagePickerController.delegate = self;
+                imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+            
+                [self presentViewController:imagePickerController animated:YES completion:nil];
+            
+            }
+            // Set up the image view and add it to the view but make it hidden
+            NSLog(@"case 0");
+            break;
+        case 1: // upload from device
+            
+            if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+            {
+                
+                // Set up the image picker controller and add it to the view
+                imagePickerController = [[UIImagePickerController alloc] init];
+                imagePickerController.delegate = self;
+                imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                
+                [self presentViewController:imagePickerController animated:YES completion:nil];
+                
+            }
+
+            
+            NSLog(@"case 1");
+            break;
+    }
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -283,6 +417,10 @@
     
     [self.navigationItem setTitle:NSLocalizedString(@"Greetings", nil)];
     
+    [uploadButton setImage:[UIImage imageNamed:@"upload.png"] forState:UIControlStateNormal];
+    [uploadButton setImage:[UIImage imageNamed:@"upload-inv.png"] forState:UIControlStateHighlighted];
+
+    
 }
 
 - (void)doubleTapLike:(id)sender
@@ -446,6 +584,9 @@
                      if (([msgData compare:oldMsgData] == NSOrderedSame) && ([msgUserName compare:oldMsgUserName] == NSOrderedSame))
                      {
                          bFoundMessage = YES;
+                         
+                         // update likes only
+                         [oldMsg setUserIdsWhoLiked:[message UserIdsWhoLiked]];
                      }
                  }
                  
@@ -461,7 +602,18 @@
 
                      }
                      
-                     NSBubbleData *bubbleForMessage = [NSBubbleData dataWithText:[message Data] date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse withFont:nil withFontColor:[UIColor blackColor] image:image username:[message UserFullName] userIdsWhoLiked:[message UserIdsWhoLiked]];
+                     NSBubbleData *bubbleForMessage;
+                     if (message.UserIdsWhoLiked != nil)
+                     {
+                         bubbleForMessage = [NSBubbleData dataWithText:[message Data] date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse withFont:nil withFontColor:[UIColor blackColor] image:image username:[message UserFullName] userIdsWhoLiked:[message UserIdsWhoLiked]];
+                     }
+                     else
+                     {
+                         NSData *data = [message.Data dataUsingEncoding:NSUTF16LittleEndianStringEncoding];
+                         UIImage *image = [UIImage imageWithData:data];
+                         bubbleForMessage = [NSBubbleData dataWithImage:image date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse username:[message UserFullName] userIdsWhoLiked:[[NSMutableArray alloc] init]];
+                     }
+                     
                      [self.bubbleData addObject:bubbleForMessage];
                  }
              }
